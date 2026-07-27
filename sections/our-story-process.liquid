@@ -1,0 +1,275 @@
+{% comment %}
+  Our Story Process Section
+  Dark background with numbered winemaking process steps.
+  "Crafted with Care, Shared with Love"
+{% endcomment %}
+
+<section
+  id="our-story-process-{{ section.id }}"
+  class="our-story-process"
+  style="
+    background-color: {{ section.settings.background_color }};
+    padding-block: {{ section.settings.padding_top }}px {{ section.settings.padding_bottom }}px;
+  "
+>
+  <div class="our-story-process__inner page-width">
+
+    <div class="our-story-process__header">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="our-story-process__eyebrow">{{ section.settings.eyebrow }}</p>
+      {%- endif -%}
+      {%- if section.settings.heading != blank -%}
+        <h2 class="our-story-process__heading">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+    </div>
+
+    {%- if section.blocks.size > 0 -%}
+      <div class="our-story-process__steps">
+        {%- for block in section.blocks -%}
+          <div class="our-story-process__step" {{ block.shopify_attributes }}>
+            <div class="our-story-process__step-icon">
+              {%- if block.settings.icon != blank -%}
+                <span>{{ block.settings.icon }}</span>
+              {%- endif -%}
+            </div>
+            <div class="our-story-process__step-number">{{ forloop.index }}.</div>
+            {%- if block.settings.title != blank -%}
+              <h3 class="our-story-process__step-title">{{ block.settings.title }}</h3>
+            {%- endif -%}
+            {%- if block.settings.description != blank -%}
+              <p class="our-story-process__step-desc">{{ block.settings.description }}</p>
+            {%- endif -%}
+          </div>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+  </div>
+</section>
+
+{% stylesheet %}
+  .our-story-process {
+    background: #111;
+  }
+
+  .our-story-process__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .our-story-process__header {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .our-story-process__eyebrow {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #c0392b;
+    margin: 0;
+  }
+
+  .our-story-process__heading {
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    font-weight: 700;
+    color: #fff;
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  .our-story-process__steps {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1rem;
+  }
+
+  .our-story-process__step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.5rem;
+    padding: 1.5rem 0.75rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 6px;
+    transition: border-color 0.2s, background 0.2s;
+  }
+
+  .our-story-process__step:hover {
+    border-color: rgba(192, 57, 43, 0.4);
+    background: rgba(192, 57, 43, 0.05);
+  }
+
+  .our-story-process__step-icon {
+    font-size: 1.8rem;
+    line-height: 1;
+  }
+
+  .our-story-process__step-number {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.3);
+    letter-spacing: 0.05em;
+  }
+
+  .our-story-process__step-title {
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: #fff;
+    margin: 0;
+  }
+
+  .our-story-process__step-desc {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.55);
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  @media screen and (max-width: 900px) {
+    .our-story-process__steps {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    .our-story-process__steps {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Our Story — Process",
+  "class": "section",
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Process Step",
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Icon (emoji)",
+          "default": "🍇",
+          "info": "Emoji icon for this step"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Step Title",
+          "default": "Harvest"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Handpicked grapes at peak ripeness."
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#111111"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow Label",
+      "default": "Our Process"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Crafted with Care, Shared with Love"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 80
+    }
+  ],
+  "presets": [
+    {
+      "name": "Our Story — Process",
+      "blocks": [
+        {
+          "type": "step",
+          "settings": {
+            "icon": "🍇",
+            "title": "Harvest",
+            "description": "Handpicked grapes at peak ripeness."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "icon": "🔍",
+            "title": "Selection",
+            "description": "Carefully sorted for quality and purity."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "icon": "🧪",
+            "title": "Fermentation",
+            "description": "Traditionally fermented to bring out rich flavors."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "icon": "🪵",
+            "title": "Oak-Aging",
+            "description": "Aged in oak barrels for complexity."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "icon": "🍾",
+            "title": "Bottling",
+            "description": "Bottled with care and attention."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "icon": "🥂",
+            "title": "Enjoy",
+            "description": "Shared with you to create memories."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

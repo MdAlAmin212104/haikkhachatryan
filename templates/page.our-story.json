@@ -1,449 +1,349 @@
-/*
- * ------------------------------------------------------------
- * IMPORTANT: The contents of this file are auto-generated.
- *
- * This file may be updated by the Shopify admin theme editor
- * or related systems. Please exercise caution as any changes
- * made to this file may be overwritten.
- * ------------------------------------------------------------
- */
 {
   "sections": {
+    "our_story_hero": {
+      "type": "our-story-hero",
+      "settings": {
+        "background_image": "shopify://shop_images/areni-village-armenia-566551361.jpg",
+        "height": 55,
+        "overlay_opacity": 60,
+        "eyebrow": "Our Heritage",
+        "heading": "Our Story",
+        "subheading": "From the vineyards of Armenia to unforgettable wine experiences in Florida — our family's passion has been poured into every bottle for generations.",
+        "button_1_label": "Discover Our Wines",
+        "button_1_url": "/collections/all",
+        "button_1_new_tab": false,
+        "button_2_label": "Visit Us",
+        "button_2_url": "/pages/visit-us",
+        "button_2_new_tab": false
+      }
+    },
+    "our_story_timeline": {
+      "type": "our-story-timeline",
+      "blocks": {
+        "milestone_1": {
+          "type": "milestone",
+          "settings": {
+            "icon": "grape",
+            "year": "1920s",
+            "label": "Our family began farming vineyards in Armenia."
+          }
+        },
+        "milestone_2": {
+          "type": "milestone",
+          "settings": {
+            "icon": "plane",
+            "year": "1985",
+            "label": "Our family moved to Florida with a dream and tradition."
+          }
+        },
+        "milestone_3": {
+          "type": "milestone",
+          "settings": {
+            "icon": "shop",
+            "year": "2010",
+            "label": "We opened our first wine shop and tasting room in Florida."
+          }
+        },
+        "milestone_4": {
+          "type": "milestone",
+          "settings": {
+            "icon": "glasses",
+            "year": "2016",
+            "label": "Expanded to a new location and grew our wine family."
+          }
+        },
+        "milestone_5": {
+          "type": "milestone",
+          "settings": {
+            "icon": "star",
+            "year": "Today",
+            "label": "Continuing our legacy and sharing our wines with the world."
+          }
+        }
+      },
+      "block_order": [
+        "milestone_1",
+        "milestone_2",
+        "milestone_3",
+        "milestone_4",
+        "milestone_5"
+      ],
+      "settings": {
+        "background_color": "#ffffff",
+        "eyebrow": "Our Heritage",
+        "heading": "A Journey of Passion Across Generations",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
+    "our_story_founders": {
+      "type": "our-story-founders",
+      "settings": {
+        "background_color": "#ffffff",
+        "eyebrow": "Our Founders",
+        "heading": "Rooted in Family. Built on Passion.",
+        "body": "<p>Open Container Wine was created with a simple but powerful belief — that great wine should be accessible to everyone. Inspired by Grandma Rosa's unwavering work ethic and love for hospitality, our family set out to create a place where people can enjoy exceptional wines, learn, celebrate, and make memories.</p>",
+        "button_label": "Learn More About Us",
+        "button_url": "",
+        "button_new_tab": false,
+        "image": "shopify://shop_images/Gemini_Generated_Image_dq3b5pdq3b5pdq3b.png",
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    },
+    "our_story_legacy": {
+      "type": "our-story-legacy",
+      "settings": {
+        "background_color": "#1a1a1a",
+        "image": "shopify://shop_images/Gemini_Generated_Image_jo2nb6jo2nb6jo2n.png",
+        "caption_number": "56",
+        "caption": "Tradition isn't something we inherit, it's something we preserve.",
+        "eyebrow": "The Heart Of Our Story",
+        "heading": "The Woman Behind Our Legacy",
+        "body": "<p>Our story begins with Grandma Rosa, whose passion, resilience, and dedication became the heart of Open Container Wine. She taught us that wine is more than a drink — it's a way to bring people together and create lasting memories.</p>",
+        "quote": "Wine brings people together. We create experiences that connect friends and family.",
+        "quote_author": "Grandma Rosa",
+        "quote_title": "Our Inspiration, Our Foundation",
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    },
+    "our_story_values": {
+      "type": "our-story-values",
+      "blocks": {
+        "value_1": {
+          "type": "value",
+          "settings": {
+            "icon": "🏛️",
+            "title": "Heritage",
+            "description": "We honor many generations of Armenian winemaking and carry our traditions with pride."
+          }
+        },
+        "value_2": {
+          "type": "value",
+          "settings": {
+            "icon": "❤️",
+            "title": "Passion",
+            "description": "Every bottle crafted reflects our love for wine and commitment to our customers."
+          }
+        },
+        "value_3": {
+          "type": "value",
+          "settings": {
+            "icon": "🤝",
+            "title": "Community",
+            "description": "Wine brings people together. We create experiences that connect friends and family."
+          }
+        },
+        "value_4": {
+          "type": "value",
+          "settings": {
+            "icon": "🏆",
+            "title": "Excellence",
+            "description": "From our vineyards to your glass, we are dedicated to quality in every detail."
+          }
+        }
+      },
+      "block_order": ["value_1", "value_2", "value_3", "value_4"],
+      "settings": {
+        "background_color": "#ffffff",
+        "eyebrow": "Our Values",
+        "heading": "What Drives Us Every Day",
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    },
+    "our_story_process": {
+      "type": "our-story-process",
+      "blocks": {
+        "step_1": {
+          "type": "step",
+          "settings": {
+            "icon": "🍇",
+            "title": "Harvest",
+            "description": "Handpicked grapes at peak ripeness."
+          }
+        },
+        "step_2": {
+          "type": "step",
+          "settings": {
+            "icon": "🔍",
+            "title": "Selection",
+            "description": "Carefully sorted for quality and purity."
+          }
+        },
+        "step_3": {
+          "type": "step",
+          "settings": {
+            "icon": "🧪",
+            "title": "Fermentation",
+            "description": "Traditionally fermented to bring out rich flavors."
+          }
+        },
+        "step_4": {
+          "type": "step",
+          "settings": {
+            "icon": "🪵",
+            "title": "Oak-Aging",
+            "description": "Aged in oak barrels for complexity."
+          }
+        },
+        "step_5": {
+          "type": "step",
+          "settings": {
+            "icon": "🍾",
+            "title": "Bottling",
+            "description": "Bottled with care and attention."
+          }
+        },
+        "step_6": {
+          "type": "step",
+          "settings": {
+            "icon": "🥂",
+            "title": "Enjoy",
+            "description": "Shared with you to create memories."
+          }
+        }
+      },
+      "block_order": ["step_1", "step_2", "step_3", "step_4", "step_5", "step_6"],
+      "settings": {
+        "background_color": "#111111",
+        "eyebrow": "Our Process",
+        "heading": "Crafted with Care, Shared with Love",
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    },
+    "our_story_stats": {
+      "type": "our-story-stats",
+      "blocks": {
+        "stat_1": {
+          "type": "stat",
+          "settings": {
+            "number": "70+",
+            "label": "Years of Family Heritage"
+          }
+        },
+        "stat_2": {
+          "type": "stat",
+          "settings": {
+            "number": "10,000+",
+            "label": "Guests Hosted"
+          }
+        },
+        "stat_3": {
+          "type": "stat",
+          "settings": {
+            "number": "15+",
+            "label": "Premium Wines"
+          }
+        },
+        "stat_4": {
+          "type": "stat",
+          "settings": {
+            "number": "Thousands",
+            "label": "Happy Customers"
+          }
+        }
+      },
+      "block_order": ["stat_1", "stat_2", "stat_3", "stat_4"],
+      "settings": {
+        "background_color": "#ffffff",
+        "eyebrow": "By The Numbers",
+        "heading": "Our Journey in Numbers",
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    },
+    "our_story_experience": {
+      "type": "our-story-experience",
+      "settings": {
+        "background_image": "",
+        "height": 440,
+        "overlay_opacity": 55,
+        "eyebrow": "Visit Our Winery",
+        "heading": "Experience Open Container",
+        "subheading": "Join us for a unique wine tasting experience at our Florida location. Walk-ins welcome!",
+        "button_label": "Book a Wine Experience",
+        "button_url": "",
+        "button_new_tab": false
+      }
+    },
+    "our_story_testimonials": {
+      "type": "our-story-testimonials",
+      "blocks": {
+        "review_1": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "quote": "One of the most unique wine experiences in Florida. The selection is exceptional and the family is incredible!",
+            "author": "Sarah M."
+          }
+        },
+        "review_2": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "quote": "You can taste the passion and history in every bottle. Open Container is a hidden gem!",
+            "author": "Michael T."
+          }
+        },
+        "review_3": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "quote": "The atmosphere, the wine, the people — everything is perfect. We'll definitely be back!",
+            "author": "Jessica L."
+          }
+        }
+      },
+      "block_order": ["review_1", "review_2", "review_3"],
+      "settings": {
+        "background_color": "#ffffff",
+        "eyebrow": "What Our Guests Say",
+        "heading": "From Our Wine Family",
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    },
+    "our_story_instagram": {
+      "type": "our-story-instagram",
+      "blocks": {
+        "photo_1": { "type": "photo", "settings": { "alt_text": "Open Container Wine photo 1" } },
+        "photo_2": { "type": "photo", "settings": { "alt_text": "Open Container Wine photo 2" } },
+        "photo_3": { "type": "photo", "settings": { "alt_text": "Open Container Wine photo 3" } },
+        "photo_4": { "type": "photo", "settings": { "alt_text": "Open Container Wine photo 4" } },
+        "photo_5": { "type": "photo", "settings": { "alt_text": "Open Container Wine photo 5" } },
+        "photo_6": { "type": "photo", "settings": { "alt_text": "Open Container Wine photo 6" } }
+      },
+      "block_order": ["photo_1", "photo_2", "photo_3", "photo_4", "photo_5", "photo_6"],
+      "settings": {
+        "background_color": "#ffffff",
+        "eyebrow": "Follow Our Journey",
+        "handle": "@opencontainerwine",
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    },
     "main": {
       "type": "main-page",
-      "blocks": {
-        "heading": {
-          "type": "text",
-          "name": "t:names.title",
-          "settings": {
-            "text": "<h1>{{ closest.page.title }}</h1>",
-            "width": "100%",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "h2",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "text_color": "",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "page-content": {
-          "type": "page-content",
-          "settings": {
-            "text_color": ""
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "heading",
-        "page-content"
-      ],
       "disabled": true,
-      "settings": {
-        "content_direction": "column",
-        "gap": 32,
-        "background_color": "{{ settings.color_palette.background }}",
-        "padding-block-start": 40,
-        "padding-block-end": 80
-      }
-    },
-    "hero_J6MXbY": {
-      "type": "hero",
-      "blocks": {
-        "text_bMRjkH": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Our Story</p>",
-            "width": "fit-content",
-            "max_width": "narrow",
-            "alignment": "left",
-            "type_preset": "h1",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "text_color": "{{ settings.color_palette.background }}",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "text_bMRjkH"
-      ],
-      "name": "t:names.hero",
-      "settings": {
-        "media_type_1": "image",
-        "image_1": "shopify://shop_images/areni-village-armenia-566551361.jpg",
-        "media_type_2": "image",
-        "stack_media_on_mobile": false,
-        "custom_mobile_media": false,
-        "media_type_1_mobile": "image",
-        "media_type_2_mobile": "image",
-        "link": "",
-        "open_in_new_tab": false,
-        "content_direction": "column",
-        "vertical_on_mobile": true,
-        "horizontal_alignment": "flex-start",
-        "vertical_alignment": "center",
-        "align_baseline": false,
-        "horizontal_alignment_flex_direction_column": "center",
-        "vertical_alignment_flex_direction_column": "center",
-        "gap": 16,
-        "section_width": "page-width",
-        "section_height": "small",
-        "section_height_custom": 50,
-        "background_color": "",
-        "toggle_overlay": true,
-        "overlay_color": "#00000026",
-        "overlay_style": "gradient",
-        "gradient_direction": "to top",
-        "blurred_reflection": false,
-        "reflection_opacity": 75,
-        "padding-block-start": 40,
-        "padding-block-end": 40
-      }
-    },
-    "section_rAyfzG": {
-      "type": "section",
-      "blocks": {
-        "group_mTEaHm": {
-          "type": "group",
-          "settings": {
-            "content_direction": "column",
-            "vertical_on_mobile": true,
-            "horizontal_alignment": "flex-start",
-            "vertical_alignment": "center",
-            "align_baseline": false,
-            "horizontal_alignment_flex_direction_column": "flex-start",
-            "vertical_alignment_flex_direction_column": "center",
-            "gap": 12,
-            "width": "custom",
-            "custom_width": 100,
-            "width_mobile": "fill",
-            "custom_width_mobile": 100,
-            "height": "fit",
-            "custom_height": 100,
-            "background_media": "none",
-            "background_color": "",
-            "video_position": "cover",
-            "background_image_position": "cover",
-            "toggle_overlay": false,
-            "overlay_color": "#00000026",
-            "overlay_style": "solid",
-            "gradient_direction": "to top",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_color": "",
-            "border_radius": 0,
-            "link": "",
-            "open_in_new_tab": false,
-            "placeholder": "",
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {
-            "text_zpUB47": {
-              "type": "text",
-              "name": "t:names.heading",
-              "settings": {
-                "text": "<h2>OUR FOUNDATION</h2>",
-                "width": "fit-content",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "h3",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "text_color": "",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "text_J6kQ6M": {
-              "type": "text",
-              "settings": {
-                "text": "<p>We do what we do because of our Foundation, Grandma Rosa's Foundation. Open Container is a revolutionary franchise concept that changes the way you run a business and serve people unique wine. With years of research and development through business experience, we came to the realization that larger restaurant business models are not so smart and not easy to manage.There’s always high risk and even the basics are hard to manage with so many employees, overhead and supplies. That’s why we invented a business model that’s easy to operate and manage and that’s Open Container; we reinvent how you do business. The culmination of our 70 years of service and business has offered us insight and priceless information to build a foundation on, Open Container. Our expertise in wine-making was passed down to us intergenerationally through our family history in growing grapes in an Armenian vineyard. </p>",
-                "width": "fit-content",
-                "max_width": "none",
-                "alignment": "left",
-                "type_preset": "rte",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "text_color": "",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "text_zpUB47",
-            "text_J6kQ6M"
-          ]
-        },
-        "image_gLHRpH": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/Gemini_Generated_Image_dq3b5pdq3b5pdq3b.png",
-            "link": "",
-            "image_ratio": "square",
-            "width": "fill",
-            "custom_width": 100,
-            "width_mobile": "fill",
-            "custom_width_mobile": 100,
-            "height": "fit",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_color": "",
-            "border_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "group_mTEaHm",
-        "image_gLHRpH"
-      ],
-      "name": "t:names.image_with_text",
-      "settings": {
-        "content_direction": "row",
-        "vertical_on_mobile": true,
-        "horizontal_alignment": "flex-start",
-        "vertical_alignment": "center",
-        "align_baseline": false,
-        "horizontal_alignment_flex_direction_column": "flex-start",
-        "vertical_alignment_flex_direction_column": "center",
-        "gap": 32,
-        "section_width": "page-width",
-        "section_height": "",
-        "section_height_custom": 50,
-        "background_media": "none",
-        "background_color": "",
-        "video_position": "cover",
-        "background_image_position": "cover",
-        "toggle_overlay": false,
-        "overlay_color": "#00000026",
-        "overlay_style": "solid",
-        "gradient_direction": "to top",
-        "border": "none",
-        "border_width": 1,
-        "border_opacity": 100,
-        "border_color": "",
-        "border_radius": 0,
-        "padding-block-start": 40,
-        "padding-block-end": 0
-      }
-    },
-    "section_RNVY8t": {
-      "type": "section",
-      "blocks": {
-        "image_AVxnWy": {
-          "type": "image",
-          "settings": {
-            "image": "shopify://shop_images/Gemini_Generated_Image_jo2nb6jo2nb6jo2n.png",
-            "link": "",
-            "image_ratio": "square",
-            "width": "fill",
-            "custom_width": 100,
-            "width_mobile": "fill",
-            "custom_width_mobile": 100,
-            "height": "fit",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_color": "",
-            "border_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "group_EXchdT": {
-          "type": "group",
-          "settings": {
-            "content_direction": "column",
-            "vertical_on_mobile": true,
-            "horizontal_alignment": "flex-start",
-            "vertical_alignment": "center",
-            "align_baseline": false,
-            "horizontal_alignment_flex_direction_column": "flex-start",
-            "vertical_alignment_flex_direction_column": "center",
-            "gap": 12,
-            "width": "custom",
-            "custom_width": 100,
-            "width_mobile": "fill",
-            "custom_width_mobile": 100,
-            "height": "fit",
-            "custom_height": 100,
-            "background_media": "none",
-            "background_color": "",
-            "video_position": "cover",
-            "background_image_position": "cover",
-            "toggle_overlay": false,
-            "overlay_color": "#00000026",
-            "overlay_style": "solid",
-            "gradient_direction": "to top",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_color": "",
-            "border_radius": 0,
-            "link": "",
-            "open_in_new_tab": false,
-            "placeholder": "",
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {
-            "text_BqXE7C": {
-              "type": "text",
-              "name": "t:names.heading",
-              "disabled": true,
-              "settings": {
-                "text": "<p>Our Story</p>",
-                "width": "fit-content",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "h3",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "text_color": "",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "text_GACzyU": {
-              "type": "text",
-              "settings": {
-                "text": "<p>We wanted to continue thriving in this industry and carry out our family legacy, hence we established Open Container Wine Company. A few years after our sudden move from Armenia to Worcester, MA in 1985, my family and I had no other choice but to work in odd jobs, in order to scrape money together as much as we can, to do what we know best; make great food and be of service to people. We then opened a trendy and modern Pizza place, all while being faithful to our history and heritage, and became leaders in importing unique wine and spirits from Armenia through grandma Rosa’s old connections. It was in 2010 when we started our first brick and mortar Wine Shop and Tasting Room with 1 location and grew into 4 locations within 6 years. Having vast experience for decades in the wine and service industry, we are now successfully operating our Open Container franchise business globally.<br/><br/></p>",
-                "width": "fit-content",
-                "max_width": "none",
-                "alignment": "left",
-                "type_preset": "rte",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "text_color": "",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "text_BqXE7C",
-            "text_GACzyU"
-          ]
-        }
-      },
-      "block_order": [
-        "image_AVxnWy",
-        "group_EXchdT"
-      ],
-      "name": "t:names.image_with_text",
-      "settings": {
-        "content_direction": "row",
-        "vertical_on_mobile": true,
-        "horizontal_alignment": "flex-start",
-        "vertical_alignment": "center",
-        "align_baseline": false,
-        "horizontal_alignment_flex_direction_column": "flex-start",
-        "vertical_alignment_flex_direction_column": "center",
-        "gap": 32,
-        "section_width": "page-width",
-        "section_height": "",
-        "section_height_custom": 50,
-        "background_media": "none",
-        "background_color": "",
-        "video_position": "cover",
-        "background_image_position": "cover",
-        "toggle_overlay": false,
-        "overlay_color": "#00000026",
-        "overlay_style": "solid",
-        "gradient_direction": "to top",
-        "border": "none",
-        "border_width": 1,
-        "border_opacity": 100,
-        "border_color": "",
-        "border_radius": 0,
-        "padding-block-start": 0,
-        "padding-block-end": 40
-      }
+      "blocks": {},
+      "block_order": [],
+      "settings": {}
     }
   },
   "order": [
-    "main",
-    "hero_J6MXbY",
-    "section_rAyfzG",
-    "section_RNVY8t"
+    "our_story_hero",
+    "our_story_timeline",
+    "our_story_founders",
+    "our_story_legacy",
+    "our_story_values",
+    "our_story_process",
+    "our_story_stats",
+    "our_story_experience",
+    "our_story_testimonials",
+    "our_story_instagram",
+    "main"
   ]
 }
