@@ -62,6 +62,32 @@
     "hero_49aWpN": {
       "type": "hero",
       "blocks": {
+        "text_6tnBYp": {
+          "type": "text",
+          "name": "t:names.text",
+          "settings": {
+            "text": "<p>YOU'RE ALWAYS WELCOME</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "{{ settings.color_palette.background }}",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
         "text_BFAzEC": {
           "type": "text",
           "settings": {
@@ -86,15 +112,128 @@
             "padding-inline-end": 0
           },
           "blocks": {}
+        },
+        "text_VGcaqr": {
+          "type": "text",
+          "name": "t:names.text",
+          "settings": {
+            "text": "<p>Join us for a wine tasting experience at one of our locations or explore our store. We can't wait to welcome you!</p>",
+            "width": "fit-content",
+            "max_width": "narrow",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "{{ settings.color_palette.background }}",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "group_D9P38R": {
+          "type": "group",
+          "name": "t:names.group",
+          "settings": {
+            "content_direction": "row",
+            "vertical_on_mobile": false,
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "center",
+            "align_baseline": false,
+            "horizontal_alignment_flex_direction_column": "flex-start",
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 12,
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "background_media": "none",
+            "background_color": "",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "toggle_overlay": false,
+            "overlay_color": "#00000026",
+            "overlay_style": "solid",
+            "gradient_direction": "to top",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_color": "",
+            "border_radius": 0,
+            "link": "",
+            "open_in_new_tab": false,
+            "placeholder": "",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "button_DKTWTV": {
+              "type": "button",
+              "name": "t:names.button",
+              "settings": {
+                "label": "B00K A TASTING",
+                "link": "shopify://pages/wine-club",
+                "open_in_new_tab": false,
+                "style_class": "button",
+                "custom_button_background": "{{ settings.color_palette.foreground }}",
+                "custom_button_text": "{{ settings.color_palette.background }}",
+                "custom_button_border": "{{ settings.color_palette.background }}",
+                "link_text_color": "",
+                "width": "fit-content",
+                "custom_width": 100,
+                "width_mobile": "fit-content",
+                "custom_width_mobile": 100
+              },
+              "blocks": {}
+            },
+            "button_BtXUhq": {
+              "type": "button",
+              "name": "t:names.button",
+              "settings": {
+                "label": "Get Directions",
+                "link": "https://maps.app.goo.gl/zt9wBe6JLsJjC9CS6",
+                "open_in_new_tab": false,
+                "style_class": "button",
+                "custom_button_background": "{{ settings.color_palette.foreground }}",
+                "custom_button_text": "{{ settings.color_palette.background }}",
+                "custom_button_border": "{{ settings.color_palette.background }}",
+                "link_text_color": "",
+                "width": "fit-content",
+                "custom_width": 100,
+                "width_mobile": "fit-content",
+                "custom_width_mobile": 100
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "button_DKTWTV",
+            "button_BtXUhq"
+          ]
         }
       },
       "block_order": [
-        "text_BFAzEC"
+        "text_6tnBYp",
+        "text_BFAzEC",
+        "text_VGcaqr",
+        "group_D9P38R"
       ],
       "name": "t:names.hero",
       "settings": {
         "media_type_1": "image",
-        "image_1": "shopify://shop_images/Gemini_Generated_Image_x6ii4dx6ii4dx6ii.png",
+        "image_1": "shopify://shop_images/655996313_18093907135869014_85923312167153021_n.png",
         "media_type_2": "image",
         "stack_media_on_mobile": false,
         "custom_mobile_media": false,
@@ -107,11 +246,11 @@
         "horizontal_alignment": "flex-start",
         "vertical_alignment": "center",
         "align_baseline": false,
-        "horizontal_alignment_flex_direction_column": "center",
+        "horizontal_alignment_flex_direction_column": "flex-start",
         "vertical_alignment_flex_direction_column": "center",
         "gap": 16,
         "section_width": "page-width",
-        "section_height": "medium",
+        "section_height": "large",
         "section_height_custom": 50,
         "background_color": "",
         "toggle_overlay": true,
@@ -122,6 +261,96 @@
         "reflection_opacity": 75,
         "padding-block-start": 40,
         "padding-block-end": 40
+      }
+    },
+    "section_qn4BaE": {
+      "type": "section",
+      "blocks": {
+        "text_PVcQFT": {
+          "type": "text",
+          "name": "t:names.text",
+          "settings": {
+            "text": "<p>OUR LOCATIONS</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "custom",
+            "font": "var(--font-subheading--family)",
+            "font_size": "",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "text_eyqVgr": {
+          "type": "text",
+          "name": "t:names.heading",
+          "settings": {
+            "text": "<p>Come Visit Us</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "h3",
+            "font": "var(--font-body--family)",
+            "font_size": "",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "text_PVcQFT",
+        "text_eyqVgr"
+      ],
+      "name": "t:names.rich_text_section",
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 14,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "background_media": "none",
+        "background_color": "",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_color": "",
+        "border_radius": 0,
+        "padding-block-start": 50,
+        "padding-block-end": 20
       }
     },
     "section_ghNHpX": {
@@ -189,12 +418,65 @@
             "padding-inline-end": 0
           },
           "blocks": {
+            "text_h9Rzcy": {
+              "type": "text",
+              "name": "t:names.heading",
+              "settings": {
+                "text": "<p>Vineland Premium Outlets</p>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "h3",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "text_xgXKRk": {
+              "type": "text",
+              "name": "t:names.text",
+              "disabled": true,
+              "settings": {
+                "text": "<p><strong>We are located next to the main Vineland Sign in the Luxury Wing of Vineland Premium Outlets, next to Sun Glass Hut and Gucci & Prada (#281 on map)</strong></p>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
             "text_DtqyfX": {
               "type": "text",
               "settings": {
-                "text": "<p><strong>We are located next to the main Vineland Sign in the Luxury Wing of Vineland Premium Outlets, next to Sun Glass Hut and Gucci & Prada (#281 on map).  We invite you to drop in for a tasting or call us at  +1-(689) 263-2252 to make a reservation! You can find us at 8200 Vineland Ave., Unit 281, Orlando, FL 32821. Book a Wine Tasting! See you soon!</strong></p>",
+                "text": "<p><strong>We are located next to the main Vineland Sign in the Luxury Wing of Vineland Premium Outlets, next to Sun Glass Hut and Gucci & Prada (#281 on map). </strong></p><p><strong> +1-(689) 263-2252 </strong></p><p><strong>8200 Vineland Ave., Unit 281, Orlando, FL 32821.</strong></p>",
                 "width": "fit-content",
-                "max_width": "narrow",
+                "max_width": "normal",
                 "alignment": "left",
                 "type_preset": "rte",
                 "font": "var(--font-body--family)",
@@ -235,6 +517,8 @@
             }
           },
           "block_order": [
+            "text_h9Rzcy",
+            "text_xgXKRk",
             "text_DtqyfX",
             "button_BNtFEV"
           ]
@@ -339,10 +623,36 @@
             "padding-inline-end": 0
           },
           "blocks": {
+            "text_JaqK3Q": {
+              "type": "text",
+              "name": "t:names.heading",
+              "settings": {
+                "text": "<p>Semoran City Center</p>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "h3",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "text_color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
             "text_tLCP74": {
               "type": "text",
               "settings": {
-                "text": "<p><strong>We are located next to Starbucks in the middle of Simon mall (#191 on map).  We invite you to drop in for a tasting or call us at  +1-(689) 263-2252 to make a reservation! You can find us at 4951 International Dr. Unit 142, Orlando FL 32819. See you soon!</strong></p>",
+                "text": "<p><strong>We are located next to Starbucks in the middle of Simon Mall (#191 on the map).  We invite you to drop in for a tasting or call us </strong></p><p><strong>+1-(689) 263-2252 </strong></p><p><strong>4951 International Dr. Unit 142, Orlando FL 32819. </strong></p>",
                 "width": "fit-content",
                 "max_width": "narrow",
                 "alignment": "left",
@@ -385,6 +695,7 @@
             }
           },
           "block_order": [
+            "text_JaqK3Q",
             "text_tLCP74",
             "button_JJytCp"
           ]
@@ -428,6 +739,7 @@
   "order": [
     "main",
     "hero_49aWpN",
+    "section_qn4BaE",
     "section_ghNHpX",
     "section_ARyhxr"
   ]
