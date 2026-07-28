@@ -38,12 +38,20 @@
       <div class="oc-entry-card glass-card">
         <!-- Logo & Header -->
         <div class="oc-entry-card__brand">
-          <div class="oc-entry-card__logo-wrap">
-            <svg class="oc-brand-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 45" fill="none">
-              <path d="M22.5 5L26.8 17.2H39.6L29.2 24.8L33.2 37L22.5 29.4L11.8 37L15.8 24.8L5.4 17.2H18.2L22.5 5Z" fill="#D54A3A"/>
-              <text x="50" y="24" font-family="'Playfair Display', Georgia, serif" font-weight="700" font-size="16" letter-spacing="3" fill="#111111">OPEN</text>
-              <text x="50" y="38" font-family="'Inter', sans-serif" font-weight="600" font-size="11" letter-spacing="4" fill="#D54A3A">CONTAINER</text>
-            </svg>
+          <div class="oc-entry-card__logo-wrap" style="max-width: {{ section.settings.logo_width | default: 180 }}px;">
+            {%- if section.settings.logo_image != blank -%}
+              {{
+                section.settings.logo_image
+                | image_url: width: 600
+                | image_tag: class: 'oc-brand-logo-img', alt: shop.name
+              }}
+            {%- else -%}
+              <svg class="oc-brand-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 45" fill="none">
+                <path d="M22.5 5L26.8 17.2H39.6L29.2 24.8L33.2 37L22.5 29.4L11.8 37L15.8 24.8L5.4 17.2H18.2L22.5 5Z" fill="#D54A3A"/>
+                <text x="50" y="24" font-family="'Playfair Display', Georgia, serif" font-weight="700" font-size="16" letter-spacing="3" fill="#111111">OPEN</text>
+                <text x="50" y="38" font-family="'Inter', sans-serif" font-weight="600" font-size="11" letter-spacing="4" fill="#D54A3A">CONTAINER</text>
+              </svg>
+            {%- endif -%}
           </div>
         </div>
 
@@ -266,11 +274,28 @@
 
   .oc-entry-card__brand {
     margin-bottom: 1.25rem;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .oc-entry-card__logo-wrap {
+    display: inline-block;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .oc-brand-logo-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
   }
 
   .oc-brand-logo {
-    height: 40px;
-    width: auto;
+    width: 100%;
+    height: auto;
+    max-height: 50px;
   }
 
   .oc-entry-card__illustration {
@@ -661,7 +686,7 @@
 
     const enabled = root.getAttribute('data-enabled') === 'true';
     const isTestMode = root.getAttribute('data-test-mode') === 'true';
-    const redirectUrl = root.getAttribute('data-redirect-url') || 'https://www.responsibility.org/';
+    const redirectUrl = root.getAttribute('data-redirect-url') || 'https://www.google.com/';
     const COOKIE_NAME = 'oc_age_verified_21';
 
     // Helper functions for cookies/storage
@@ -818,6 +843,26 @@
       "id": "redirect_url",
       "label": "Underage Redirect URL",
       "info": "URL to send users who click 'Under 21'. Defaults to responsibility.org"
+    },
+    {
+      "type": "header",
+      "content": "Logo Settings"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo_image",
+      "label": "Custom Brand Logo Image",
+      "info": "Upload your custom logo image. If empty, default Open Container logo is displayed."
+    },
+    {
+      "type": "range",
+      "id": "logo_width",
+      "label": "Logo Max Width",
+      "min": 60,
+      "max": 350,
+      "step": 5,
+      "unit": "px",
+      "default": 180
     },
     {
       "type": "header",
