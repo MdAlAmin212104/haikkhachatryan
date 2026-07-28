@@ -1,0 +1,861 @@
+{% comment %}
+  Open Container — Luxury Age Verification & Checkout Confirmation Section
+  - Entry Website Age Gate (Full-screen glassmorphism modal with background image)
+  - Checkout Age Gate Modal (Required 21+ checkbox + Trust badges before checkout)
+{% endcomment %}
+
+{%- liquid
+  assign enable_gate = section.settings.enable_age_gate
+  assign is_test_mode = section.settings.test_mode
+  assign min_age = section.settings.min_age | default: '21'
+  assign redirect_url = section.settings.redirect_url | default: 'https://www.responsibility.org/'
+-%}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+<div
+  id="oc-age-verification-root"
+  class="oc-age-gate"
+  data-enabled="{{ enable_gate }}"
+  data-test-mode="{{ is_test_mode }}"
+  data-min-age="{{ min_age }}"
+  data-redirect-url="{{ redirect_url }}"
+>
+  {%- comment -%} ── 1. ENTRY WEBSITE AGE VERIFICATION MODAL ── {%- endcomment -%}
+  <div id="oc-entry-modal" class="oc-entry-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="oc-entry-title">
+    <div class="oc-entry-modal__bg">
+      {%- if section.settings.bg_image != blank -%}
+        {{ section.settings.bg_image | image_url: width: 2000 | image_tag: class: 'oc-entry-modal__bg-img', loading: 'eager' }}
+      {%- else -%}
+        <div class="oc-entry-modal__bg-fallback"></div>
+      {%- endif -%}
+      <div class="oc-entry-modal__overlay"></div>
+    </div>
+
+    <div class="oc-entry-modal__container">
+      <div class="oc-entry-card glass-card">
+        <!-- Logo & Header -->
+        <div class="oc-entry-card__brand">
+          <div class="oc-entry-card__logo-wrap">
+            <svg class="oc-brand-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 45" fill="none">
+              <path d="M22.5 5L26.8 17.2H39.6L29.2 24.8L33.2 37L22.5 29.4L11.8 37L15.8 24.8L5.4 17.2H18.2L22.5 5Z" fill="#D54A3A"/>
+              <text x="50" y="24" font-family="'Playfair Display', Georgia, serif" font-weight="700" font-size="16" letter-spacing="3" fill="#111111">OPEN</text>
+              <text x="50" y="38" font-family="'Inter', sans-serif" font-weight="600" font-size="11" letter-spacing="4" fill="#D54A3A">CONTAINER</text>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Wine Bottle Icon/Graphic -->
+        <div class="oc-entry-card__illustration">
+          <div class="oc-wine-badge">
+            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#D54A3A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M8 22h8"/>
+              <path d="M12 11v11"/>
+              <path d="M12 11a5 5 0 0 0 5-5V3H7v3a5 5 0 0 0 5 5z"/>
+              <line x1="7" y1="7" x2="17" y2="7"/>
+            </svg>
+            <span class="oc-badge-year">21+</span>
+          </div>
+        </div>
+
+        <!-- Content -->
+        <h1 id="oc-entry-title" class="oc-entry-card__heading">
+          {{ section.settings.entry_heading | default: 'Welcome to Open Container' }}
+        </h1>
+
+        <p class="oc-entry-card__subtitle">
+          {{ section.settings.entry_subtitle | default: 'We are committed to responsible wine enjoyment. Please confirm that you are 21 years of age or older to enter our website.' }}
+        </p>
+
+        <!-- Action Buttons -->
+        <div class="oc-entry-card__actions">
+          <button id="oc-btn-confirm-age" class="oc-btn oc-btn--primary oc-btn--lg">
+            <span>Yes, I am {{ min_age }}+</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </button>
+
+          <button id="oc-btn-underage" class="oc-btn oc-btn--secondary oc-btn--lg">
+            <span>No, I am Under {{ min_age }}</span>
+          </button>
+        </div>
+
+        <!-- Footer / Notices -->
+        <div class="oc-entry-card__footer">
+          <p class="oc-notice-text">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            Please drink responsibly. Enjoy fine wine in moderation.
+          </p>
+          <p class="oc-terms-text">
+            By entering this website you agree to our <a href="/policies/terms-of-service" target="_blank">Terms</a> &amp; <a href="/policies/privacy-policy" target="_blank">Privacy Policy</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  {%- comment -%} ── 2. CHECKOUT AGE VERIFICATION MODAL ── {%- endcomment -%}
+  <div id="oc-checkout-modal" class="oc-checkout-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="oc-checkout-title">
+    <div class="oc-checkout-modal__backdrop"></div>
+
+    <div class="oc-checkout-modal__dialog">
+      <div class="oc-checkout-card glass-card">
+        <!-- Close Button -->
+        <button id="oc-checkout-close" class="oc-modal-close" aria-label="Close modal">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+
+        <!-- Lock Icon Badge -->
+        <div class="oc-checkout-card__header-icon">
+          <div class="oc-lock-circle">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#D54A3A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Heading & Description -->
+        <h2 id="oc-checkout-title" class="oc-checkout-card__heading">
+          {{ section.settings.checkout_heading | default: 'Age Confirmation Required' }}
+        </h2>
+
+        <p class="oc-checkout-card__desc">
+          {{ section.settings.checkout_desc | default: 'To comply with alcohol sales regulations, we must verify that you are at least 21 years old before completing your purchase.' }}
+        </p>
+
+        <!-- Checkbox Area -->
+        <div class="oc-checkout-checkbox-wrap">
+          <label class="oc-checkbox-label">
+            <input type="checkbox" id="oc-checkout-checkbox" class="oc-checkbox-input">
+            <span class="oc-checkbox-custom">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </span>
+            <span class="oc-checkbox-text">I confirm that I am at least {{ min_age }} years of age.</span>
+          </label>
+        </div>
+
+        <!-- Buttons -->
+        <div class="oc-checkout-card__actions">
+          <button id="oc-btn-proceed-checkout" class="oc-btn oc-btn--primary oc-btn--block" disabled>
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            <span>Continue to Secure Checkout</span>
+          </button>
+
+          <button id="oc-btn-return-shopping" class="oc-btn oc-btn--text oc-btn--block">
+            <span>Return to Shopping</span>
+          </button>
+        </div>
+
+        <!-- Trust Badges -->
+        <div class="oc-checkout-card__trust">
+          <div class="oc-trust-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#27ae60" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span>256-Bit SSL Encrypted</span>
+          </div>
+          <div class="oc-trust-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D54A3A" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v8"/><path d="M8 12h8"/></svg>
+            <span>{{ min_age }}+ Age Verified</span>
+          </div>
+          <div class="oc-trust-item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+            <span>Licensed Wine Retailer</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+{% stylesheet %}
+  /* ── 1. Color System & Typography ──────────── */
+  :root {
+    --oc-red: #D54A3A;
+    --oc-red-hover: #b83728;
+    --oc-black: #111111;
+    --oc-ivory: #F8F6F3;
+    --oc-white: #FFFFFF;
+    --oc-glass-bg: rgba(255, 255, 255, 0.88);
+    --oc-glass-border: rgba(255, 255, 255, 0.4);
+    --oc-shadow: 0 24px 48px rgba(17, 17, 17, 0.22);
+    --oc-radius: 20px;
+    --font-heading: 'Playfair Display', Georgia, serif;
+    --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+
+  /* ── 2. Glassmorphism Card Style ──────────── */
+  .glass-card {
+    background: var(--oc-glass-bg);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid var(--oc-glass-border);
+    border-radius: var(--oc-radius);
+    box-shadow: var(--oc-shadow);
+  }
+
+  /* ── 3. Full-Screen Entry Modal ────────────── */
+  .oc-entry-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 999999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+  }
+
+  .oc-entry-modal.is-active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .oc-entry-modal__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+  }
+
+  .oc-entry-modal__bg-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: blur(8px) scale(1.05);
+    transform: scale(1.05);
+  }
+
+  .oc-entry-modal__bg-fallback {
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, #2c1a18 0%, #111111 100%);
+  }
+
+  .oc-entry-modal__overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(17, 17, 17, 0.65);
+  }
+
+  .oc-entry-modal__container {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 520px;
+    transform: scale(0.95) translateY(12px);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .oc-entry-modal.is-active .oc-entry-modal__container {
+    transform: scale(1) translateY(0);
+  }
+
+  /* Entry Card Layout */
+  .oc-entry-card {
+    padding: 3rem 2.5rem 2.25rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .oc-entry-card__brand {
+    margin-bottom: 1.25rem;
+  }
+
+  .oc-brand-logo {
+    height: 40px;
+    width: auto;
+  }
+
+  .oc-entry-card__illustration {
+    margin-bottom: 1.5rem;
+  }
+
+  .oc-wine-badge {
+    position: relative;
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: rgba(213, 74, 58, 0.08);
+    border: 1px solid rgba(213, 74, 58, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .oc-badge-year {
+    position: absolute;
+    bottom: -4px;
+    right: -4px;
+    background: var(--oc-red);
+    color: #fff;
+    font-size: 0.65rem;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 10px;
+    font-family: var(--font-body);
+  }
+
+  .oc-entry-card__heading {
+    font-family: var(--font-heading);
+    font-size: 2.1rem;
+    font-weight: 700;
+    color: var(--oc-black);
+    line-height: 1.2;
+    margin: 0 0 0.85rem;
+  }
+
+  .oc-entry-card__subtitle {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: #4a4a4a;
+    line-height: 1.6;
+    margin: 0 0 2rem;
+    max-width: 440px;
+  }
+
+  .oc-entry-card__actions {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+    margin-bottom: 2rem;
+  }
+
+  /* ── 4. Buttons System ─────────────────────── */
+  .oc-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 600;
+    padding: 1rem 1.75rem;
+    border-radius: 12px;
+    border: 1.5px solid transparent;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    text-decoration: none;
+    line-height: 1.2;
+  }
+
+  .oc-btn--lg {
+    padding: 1.15rem 2rem;
+    font-size: 1rem;
+    border-radius: 14px;
+  }
+
+  .oc-btn--block {
+    width: 100%;
+  }
+
+  .oc-btn--primary {
+    background: var(--oc-red);
+    color: #ffffff;
+    box-shadow: 0 4px 16px rgba(213, 74, 58, 0.3);
+  }
+
+  .oc-btn--primary:hover:not(:disabled) {
+    background: var(--oc-red-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(213, 74, 58, 0.4);
+  }
+
+  .oc-btn--primary:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+    box-shadow: none;
+  }
+
+  .oc-btn--secondary {
+    background: transparent;
+    color: var(--oc-black);
+    border-color: rgba(17, 17, 17, 0.2);
+  }
+
+  .oc-btn--secondary:hover {
+    background: rgba(17, 17, 17, 0.05);
+    border-color: var(--oc-black);
+  }
+
+  .oc-btn--text {
+    background: transparent;
+    color: #666;
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+
+  .oc-btn--text:hover {
+    color: var(--oc-black);
+    text-decoration: underline;
+  }
+
+  /* ── 5. Entry Card Footer ──────────────────── */
+  .oc-entry-card__footer {
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    padding-top: 1.25rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .oc-notice-text {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    color: #666;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+  }
+
+  .oc-notice-text svg {
+    color: var(--oc-red);
+  }
+
+  .oc-terms-text {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    color: #888;
+    margin: 0;
+  }
+
+  .oc-terms-text a {
+    color: var(--oc-black);
+    text-decoration: underline;
+  }
+
+
+  /* ── 6. Checkout Age Verification Modal ───── */
+  .oc-checkout-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 999999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.25rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+
+  .oc-checkout-modal.is-active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .oc-checkout-modal__backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(17, 17, 17, 0.7);
+    backdrop-filter: blur(6px);
+  }
+
+  .oc-checkout-modal__dialog {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 480px;
+    transform: scale(0.92) translateY(16px);
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .oc-checkout-modal.is-active .oc-checkout-modal__dialog {
+    transform: scale(1) translateY(0);
+  }
+
+  .oc-checkout-card {
+    position: relative;
+    padding: 2.5rem 2rem 2rem;
+    text-align: center;
+    background: #ffffff;
+  }
+
+  .oc-modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.05);
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #666;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .oc-modal-close:hover {
+    background: rgba(0, 0, 0, 0.1);
+    color: var(--oc-black);
+  }
+
+  .oc-checkout-card__header-icon {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.25rem;
+  }
+
+  .oc-lock-circle {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: rgba(213, 74, 58, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .oc-checkout-card__heading {
+    font-family: var(--font-heading);
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--oc-black);
+    margin: 0 0 0.75rem;
+    line-height: 1.2;
+  }
+
+  .oc-checkout-card__desc {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    color: #555;
+    line-height: 1.55;
+    margin: 0 0 1.5rem;
+  }
+
+  /* Checkbox styling */
+  .oc-checkout-checkbox-wrap {
+    background: var(--oc-ivory);
+    border: 1.5px solid #e8e4de;
+    border-radius: 12px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.5rem;
+    text-align: left;
+    transition: border-color 0.2s;
+  }
+
+  .oc-checkout-checkbox-wrap:hover {
+    border-color: var(--oc-red);
+  }
+
+  .oc-checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .oc-checkbox-input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .oc-checkbox-custom {
+    flex-shrink: 0;
+    width: 22px;
+    height: 22px;
+    border: 2px solid #ccc;
+    border-radius: 6px;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    transition: all 0.2s ease;
+  }
+
+  .oc-checkbox-input:checked + .oc-checkbox-custom {
+    background: var(--oc-red);
+    border-color: var(--oc-red);
+  }
+
+  .oc-checkbox-text {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--oc-black);
+  }
+
+  .oc-checkout-card__actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  /* Trust Badges */
+  .oc-checkout-card__trust {
+    border-top: 1px solid #eee;
+    padding-top: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+  }
+
+  .oc-trust-item {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-family: var(--font-body);
+    font-size: 0.725rem;
+    font-weight: 600;
+    color: #666;
+  }
+
+  /* ── 7. Mobile Responsiveness ──────────────── */
+  @media screen and (max-width: 550px) {
+    .oc-entry-card {
+      padding: 2.25rem 1.5rem 1.75rem;
+    }
+
+    .oc-entry-card__heading {
+      font-size: 1.75rem;
+    }
+
+    .oc-entry-card__subtitle {
+      font-size: 0.875rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .oc-btn--lg {
+      padding: 1rem 1.5rem;
+      font-size: 0.95rem;
+    }
+
+    .oc-checkout-card {
+      padding: 2rem 1.25rem 1.5rem;
+    }
+
+    .oc-checkout-card__heading {
+      font-size: 1.5rem;
+    }
+
+    .oc-checkout-card__trust {
+      gap: 0.75rem;
+    }
+  }
+{% endstylesheet %}
+
+<script>
+  (function initAgeGate() {
+    const root = document.getElementById('oc-age-verification-root');
+    if (!root) return;
+
+    const enabled = root.getAttribute('data-enabled') === 'true';
+    const isTestMode = root.getAttribute('data-test-mode') === 'true';
+    const redirectUrl = root.getAttribute('data-redirect-url') || 'https://www.responsibility.org/';
+    const COOKIE_NAME = 'oc_age_verified_21';
+
+    // Helper functions for cookies/storage
+    function getCookie(name) {
+      const v = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
+      return v ? v[2] : null;
+    }
+
+    function setCookie(name, value, days) {
+      const d = new Date();
+      d.setTime(d.getTime() + 24 * 60 * 60 * 1000 * days);
+      document.cookie = name + "=" + value + ";path=/;expires=" + d.toGMTString();
+    }
+
+    const entryModal = document.getElementById('oc-entry-modal');
+    const btnConfirm = document.getElementById('oc-btn-confirm-age');
+    const btnUnderage = document.getElementById('oc-btn-underage');
+
+    // ── 1. ENTRY AGE GATE LOGIC ──
+    const isVerified = getCookie(COOKIE_NAME) === 'true' || localStorage.getItem(COOKIE_NAME) === 'true';
+
+    if (enabled && (!isVerified || isTestMode)) {
+      if (entryModal) {
+        entryModal.classList.add('is-active');
+        entryModal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    if (btnConfirm) {
+      btnConfirm.addEventListener('click', function () {
+        setCookie(COOKIE_NAME, 'true', 30);
+        localStorage.setItem(COOKIE_NAME, 'true');
+        if (entryModal) {
+          entryModal.classList.remove('is-active');
+          entryModal.setAttribute('aria-hidden', 'true');
+        }
+        document.body.style.overflow = '';
+      });
+    }
+
+    if (btnUnderage) {
+      btnUnderage.addEventListener('click', function () {
+        window.location.href = redirectUrl;
+      });
+    }
+
+    // ── 2. CHECKOUT AGE VERIFICATION LOGIC ──
+    const checkoutModal = document.getElementById('oc-checkout-modal');
+    const checkoutCheckbox = document.getElementById('oc-checkout-checkbox');
+    const btnProceedCheckout = document.getElementById('oc-btn-proceed-checkout');
+    const btnReturnShopping = document.getElementById('oc-btn-return-shopping');
+    const checkoutClose = document.getElementById('oc-checkout-close');
+
+    let pendingCheckoutUrl = null;
+    let pendingCheckoutForm = null;
+
+    function openCheckoutModal() {
+      if (checkoutModal) {
+        checkoutModal.classList.add('is-active');
+        checkoutModal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      }
+    }
+
+    function closeCheckoutModal() {
+      if (checkoutModal) {
+        checkoutModal.classList.remove('is-active');
+        checkoutModal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      }
+    }
+
+    // Enable/Disable proceed button based on checkbox
+    if (checkoutCheckbox && btnProceedCheckout) {
+      checkoutCheckbox.addEventListener('change', function () {
+        btnProceedCheckout.disabled = !this.checked;
+      });
+    }
+
+    // Handle proceed to checkout click
+    if (btnProceedCheckout) {
+      btnProceedCheckout.addEventListener('click', function () {
+        if (!checkoutCheckbox.checked) return;
+        setCookie('oc_checkout_verified', 'true', 30);
+
+        if (pendingCheckoutForm) {
+          pendingCheckoutForm.submit();
+        } else if (pendingCheckoutUrl) {
+          window.location.href = pendingCheckoutUrl;
+        } else {
+          window.location.href = '/checkout';
+        }
+      });
+    }
+
+    if (btnReturnShopping) {
+      btnReturnShopping.addEventListener('click', closeCheckoutModal);
+    }
+    if (checkoutClose) {
+      checkoutClose.addEventListener('click', closeCheckoutModal);
+    }
+
+    // Intercept checkout triggers across theme
+    document.addEventListener('click', function (e) {
+      const checkoutBtn = e.target.closest('a[href*="/checkout"], [name="checkout"], .cart__checkout-button');
+      if (checkoutBtn) {
+        // If not already age checked for checkout
+        const verifiedForCheckout = getCookie('oc_checkout_verified') === 'true';
+        if (!verifiedForCheckout || isTestMode) {
+          e.preventDefault();
+          e.stopPropagation();
+          pendingCheckoutUrl = checkoutBtn.getAttribute('href') || '/checkout';
+          pendingCheckoutForm = checkoutBtn.closest('form');
+          openCheckoutModal();
+        }
+      }
+    }, true);
+
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Age Verification Gate",
+  "class": "shopify-section-age-verification",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable_age_gate",
+      "label": "Enable Age Verification Gate",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "test_mode",
+      "label": "Enable Test Mode (Always show modal for testing)",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "min_age",
+      "label": "Minimum Required Age",
+      "default": "21"
+    },
+    {
+      "type": "image_picker",
+      "id": "bg_image",
+      "label": "Modal Background Image",
+      "info": "Upload a high quality cellar or vineyard photo."
+    },
+    {
+      "type": "url",
+      "id": "redirect_url",
+      "label": "Underage Redirect URL",
+      "info": "URL to send users who click 'Under 21'. Defaults to responsibility.org"
+    },
+    {
+      "type": "header",
+      "content": "Entry Modal Text"
+    },
+    {
+      "type": "text",
+      "id": "entry_heading",
+      "label": "Heading",
+      "default": "Welcome to Open Container"
+    },
+    {
+      "type": "textarea",
+      "id": "entry_subtitle",
+      "label": "Subtitle",
+      "default": "We are committed to responsible wine enjoyment. Please confirm that you are 21 years of age or older to enter our website."
+    },
+    {
+      "type": "header",
+      "content": "Checkout Modal Text"
+    },
+    {
+      "type": "text",
+      "id": "checkout_heading",
+      "label": "Checkout Heading",
+      "default": "Age Confirmation Required"
+    },
+    {
+      "type": "textarea",
+      "id": "checkout_desc",
+      "label": "Checkout Description",
+      "default": "To comply with alcohol sales regulations, we must verify that you are at least 21 years old before completing your purchase."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Age Verification Gate"
+    }
+  ]
+}
+{% endschema %}

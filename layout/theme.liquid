@@ -138,6 +138,7 @@
         {{ content_for_layout }}
       </main>
 
+      {% section 'age-verification-modal' %}
       <footer>
         {% sections 'footer-group' %}
       </footer>
@@ -151,5 +152,8 @@
     {% if settings.quick_add or settings.mobile_quick_add %}
       {% render 'quick-add-modal' %}
     {% endif %}
+
+    
   </body>
 </html>
+
