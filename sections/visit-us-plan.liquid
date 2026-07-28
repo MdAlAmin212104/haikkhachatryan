@@ -1,0 +1,428 @@
+{% comment %}
+  Visit Us — Plan Your Visit Section
+  Light background — text/checklist on left, 2x2 photo mosaic on right.
+  "We'd Love to See You"
+{% endcomment %}
+
+<section
+  id="visit-us-plan-{{ section.id }}"
+  class="visit-us-plan"
+  style="background-color: {{ section.settings.background_color }};"
+>
+  <div class="section">
+  <div
+    class="visit-us-plan__inner page-width"
+    style="padding-block: {{ section.settings.padding_top }}px {{ section.settings.padding_bottom }}px;"
+  >
+
+    <div class="visit-us-plan__content">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="visit-us-plan__eyebrow">{{ section.settings.eyebrow }}</p>
+      {%- endif -%}
+      {%- if section.settings.heading != blank -%}
+        <h2 class="visit-us-plan__heading">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+      {%- if section.settings.body != blank -%}
+        <div class="visit-us-plan__body rte">{{ section.settings.body }}</div>
+      {%- endif -%}
+
+      {%- if section.blocks.size > 0 -%}
+        <ul class="visit-us-plan__checklist">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'checklist_item' -%}
+              <li class="visit-us-plan__checklist-item" {{ block.shopify_attributes }}>
+                <span class="visit-us-plan__checklist-icon">
+                  {%- if block.settings.icon != blank -%}
+                    {{ block.settings.icon }}
+                  {%- else -%}
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                  {%- endif -%}
+                </span>
+                <span>{{ block.settings.label }}</span>
+              </li>
+            {%- endif -%}
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+
+      {%- if section.settings.button_label != blank -%}
+        <a
+          href="{{ section.settings.button_url }}"
+          class="visit-us-plan__btn"
+        >
+          {{ section.settings.button_label }}
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      {%- endif -%}
+    </div>
+
+    <div class="visit-us-plan__mosaic">
+      {%- assign image_1 = section.settings.image_1 -%}
+      {%- assign image_2 = section.settings.image_2 -%}
+      {%- assign image_3 = section.settings.image_3 -%}
+      {%- assign image_4 = section.settings.image_4 -%}
+
+      <div class="visit-us-plan__mosaic-col visit-us-plan__mosaic-col--left">
+        <div class="visit-us-plan__mosaic-cell">
+          {%- if image_1 != blank -%}
+            {{
+              image_1
+              | image_url: width: 700
+              | image_tag:
+                class: 'visit-us-plan__mosaic-img',
+                widths: '300, 500, 700',
+                sizes: '(min-width: 750px) 25vw, 50vw',
+                alt: image_1.alt
+            }}
+          {%- else -%}
+            {{ 'image' | placeholder_svg_tag: 'visit-us-plan__mosaic-img visit-us-plan__mosaic-img--placeholder' }}
+          {%- endif -%}
+        </div>
+        <div class="visit-us-plan__mosaic-cell">
+          {%- if image_3 != blank -%}
+            {{
+              image_3
+              | image_url: width: 700
+              | image_tag:
+                class: 'visit-us-plan__mosaic-img',
+                widths: '300, 500, 700',
+                sizes: '(min-width: 750px) 25vw, 50vw',
+                alt: image_3.alt
+            }}
+          {%- else -%}
+            {{ 'image' | placeholder_svg_tag: 'visit-us-plan__mosaic-img visit-us-plan__mosaic-img--placeholder' }}
+          {%- endif -%}
+        </div>
+      </div>
+
+      <div class="visit-us-plan__mosaic-col visit-us-plan__mosaic-col--right">
+        <div class="visit-us-plan__mosaic-cell visit-us-plan__mosaic-cell--tall">
+          {%- if image_2 != blank -%}
+            {{
+              image_2
+              | image_url: width: 700
+              | image_tag:
+                class: 'visit-us-plan__mosaic-img',
+                widths: '300, 500, 700',
+                sizes: '(min-width: 750px) 25vw, 50vw',
+                alt: image_2.alt
+            }}
+          {%- else -%}
+            {{ 'image' | placeholder_svg_tag: 'visit-us-plan__mosaic-img visit-us-plan__mosaic-img--placeholder' }}
+          {%- endif -%}
+        </div>
+        <div class="visit-us-plan__mosaic-cell">
+          {%- if image_4 != blank -%}
+            {{
+              image_4
+              | image_url: width: 700
+              | image_tag:
+                class: 'visit-us-plan__mosaic-img',
+                widths: '300, 500, 700',
+                sizes: '(min-width: 750px) 25vw, 50vw',
+                alt: image_4.alt
+            }}
+          {%- else -%}
+            {{ 'image' | placeholder_svg_tag: 'visit-us-plan__mosaic-img visit-us-plan__mosaic-img--placeholder' }}
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+
+  </div>
+  </div>
+</section>
+
+{% stylesheet %}
+  .visit-us-plan {
+    width: 100%;
+    background: #f7f4f2;
+  }
+
+  .visit-us-plan__inner {
+    display: grid;
+    grid-template-columns: 5fr 7fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .visit-us-plan__content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .visit-us-plan__eyebrow {
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #c0392b;
+    margin: 0;
+  }
+
+  .visit-us-plan__heading {
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 0;
+    line-height: 1.15;
+  }
+
+  .visit-us-plan__body {
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.7;
+  }
+
+  .visit-us-plan__checklist {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .visit-us-plan__checklist-item {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    font-size: 0.95rem;
+    color: #333;
+  }
+
+  .visit-us-plan__checklist-icon {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    color: #c0392b;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .visit-us-plan__checklist-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .visit-us-plan__btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #c0392b;
+    color: #fff;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.875rem 1.5rem;
+    border-radius: 4px;
+    text-decoration: none;
+    align-self: flex-start;
+    transition: background 0.2s, transform 0.2s;
+    margin-top: 0.25rem;
+  }
+
+  .visit-us-plan__btn:hover {
+    background: #a93226;
+    transform: translateX(3px);
+  }
+
+  .visit-us-plan__mosaic {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+
+  .visit-us-plan__mosaic-col {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .visit-us-plan__mosaic-cell {
+    overflow: hidden;
+    border-radius: 6px;
+    flex: 1;
+  }
+
+  .visit-us-plan__mosaic-cell--tall {
+    flex: 1.4;
+  }
+
+  .visit-us-plan__mosaic-img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+
+  .visit-us-plan__mosaic-img:hover {
+    transform: scale(1.04);
+  }
+
+  .visit-us-plan__mosaic-img--placeholder {
+    aspect-ratio: 4/3;
+    background: #e0dbd8;
+  }
+
+  @media screen and (max-width: 900px) {
+    .visit-us-plan__inner {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    .visit-us-plan__mosaic {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Plan Your Visit",
+  "blocks": [
+    {
+      "type": "checklist_item",
+      "name": "Checklist Item",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "icon",
+          "label": "SVG Icon (optional)",
+          "info": "Paste an SVG icon. Leave blank to use the default checkmark."
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Item Label",
+          "default": "Walk-ins welcome"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#f7f4f2"
+    },
+    {
+      "type": "header",
+      "content": "Text Content"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow Label",
+      "default": "Plan Your Visit"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "We'd Love to See You"
+    },
+    {
+      "type": "richtext",
+      "id": "body",
+      "label": "Body Text",
+      "default": "<p>Whether you're a wine connoisseur or just beginning your wine journey, our locations offer the perfect setting to sip, relax, and discover.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button Label",
+      "default": "Book a Private Event"
+    },
+    {
+      "type": "url",
+      "id": "button_url",
+      "label": "Button URL"
+    },
+    {
+      "type": "header",
+      "content": "Photo Mosaic"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_1",
+      "label": "Image 1 (top-left)"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_2",
+      "label": "Image 2 (right — tall)"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_3",
+      "label": "Image 3 (bottom-left)"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_4",
+      "label": "Image 4 (bottom-right)"
+    },
+    {
+      "type": "header",
+      "content": "Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Top",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Padding Bottom",
+      "default": 80
+    }
+  ],
+  "presets": [
+    {
+      "name": "Plan Your Visit",
+      "blocks": [
+        {
+          "type": "checklist_item",
+          "settings": {
+            "label": "Walk-ins welcome"
+          }
+        },
+        {
+          "type": "checklist_item",
+          "settings": {
+            "label": "Group & private tastings available"
+          }
+        },
+        {
+          "type": "checklist_item",
+          "settings": {
+            "label": "Plenty of parking"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
