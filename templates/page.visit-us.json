@@ -734,6 +734,104 @@
         "padding-block-start": 40,
         "padding-block-end": 40
       }
+    },
+    "visit_us_expect_aYrVRC": {
+      "type": "visit-us-expect",
+      "blocks": {
+        "feature_ABmxDY": {
+          "type": "feature",
+          "settings": {
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"#c0392b\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M8 3v4a4 4 0 0 0 8 0V3\"></path><path d=\"M12 11v10\"></path><path d=\"M8 21h8\"></path></svg>",
+            "title": "Premium Wine Tastings",
+            "description": "Taste our award-winning wines crafted with passion and tradition."
+          }
+        },
+        "feature_HiKAt8": {
+          "type": "feature",
+          "settings": {
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"#c0392b\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"8\" r=\"4\"></circle><path d=\"M4 20c0-4 3.6-7 8-7s8 3 8 7\"></path></svg>",
+            "title": "Expert Guidance",
+            "description": "Our wine experts will guide you through a personalized tasting."
+          }
+        },
+        "feature_B7fjR7": {
+          "type": "feature",
+          "settings": {
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"#c0392b\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"3\" y=\"4\" width=\"18\" height=\"18\" rx=\"2\"></rect><line x1=\"16\" y1=\"2\" x2=\"16\" y2=\"6\"></line><line x1=\"8\" y1=\"2\" x2=\"8\" y2=\"6\"></line><line x1=\"3\" y1=\"10\" x2=\"21\" y2=\"10\"></line></svg>",
+            "title": "Relaxing Atmosphere",
+            "description": "Enjoy a warm, welcoming ambiance perfect for any occasion."
+          }
+        },
+        "feature_YHR9h8": {
+          "type": "feature",
+          "settings": {
+            "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 24 24\" fill=\"none\" stroke=\"#c0392b\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z\"></path><line x1=\"3\" y1=\"6\" x2=\"21\" y2=\"6\"></line><path d=\"M16 10a4 4 0 0 1-8 0\"></path></svg>",
+            "title": "Take Your Favorites Home",
+            "description": "Find your favorite wines and take them home to enjoy."
+          }
+        }
+      },
+      "block_order": [
+        "feature_ABmxDY",
+        "feature_HiKAt8",
+        "feature_B7fjR7",
+        "feature_YHR9h8"
+      ],
+      "name": "Visit Us — What to Expect",
+      "settings": {
+        "background_image": "shopify://shop_images/visit_us_hero_bg_1785208819804.jpg",
+        "background_color": "#111211",
+        "eyebrow": "What to Expect",
+        "heading": "A Memorable Experience",
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    },
+    "visit_us_plan_YBhwyh": {
+      "type": "visit-us-plan",
+      "blocks": {
+        "checklist_item_m8ikFE": {
+          "type": "checklist_item",
+          "settings": {
+            "image_icon": "shopify://shop_images/icons8-walking-50.png",
+            "label": "Walk-ins welcome"
+          }
+        },
+        "checklist_item_RYGHn4": {
+          "type": "checklist_item",
+          "settings": {
+            "image_icon": "shopify://shop_images/icons8-group-task-30.png",
+            "label": "Group & private tastings available"
+          }
+        },
+        "checklist_item_wAf83L": {
+          "type": "checklist_item",
+          "settings": {
+            "image_icon": "shopify://shop_images/icons8-parking-24.png",
+            "label": "Plenty of parking"
+          }
+        }
+      },
+      "block_order": [
+        "checklist_item_m8ikFE",
+        "checklist_item_RYGHn4",
+        "checklist_item_wAf83L"
+      ],
+      "name": "Plan Your Visit",
+      "settings": {
+        "background_color": "#f7f4f2",
+        "eyebrow": "Plan Your Visit",
+        "heading": "We'd Love to See You",
+        "body": "<p>Whether you're a wine connoisseur or just beginning your wine journey, our locations offer the perfect setting to sip, relax, and discover.</p>",
+        "button_label": "Book a Private Event",
+        "button_url": "shopify://pages/private-events",
+        "image_1": "shopify://shop_images/PHOTO_Brand_Photo_Recent.heic",
+        "image_2": "shopify://shop_images/Photo-Apr-27-10-38-28-AM_f18ebb3a-30f8-4d1f-aac4-42beb69c576f.jpg",
+        "image_3": "shopify://shop_images/PHOTO_Brand_Event_3.jpg",
+        "image_4": "shopify://shop_images/Vineland_customers_shot.jpg",
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
     }
   },
   "order": [
@@ -741,6 +839,8 @@
     "hero_49aWpN",
     "section_qn4BaE",
     "section_ghNHpX",
-    "section_ARyhxr"
+    "section_ARyhxr",
+    "visit_us_expect_aYrVRC",
+    "visit_us_plan_YBhwyh"
   ]
 }
