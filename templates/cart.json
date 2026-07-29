@@ -53,14 +53,14 @@
           "type": "_cart-summary",
           "static": true,
           "settings": {
-            "extend_summary": true,
+            "extend_summary": false,
             "background_color": "{{ settings.color_palette.color2 }}",
             "text_color": "",
             "border": "none",
             "border_width": 1,
             "border_opacity": 100,
             "border_color": "",
-            "border_radius": 0
+            "border_radius": 10
           },
           "blocks": {}
         }
@@ -166,7 +166,7 @@
           "static": true,
           "settings": {
             "product_card_gap": 4,
-            "background_color": "#FAFAFA",
+            "background_color": "#fafafa",
             "border": "none",
             "border_width": 1,
             "border_opacity": 100,

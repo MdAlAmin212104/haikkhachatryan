@@ -57,11 +57,10 @@
       {%- if section.settings.button_label != blank -%}
         <a
           href="{{ section.settings.button_url }}"
-          class="visit-us-plan__btn"
+          class="button"
         >
           {{ section.settings.button_label }}
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </a>
+         </a>
       {%- endif -%}
     </div>
 
@@ -187,11 +186,11 @@
   }
 
   .visit-us-plan__eyebrow {
-    font-size: 0.65rem;
+    font-size: 1rem;
     font-weight: 700;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: #c0392b;
+    color: #6B1A2E;
     margin: 0;
   }
 
@@ -204,7 +203,6 @@
   }
 
   .visit-us-plan__body {
-    font-size: 0.95rem;
     color: #555;
     line-height: 1.7;
   }
@@ -222,7 +220,6 @@
     display: flex;
     align-items: center;
     gap: 0.625rem;
-    font-size: 0.95rem;
     color: #333;
   }
 
@@ -239,29 +236,6 @@
   .visit-us-plan__checklist-icon svg {
     width: 20px;
     height: 20px;
-  }
-
-  .visit-us-plan__btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: #c0392b;
-    color: #fff;
-    font-size: 0.85rem;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    padding: 0.875rem 1.5rem;
-    border-radius: 4px;
-    text-decoration: none;
-    align-self: flex-start;
-    transition: background 0.2s, transform 0.2s;
-    margin-top: 0.25rem;
-  }
-
-  .visit-us-plan__btn:hover {
-    background: #a93226;
-    transform: translateX(3px);
   }
 
   .visit-us-plan__mosaic {

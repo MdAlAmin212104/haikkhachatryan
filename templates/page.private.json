@@ -120,8 +120,9 @@
       ],
       "name": "t:names.hero",
       "settings": {
-        "media_type_1": "image",
+        "media_type_1": "video",
         "image_1": "shopify://shop_images/private_events_hero_bg_1785212458135.jpg",
+        "video_1": "shopify://files/videos/D7 — Arizona Mobile Bar Container City.mp4",
         "media_type_2": "image",
         "stack_media_on_mobile": false,
         "custom_mobile_media": false,
@@ -198,7 +199,7 @@
               "type": "image",
               "name": "t:names.image",
               "settings": {
-                "image": "shopify://shop_images/private_events_venue_celebration_1785212471700.jpg",
+                "image": "shopify://shop_images/Wine_Tasting_1_e8eaed89-e7b6-4d99-9070-28af9d651ab9.jpg",
                 "link": "",
                 "image_ratio": "square",
                 "width": "fill",
@@ -278,7 +279,7 @@
                 "letter_spacing": "normal",
                 "case": "uppercase",
                 "wrap": "pretty",
-                "text_color": "#d54a3c",
+                "text_color": "#6B1A2E",
                 "background": false,
                 "background_color": "#00000026",
                 "corner_radius": 0,
@@ -424,6 +425,7 @@
                     "image_jzXc46": {
                       "type": "image",
                       "name": "t:names.image",
+                      "disabled": true,
                       "settings": {
                         "image": "shopify://shop_images/location-2952_1024.png",
                         "link": "",
@@ -547,6 +549,7 @@
                     "image_awhGCW": {
                       "type": "image",
                       "name": "t:names.image",
+                      "disabled": true,
                       "settings": {
                         "image": "shopify://shop_images/winner-cup-7806_1024.png",
                         "link": "",
@@ -670,6 +673,7 @@
                     "image_CJzmz6": {
                       "type": "image",
                       "name": "t:names.image",
+                      "disabled": true,
                       "settings": {
                         "image": "shopify://shop_images/calendar-and-time-11026_1024.png",
                         "link": "",
@@ -793,6 +797,7 @@
                     "image_zdgi3y": {
                       "type": "image",
                       "name": "t:names.image",
+                      "disabled": true,
                       "settings": {
                         "image": "shopify://shop_images/booked-calendar-and-black-check-mark-lineal-16259_1024.png",
                         "link": "",
@@ -1061,7 +1066,7 @@
               "type": "image",
               "name": "t:names.image",
               "settings": {
-                "image": "shopify://shop_images/business-team-celebration-party-success-concept.jpg",
+                "image": "shopify://shop_images/Photo-Apr-22-7-46-55-PM.jpg",
                 "link": "",
                 "image_ratio": "square",
                 "width": "fill",
@@ -1184,7 +1189,7 @@
               "type": "image",
               "name": "t:names.image",
               "settings": {
-                "image": "shopify://shop_images/private_events_venue_celebration_1785212471700.jpg",
+                "image": "shopify://shop_images/Vineland_customers_shot_cc0ec845-68b7-4db4-96c6-ddf9ad6116e3.jpg",
                 "link": "",
                 "image_ratio": "square",
                 "width": "fill",
@@ -1307,7 +1312,7 @@
               "type": "image",
               "name": "t:names.image",
               "settings": {
-                "image": "shopify://shop_images/private_events_wine_tastings_1785212484281.jpg",
+                "image": "shopify://shop_images/Wine_Tasting_2_8f1a50bc-2432-43aa-94c1-9c1c033b07d6.jpg",
                 "link": "",
                 "image_ratio": "square",
                 "width": "fill",
@@ -1430,7 +1435,7 @@
               "type": "image",
               "name": "t:names.image",
               "settings": {
-                "image": "shopify://shop_images/Copy_of_Vineland_customers_shot.jpg",
+                "image": "shopify://shop_images/PHOTO_Brand_Event_8_968aea6a-6449-4c3b-8bce-b3cbc1caba40.jpg",
                 "link": "",
                 "image_ratio": "square",
                 "width": "fill",
@@ -1676,7 +1681,7 @@
               "type": "image",
               "name": "t:names.image",
               "settings": {
-                "image": "shopify://shop_images/private_events_hero_bg_1785212458135.jpg",
+                "image": "shopify://shop_images/OC_California_Blue_Bar_200ef07c-0291-46ea-b2c5-4e4fd53a3870.jpg",
                 "link": "",
                 "image_ratio": "square",
                 "width": "fill",
@@ -2009,7 +2014,7 @@
                 "letter_spacing": "normal",
                 "case": "none",
                 "wrap": "pretty",
-                "text_color": "#d54a3c",
+                "text_color": "#6B1A2E",
                 "background": false,
                 "background_color": "#00000026",
                 "corner_radius": 0,

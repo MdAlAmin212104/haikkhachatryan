@@ -17,7 +17,49 @@
         "announcement_8Q7jkN": {
           "type": "_announcement",
           "settings": {
-            "text": "MAKING WINE ACCESSIBLE TO EVERYONE",
+            "text": "The World's First Container Wine Bar",
+            "link": "",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "weight": "",
+            "letter_spacing": "normal",
+            "case": "none",
+            "text_color": "{{ settings.color_palette.background }}"
+          },
+          "blocks": {}
+        },
+        "announcement_LpEdxN": {
+          "type": "_announcement",
+          "settings": {
+            "text": "Premium Armenian wine.",
+            "link": "",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "weight": "",
+            "letter_spacing": "normal",
+            "case": "none",
+            "text_color": "{{ settings.color_palette.background }}"
+          },
+          "blocks": {}
+        },
+        "announcement_tBANkw": {
+          "type": "_announcement",
+          "settings": {
+            "text": "Iconic shipping containers.",
+            "link": "",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "weight": "",
+            "letter_spacing": "normal",
+            "case": "none",
+            "text_color": "{{ settings.color_palette.background }}"
+          },
+          "blocks": {}
+        },
+        "announcement_xfNLqy": {
+          "type": "_announcement",
+          "settings": {
+            "text": "An experience unlike anything else.",
             "link": "",
             "font": "var(--font-body--family)",
             "font_size": "1rem",
@@ -30,13 +72,19 @@
         }
       },
       "block_order": [
-        "announcement_8Q7jkN"
+        "announcement_8Q7jkN",
+        "announcement_LpEdxN",
+        "announcement_tBANkw",
+        "announcement_xfNLqy"
+      ],
+      "custom_css": [
+        ".announcement-bar__slider slideshow-arrows .slideshow-control {color: #fff;}"
       ],
       "name": "t:names.announcement_bar",
       "settings": {
         "speed": 5,
         "section_width": "page-width",
-        "background_color": "#D54A3C",
+        "background_color": "#6B1A2E",
         "divider_width": 0,
         "divider_color": "",
         "padding-block-start": 15,
@@ -82,7 +130,8 @@
         }
       },
       "custom_css": [
-        ".menu-list:not(:has(.menu-list__list-item:hover)) .menu-list__link--active {color: #D54A3C;}"
+        ".menu-list:not(:has(.menu-list__list-item:hover)) .menu-list__link--active {color: #6b1a2e;}",
+        ".header--collapse-row-paddings .header__row--bottom .header__columns {padding-bottom: 15px;}"
       ],
       "settings": {
         "logo_position": "center",
@@ -111,9 +160,9 @@
         "actions_font_size": "0.875rem",
         "actions_font": "body",
         "actions_text_case": "none",
-        "background_color_top": "{{ settings.color_palette.background }}",
+        "background_color_top": "#FDF8F3",
         "text_color_top": "",
-        "background_color_bottom": "{{ settings.color_palette.background }}",
+        "background_color_bottom": "#FDF8F3",
         "text_color_bottom": "{{ settings.color_palette.foreground }}",
         "bubble_style": "default",
         "bubble_background_color": "",
