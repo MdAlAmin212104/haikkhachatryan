@@ -220,7 +220,7 @@
             "link": "",
             "open_in_new_tab": false,
             "placeholder": "",
-            "padding-block-start": 10,
+            "padding-block-start": 0,
             "padding-block-end": 0,
             "padding-inline-start": 0,
             "padding-inline-end": 0
@@ -525,10 +525,10 @@
       "name": "t:names.footer",
       "settings": {
         "section_width": "page-width",
-        "gap": 20,
+        "gap": 48,
         "background_color": "#111211",
-        "padding-block-start": 36,
-        "padding-block-end": 36
+        "padding-block-start": 16,
+        "padding-block-end": 12
       }
     },
     "footer_utilities_jLGE8U": {
@@ -583,12 +583,12 @@
       "name": "t:names.utilities",
       "settings": {
         "section_width": "page-width",
-        "gap": 24,
+        "gap": 20,
         "background_color": "#111211",
         "divider_thickness": 1,
         "divider_color": "{{ settings.color_palette.background }}",
-        "padding-block-start": 20,
-        "padding-block-end": 48
+        "padding-block-start": 12,
+        "padding-block-end": 20
       }
     }
   },

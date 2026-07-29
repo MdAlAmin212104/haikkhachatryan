@@ -686,25 +686,42 @@
     const isTestMode = root.getAttribute('data-test-mode') === 'true';
     const redirectUrl = root.getAttribute('data-redirect-url') || 'https://www.google.com/';
     const COOKIE_NAME = 'oc_age_verified_21';
+    const CHECKOUT_COOKIE_NAME = 'oc_checkout_verified';
 
-    // Helper functions for cookies/storage
+    // Helper functions for session-only storage & cookies
     function getCookie(name) {
       const v = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
       return v ? v[2] : null;
     }
 
-    function setCookie(name, value, days) {
-      const d = new Date();
-      d.setTime(d.getTime() + 24 * 60 * 60 * 1000 * days);
-      document.cookie = name + "=" + value + ";path=/;expires=" + d.toGMTString();
+    function setSessionCookie(name, value) {
+      document.cookie = name + "=" + value + ";path=/;SameSite=Lax";
+    }
+
+    function removeCookie(name) {
+      document.cookie = name + "=;path=/;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+    }
+
+    // Clean up any legacy 30-day localStorage and persistent cookies on new session
+    if (!sessionStorage.getItem(COOKIE_NAME)) {
+      try {
+        localStorage.removeItem(COOKIE_NAME);
+        removeCookie(COOKIE_NAME);
+      } catch (e) {}
+    }
+    if (!sessionStorage.getItem(CHECKOUT_COOKIE_NAME)) {
+      try {
+        localStorage.removeItem(CHECKOUT_COOKIE_NAME);
+        removeCookie(CHECKOUT_COOKIE_NAME);
+      } catch (e) {}
     }
 
     const entryModal = document.getElementById('oc-entry-modal');
     const btnConfirm = document.getElementById('oc-btn-confirm-age');
     const btnUnderage = document.getElementById('oc-btn-underage');
 
-    // ── 1. ENTRY AGE GATE LOGIC ──
-    const isVerified = getCookie(COOKIE_NAME) === 'true' || localStorage.getItem(COOKIE_NAME) === 'true';
+    // ── 1. ENTRY AGE GATE LOGIC (Session-only verification) ──
+    const isVerified = sessionStorage.getItem(COOKIE_NAME) === 'true' || getCookie(COOKIE_NAME) === 'true';
 
     if (enabled && (!isVerified || isTestMode)) {
       if (entryModal) {
@@ -716,8 +733,8 @@
 
     if (btnConfirm) {
       btnConfirm.addEventListener('click', function () {
-        setCookie(COOKIE_NAME, 'true', 30);
-        localStorage.setItem(COOKIE_NAME, 'true');
+        sessionStorage.setItem(COOKIE_NAME, 'true');
+        setSessionCookie(COOKIE_NAME, 'true');
         if (entryModal) {
           entryModal.classList.remove('is-active');
           entryModal.setAttribute('aria-hidden', 'true');
@@ -769,7 +786,8 @@
     if (btnProceedCheckout) {
       btnProceedCheckout.addEventListener('click', function () {
         if (!checkoutCheckbox.checked) return;
-        setCookie('oc_checkout_verified', 'true', 30);
+        sessionStorage.setItem(CHECKOUT_COOKIE_NAME, 'true');
+        setSessionCookie(CHECKOUT_COOKIE_NAME, 'true');
 
         if (pendingCheckoutForm) {
           pendingCheckoutForm.submit();
@@ -793,7 +811,7 @@
       const checkoutBtn = e.target.closest('a[href*="/checkout"], [name="checkout"], .cart__checkout-button');
       if (checkoutBtn) {
         // If not already age checked for checkout
-        const verifiedForCheckout = getCookie('oc_checkout_verified') === 'true';
+        const verifiedForCheckout = sessionStorage.getItem(CHECKOUT_COOKIE_NAME) === 'true' || getCookie(CHECKOUT_COOKIE_NAME) === 'true';
         if (!verifiedForCheckout || isTestMode) {
           e.preventDefault();
           e.stopPropagation();
