@@ -279,7 +279,7 @@
                 "letter_spacing": "normal",
                 "case": "uppercase",
                 "wrap": "pretty",
-                "text_color": "#6B1A2E",
+                "text_color": "#6b1a2e",
                 "background": false,
                 "background_color": "#00000026",
                 "corner_radius": 0,
@@ -392,7 +392,7 @@
                     "vertical_alignment": "center",
                     "align_baseline": false,
                     "horizontal_alignment_flex_direction_column": "center",
-                    "vertical_alignment_flex_direction_column": "center",
+                    "vertical_alignment_flex_direction_column": "flex-start",
                     "gap": 12,
                     "width": "fill",
                     "custom_width": 100,
@@ -425,7 +425,6 @@
                     "image_jzXc46": {
                       "type": "image",
                       "name": "t:names.image",
-                      "disabled": true,
                       "settings": {
                         "image": "shopify://shop_images/location-2952_1024.png",
                         "link": "",
@@ -516,7 +515,7 @@
                     "vertical_alignment": "center",
                     "align_baseline": false,
                     "horizontal_alignment_flex_direction_column": "center",
-                    "vertical_alignment_flex_direction_column": "center",
+                    "vertical_alignment_flex_direction_column": "flex-start",
                     "gap": 12,
                     "width": "fill",
                     "custom_width": 100,
@@ -549,7 +548,6 @@
                     "image_awhGCW": {
                       "type": "image",
                       "name": "t:names.image",
-                      "disabled": true,
                       "settings": {
                         "image": "shopify://shop_images/winner-cup-7806_1024.png",
                         "link": "",
@@ -640,7 +638,7 @@
                     "vertical_alignment": "center",
                     "align_baseline": false,
                     "horizontal_alignment_flex_direction_column": "center",
-                    "vertical_alignment_flex_direction_column": "center",
+                    "vertical_alignment_flex_direction_column": "flex-start",
                     "gap": 12,
                     "width": "fill",
                     "custom_width": 100,
@@ -673,7 +671,6 @@
                     "image_CJzmz6": {
                       "type": "image",
                       "name": "t:names.image",
-                      "disabled": true,
                       "settings": {
                         "image": "shopify://shop_images/calendar-and-time-11026_1024.png",
                         "link": "",
@@ -764,7 +761,7 @@
                     "vertical_alignment": "center",
                     "align_baseline": false,
                     "horizontal_alignment_flex_direction_column": "center",
-                    "vertical_alignment_flex_direction_column": "center",
+                    "vertical_alignment_flex_direction_column": "flex-start",
                     "gap": 12,
                     "width": "fill",
                     "custom_width": 100,
@@ -797,7 +794,6 @@
                     "image_zdgi3y": {
                       "type": "image",
                       "name": "t:names.image",
-                      "disabled": true,
                       "settings": {
                         "image": "shopify://shop_images/booked-calendar-and-black-check-mark-lineal-16259_1024.png",
                         "link": "",
@@ -2014,7 +2010,7 @@
                 "letter_spacing": "normal",
                 "case": "none",
                 "wrap": "pretty",
-                "text_color": "#6B1A2E",
+                "text_color": "#6b1a2e",
                 "background": false,
                 "background_color": "#00000026",
                 "corner_radius": 0,
