@@ -27,6 +27,8 @@
   assign full_width = section.settings.full_width
   assign content_width = section.settings.content_width
   assign lazy = section.settings.lazy
+  assign autoplay_delay = section.settings.autoplay_delay | default: 5
+  assign autoplay_enabled = section.settings.autoplay_enabled
 
   assign slider_view_mobile = section.settings.slider_view_mobile
   assign slider_view = section.settings.slider_view
@@ -187,14 +189,16 @@
     left: 0;
     background-color: {{ card_overlay_color | hex_to_rgba: card_overlay }};
     z-index: 1;
+    pointer-events: none;
   }
 
   .slider-image-{{ section.id }} img,
+  .slider-image-{{ section.id }} video,
   .slider-image-{{ section.id }} svg {
     display: block;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
   }
 
   .slider-image-{{ section.id }} svg {
@@ -212,6 +216,12 @@
     width: 100%;
     position: relative;
     z-index: 2;
+    pointer-events: none;
+  }
+
+  .slider-title-{{ section.id }},
+  .slider-button-{{ section.id }} {
+    pointer-events: auto;
   }
 
   .slider-title-{{ section.id }} {
@@ -556,9 +566,24 @@
       <div class="swiper-wrapper">
         {% for i in (1..4) %}
           {% for block in section.blocks %}
-            <a href="{{ block.settings.url }}" class="swiper-slide slider-slide-{{ section.id }}">
+            {% assign tag_name = 'div' %}
+            {% if block.settings.url != blank %}
+              {% assign tag_name = 'a' %}
+            {% endif %}
+            <{{ tag_name }} {% if block.settings.url != blank %}href="{{ block.settings.url }}"{% endif %} class="swiper-slide slider-slide-{{ section.id }}" {{ block.shopify_attributes }}>
               <div class="slider-image-{{ section.id }}">
-                {% if block.settings.image != blank %}
+                {% if block.settings.video != blank %}
+                  {{
+                    block.settings.video
+                    | video_tag:
+                      controls: true,
+                      playsinline: true,
+                      muted: true,
+                      loop: true,
+                      preload: 'metadata',
+                      class: 'slider-video-element'
+                  }}
+                {% elsif block.settings.image != blank %}
                   {%- liquid
                     assign img_alt = block.settings.image.alt | escape
                   -%}
@@ -577,16 +602,18 @@
                 {% endif %}
               </div>
 
-              <div class="slider-content-{{ section.id }}">
-                {% if block.settings.title != blank %}
-                  <p class="slider-title-{{ section.id }}">{{ block.settings.title }}</p>
-                {% endif %}
+              {% if block.settings.title != blank or block.settings.button != blank %}
+                <div class="slider-content-{{ section.id }}">
+                  {% if block.settings.title != blank %}
+                    <p class="slider-title-{{ section.id }}">{{ block.settings.title }}</p>
+                  {% endif %}
 
-                {% if block.settings.button != blank %}
-                  <div class="slider-button-{{ section.id }}">{{ block.settings.button }}</div>
-                {% endif %}
-              </div>
-            </a>
+                  {% if block.settings.button != blank %}
+                    <div class="slider-button-{{ section.id }}">{{ block.settings.button }}</div>
+                  {% endif %}
+                </div>
+              {% endif %}
+            </{{ tag_name }}>
           {% endfor %}
         {% endfor %}
       </div>
@@ -624,8 +651,14 @@
 
 <script>
   function initSlider2() {
-    document.querySelector('.slider-slider-{{ section.id }}').classList.remove('preview');
-    const slider = new Swiper(".slider-slider-{{ section.id }}", {
+    const sliderEl = document.querySelector('.slider-slider-{{ section.id }}');
+    if (!sliderEl) return;
+    sliderEl.classList.remove('preview');
+
+    const autoplayDelay = ({{ autoplay_delay | default: 5 }}) * 1000;
+    const autoplayEnabled = {{ autoplay_enabled | json }};
+
+    const swiperOptions = {
       effect: "coverflow",
       centeredSlides: true,
       navigation: {
@@ -656,7 +689,94 @@
           slidesPerView: {{ slider_view }}
         }
       }
+    };
+
+    if (autoplayEnabled) {
+      swiperOptions.autoplay = {
+        delay: autoplayDelay,
+        disableOnInteraction: false,
+        pauseOnMouseEnter: false
+      };
+    }
+
+    const slider = new Swiper(".slider-slider-{{ section.id }}", swiperOptions);
+
+    function handleVideoState() {
+      const allVideos = sliderEl.querySelectorAll('video');
+      const activeSlide = sliderEl.querySelector('.swiper-slide-active');
+      const activeVideo = activeSlide ? activeSlide.querySelector('video') : null;
+
+      // 1. Pause all videos except the one in active slide
+      allVideos.forEach(function(video) {
+        if (video !== activeVideo) {
+          if (!video.paused) {
+            video.pause();
+          }
+        }
+      });
+
+      // 2. Play active video & manage autoplay pause/resume depending on mute
+      if (activeVideo) {
+        const playPromise = activeVideo.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(function(error) {
+            // Autoplay catch for browser policy
+          });
+        }
+
+        if (!activeVideo.muted) {
+          // Unmuted: pause slider autoplay
+          if (slider.autoplay && slider.autoplay.running) {
+            slider.autoplay.stop();
+          }
+        } else {
+          // Muted: resume slider autoplay if enabled
+          if (autoplayEnabled && slider.autoplay && !slider.autoplay.running) {
+            slider.autoplay.start();
+          }
+        }
+      } else {
+        // Active slide has no video: keep autoplay running if enabled
+        if (autoplayEnabled && slider.autoplay && !slider.autoplay.running) {
+          slider.autoplay.start();
+        }
+      }
+    }
+
+    // Attach listeners to all video elements in slider
+    const allVideos = sliderEl.querySelectorAll('video');
+    allVideos.forEach(function(video) {
+      // Prevent parent slide link click when interacting with video controls
+      video.addEventListener('click', function(e) {
+        e.stopPropagation();
+      });
+
+      video.addEventListener('volumechange', function() {
+        const slide = video.closest('.swiper-slide');
+        const isActive = slide && slide.classList.contains('swiper-slide-active');
+
+        if (isActive) {
+          if (!video.muted) {
+            // Customer unmuted the video -> pause autoplay
+            if (slider.autoplay && slider.autoplay.running) {
+              slider.autoplay.stop();
+            }
+          } else {
+            // Customer muted the video again -> resume autoplay
+            if (autoplayEnabled && slider.autoplay && !slider.autoplay.running) {
+              slider.autoplay.start();
+            }
+          }
+        }
+      });
     });
+
+    slider.on('init', handleVideoState);
+    slider.on('slideChange', handleVideoState);
+    slider.on('slideChangeTransitionEnd', handleVideoState);
+
+    // Initial trigger
+    handleVideoState();
   }
 
   document.addEventListener('DOMContentLoaded', initSlider2);
@@ -702,6 +822,22 @@
       "unit": "deg",
       "label": "Rotate",
       "default": 0
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay_enabled",
+      "label": "Enable slider autoplay",
+      "default": true
+    },
+    {
+      "type": "range",
+      "id": "autoplay_delay",
+      "min": 2,
+      "max": 20,
+      "step": 1,
+      "unit": "s",
+      "label": "Autoplay delay",
+      "default": 5
     },
     {
       "type": "header",
@@ -1362,6 +1498,11 @@
       "type": "slide",
       "name": "Slide",
       "settings": [
+        {
+          "type": "video",
+          "id": "video",
+          "label": "Video"
+        },
         {
           "type": "image_picker",
           "id": "image",
