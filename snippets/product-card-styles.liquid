@@ -11,6 +11,8 @@
     display: flex;
     flex-direction: column;
     height: 100%;
+    width: 100%;
+    flex: 1 1 auto;
   }
 
   .product-grid__card.product-grid__card {
@@ -28,8 +30,13 @@
   }
 
   /* Ensure Add to Cart button is always aligned at the bottom across all cards */
-  .product-card__content > *:last-child,
-  .product-card__content > :is(.buy-buttons-block, .quick-add, form, button, a):last-child {
+  .product-card__content > .buy-buttons-block,
+  .product-card__content > .quick-add,
+  .product-card__content > form,
+  .product-card__content > button,
+  .product-card__content > a,
+  .product-card__content > *:has(.buy-buttons-block, .quick-add, .add-to-cart-button, [data-type="add-to-cart-form"]),
+  .product-card__content > *:last-child {
     margin-top: auto;
     width: 100%;
   }
@@ -41,6 +48,12 @@
   }
 
   /* Collection and product list cards have equal heights */
+  :is(.product-grid__item, .resource-list__item) {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
   :is(.product-grid__item, .resource-list__item) .product-card {
     display: flex;
     flex-direction: column;
