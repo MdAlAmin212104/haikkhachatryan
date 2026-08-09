@@ -178,7 +178,7 @@
       "settings": {
         "section_width": "page-width",
         "gap": 20,
-        "background_color": "#6B1A2E",
+        "background_color": "#6b1a2e",
         "padding-block-start": 0,
         "padding-block-end": 0
       }
@@ -221,7 +221,7 @@
             "open_in_new_tab": false,
             "placeholder": "",
             "padding-block-start": 0,
-            "padding-block-end": 0,
+            "padding-block-end": 20,
             "padding-inline-start": 0,
             "padding-inline-end": 0
           },
@@ -245,8 +245,8 @@
                 "background": false,
                 "background_color": "#00000026",
                 "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
+                "padding-block-start": 12,
+                "padding-block-end": 12,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
               },
@@ -275,11 +275,33 @@
                 "padding-inline-end": 0
               },
               "blocks": {}
+            },
+            "social_links_8MhHU3": {
+              "type": "social-links",
+              "name": "t:names.social_media_links",
+              "settings": {
+                "icon_color": "",
+                "facebook_url": "https://www.facebook.com/opencontainerwine",
+                "instagram_url": "https://www.instagram.com/opencontainerwine/",
+                "youtube_url": "",
+                "tiktok_url": "",
+                "twitter_url": "",
+                "threads_url": "",
+                "linkedin_url": "https://www.linkedin.com/company/open-container/",
+                "bluesky_url": "",
+                "snapchat_url": "",
+                "pinterest_url": "",
+                "tumblr_url": "",
+                "vimeo_url": "",
+                "custom_url": ""
+              },
+              "blocks": {}
             }
           },
           "block_order": [
             "text_FpAxhV",
-            "image_MHgQK6"
+            "image_MHgQK6",
+            "social_links_8MhHU3"
           ]
         },
         "group_EPTPTg": {
@@ -473,8 +495,8 @@
                 "background": false,
                 "background_color": "#00000026",
                 "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
+                "padding-block-start": 12,
+                "padding-block-end": 12,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
               },
@@ -505,11 +527,25 @@
                 "padding-inline-end": 0
               },
               "blocks": {}
+            },
+            "payment_icons_VWbtVU": {
+              "type": "payment-icons",
+              "name": "t:names.payment_icons",
+              "settings": {
+                "horizontal_alignment": "flex-start",
+                "gap": 10,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
             }
           },
           "block_order": [
             "text_j8L6pW",
-            "text_rLYxrf"
+            "text_rLYxrf",
+            "payment_icons_VWbtVU"
           ]
         }
       },
