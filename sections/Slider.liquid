@@ -198,11 +198,95 @@
     display: block;
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
   }
 
-  .slider-image-{{ section.id }} svg {
-    background-color: #AEAEAE;
+  .slider-video-wrapper-{{ section.id }} {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .slider-video-element-{{ section.id }} {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: auto;
+    cursor: pointer;
+    background-color: #000000;
+  }
+
+  .slider-video-play-btn-{{ section.id }} {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 2px solid rgba(255, 255, 255, 0.9);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 5;
+    pointer-events: auto;
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.25s ease, opacity 0.25s ease, visibility 0.25s ease;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.45);
+    padding: 0;
+    outline: none;
+  }
+
+  .slider-video-play-btn-{{ section.id }}:hover {
+    transform: translate(-50%, -50%) scale(1.12);
+    background: rgba(0, 0, 0, 0.85);
+    border-color: #ffffff;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.6);
+  }
+
+  .slider-video-play-btn-{{ section.id }}:focus-visible {
+    outline: 3px solid #ffffff;
+    outline-offset: 3px;
+  }
+
+  .slider-video-play-icon-{{ section.id }} {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 4px;
+  }
+
+  .slider-video-play-icon-{{ section.id }} svg {
+    width: 26px;
+    height: 26px;
+    fill: #ffffff;
+  }
+
+  .slider-video-wrapper-{{ section.id }}.is-playing .slider-video-play-btn-{{ section.id }} {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translate(-50%, -50%) scale(0.7);
+  }
+
+  @media(max-width: 767px) {
+    .slider-video-play-btn-{{ section.id }} {
+      width: 48px;
+      height: 48px;
+    }
+    .slider-video-play-icon-{{ section.id }} svg {
+      width: 20px;
+      height: 20px;
+    }
   }
 
   .slider-content-{{ section.id }} {
@@ -567,22 +651,43 @@
         {% for i in (1..4) %}
           {% for block in section.blocks %}
             {% assign tag_name = 'div' %}
-            {% if block.settings.url != blank %}
+            {% if block.settings.url != blank and block.settings.video == blank %}
               {% assign tag_name = 'a' %}
             {% endif %}
-            <{{ tag_name }} {% if block.settings.url != blank %}href="{{ block.settings.url }}"{% endif %} class="swiper-slide slider-slide-{{ section.id }}" {{ block.shopify_attributes }}>
+            <{{ tag_name }} {% if block.settings.url != blank and block.settings.video == blank %}href="{{ block.settings.url }}"{% endif %} class="swiper-slide slider-slide-{{ section.id }}" {{ block.shopify_attributes }}>
               <div class="slider-image-{{ section.id }}">
                 {% if block.settings.video != blank %}
-                  {{
-                    block.settings.video
-                    | video_tag:
-                      controls: true,
-                      playsinline: true,
-                      muted: true,
-                      loop: true,
-                      preload: 'metadata',
-                      class: 'slider-video-element'
-                  }}
+                  {%- liquid
+                    assign video_poster = ''
+                    if block.settings.image != blank
+                      assign video_poster = block.settings.image | image_url: width: 1200
+                    elsif block.settings.video.preview_image != blank
+                      assign video_poster = block.settings.video.preview_image | image_url: width: 1200
+                    endif
+                  -%}
+                  {%- capture video_class -%}slider-video-element-{{ section.id }}{%- endcapture -%}
+                  <div class="slider-video-wrapper-{{ section.id }}" data-video-wrapper>
+                    {{
+                      block.settings.video
+                      | video_tag:
+                        poster: video_poster,
+                        playsinline: true,
+                        preload: 'metadata',
+                        class: video_class
+                    }}
+                    <button
+                      type="button"
+                      class="slider-video-play-btn-{{ section.id }}"
+                      data-play-btn
+                      aria-label="Play video"
+                    >
+                      <span class="slider-video-play-icon-{{ section.id }}" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M8 5v14l11-7z"/>
+                        </svg>
+                      </span>
+                    </button>
+                  </div>
                 {% elsif block.settings.image != blank %}
                   {%- liquid
                     assign img_alt = block.settings.image.alt | escape
@@ -609,7 +714,11 @@
                   {% endif %}
 
                   {% if block.settings.button != blank %}
-                    <div class="slider-button-{{ section.id }}">{{ block.settings.button }}</div>
+                    {% if block.settings.url != blank %}
+                      <a href="{{ block.settings.url }}" class="slider-button-{{ section.id }}">{{ block.settings.button }}</a>
+                    {% else %}
+                      <div class="slider-button-{{ section.id }}">{{ block.settings.button }}</div>
+                    {% endif %}
                   {% endif %}
                 </div>
               {% endif %}
@@ -617,7 +726,7 @@
           {% endfor %}
         {% endfor %}
       </div>
-      <button class="slider-btn-prev-{{ section.id }}">
+      <button class="slider-btn-prev-{{ section.id }}" aria-label="Previous slide">
         <svg
           width="16"
           height="9"
@@ -630,7 +739,7 @@
           <path fill-rule="evenodd" clip-rule="evenodd" d="M16 1.38462L14.5455 0L8 6.23077L1.45455 0L0 1.38462L8 9L16 1.38462Z" fill="currentColor"></path>
         </svg>
       </button>
-      <button class="slider-btn-next-{{ section.id }}">
+      <button class="slider-btn-next-{{ section.id }}" aria-label="Next slide">
         <svg
           width="16"
           height="9"
@@ -701,82 +810,94 @@
 
     const slider = new Swiper(".slider-slider-{{ section.id }}", swiperOptions);
 
-    function handleVideoState() {
-      const allVideos = sliderEl.querySelectorAll('video');
-      const activeSlide = sliderEl.querySelector('.swiper-slide-active');
-      const activeVideo = activeSlide ? activeSlide.querySelector('video') : null;
+    const videoWrappers = sliderEl.querySelectorAll('[data-video-wrapper]');
 
-      // 1. Pause all videos except the one in active slide
-      allVideos.forEach(function(video) {
-        if (video !== activeVideo) {
+    function pauseAllVideos(exceptVideo) {
+      sliderEl.querySelectorAll('video').forEach(function(video) {
+        if (video !== exceptVideo) {
           if (!video.paused) {
             video.pause();
           }
+          const parentWrapper = video.closest('[data-video-wrapper]');
+          if (parentWrapper) {
+            parentWrapper.classList.remove('is-playing');
+          }
+          video.controls = false;
         }
       });
+    }
 
-      // 2. Play active video & manage autoplay pause/resume depending on mute
-      if (activeVideo) {
-        const playPromise = activeVideo.play();
-        if (playPromise !== undefined) {
-          playPromise.catch(function(error) {
-            // Autoplay catch for browser policy
-          });
-        }
+    function playSelectedVideo(wrapper) {
+      const video = wrapper.querySelector('video');
+      if (!video) return;
 
-        if (!activeVideo.muted) {
-          // Unmuted: pause slider autoplay
-          if (slider.autoplay && slider.autoplay.running) {
-            slider.autoplay.stop();
-          }
-        } else {
-          // Muted: resume slider autoplay if enabled
-          if (autoplayEnabled && slider.autoplay && !slider.autoplay.running) {
-            slider.autoplay.start();
-          }
-        }
-      } else {
-        // Active slide has no video: keep autoplay running if enabled
-        if (autoplayEnabled && slider.autoplay && !slider.autoplay.running) {
-          slider.autoplay.start();
-        }
+      pauseAllVideos(video);
+
+      wrapper.classList.add('is-playing');
+      video.controls = true;
+
+      // Pause swiper autoplay when video is active
+      if (slider.autoplay && slider.autoplay.running) {
+        slider.autoplay.stop();
+      }
+
+      const playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(function(err) {
+          console.warn('Playback prevented or interrupted:', err);
+        });
       }
     }
 
-    // Attach listeners to all video elements in slider
-    const allVideos = sliderEl.querySelectorAll('video');
-    allVideos.forEach(function(video) {
-      // Prevent parent slide link click when interacting with video controls
-      video.addEventListener('click', function(e) {
-        e.stopPropagation();
-      });
+    videoWrappers.forEach(function(wrapper) {
+      const btn = wrapper.querySelector('[data-play-btn]');
+      const video = wrapper.querySelector('video');
 
-      video.addEventListener('volumechange', function() {
-        const slide = video.closest('.swiper-slide');
-        const isActive = slide && slide.classList.contains('swiper-slide-active');
+      if (btn) {
+        btn.addEventListener('click', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          playSelectedVideo(wrapper);
+        });
+      }
 
-        if (isActive) {
-          if (!video.muted) {
-            // Customer unmuted the video -> pause autoplay
-            if (slider.autoplay && slider.autoplay.running) {
-              slider.autoplay.stop();
-            }
-          } else {
-            // Customer muted the video again -> resume autoplay
-            if (autoplayEnabled && slider.autoplay && !slider.autoplay.running) {
-              slider.autoplay.start();
-            }
+      if (video) {
+        video.controls = false;
+
+        video.addEventListener('click', function(e) {
+          e.stopPropagation();
+          if (video.paused && !wrapper.classList.contains('is-playing')) {
+            e.preventDefault();
+            playSelectedVideo(wrapper);
           }
-        }
-      });
+        });
+
+        video.addEventListener('play', function() {
+          pauseAllVideos(video);
+          wrapper.classList.add('is-playing');
+          video.controls = true;
+          if (slider.autoplay && slider.autoplay.running) {
+            slider.autoplay.stop();
+          }
+        });
+
+        video.addEventListener('ended', function() {
+          wrapper.classList.remove('is-playing');
+          video.controls = false;
+          if (autoplayEnabled && slider.autoplay && !slider.autoplay.running) {
+            slider.autoplay.start();
+          }
+        });
+      }
     });
 
-    slider.on('init', handleVideoState);
-    slider.on('slideChange', handleVideoState);
-    slider.on('slideChangeTransitionEnd', handleVideoState);
-
-    // Initial trigger
-    handleVideoState();
+    // Pause videos when slide is changed by the user
+    slider.on('slideChange', function() {
+      pauseAllVideos(null);
+      if (autoplayEnabled && slider.autoplay && !slider.autoplay.running) {
+        slider.autoplay.start();
+      }
+    });
   }
 
   document.addEventListener('DOMContentLoaded', initSlider2);
