@@ -233,7 +233,7 @@
       "name": "t:names.hero",
       "settings": {
         "media_type_1": "image",
-        "image_1": "shopify://shop_images/655996313_18093907135869014_85923312167153021_n.png",
+        "image_1": "shopify://shop_images/Photo-Apr-27-10-38-28-AM.png",
         "media_type_2": "image",
         "stack_media_on_mobile": false,
         "custom_mobile_media": false,
@@ -779,7 +779,7 @@
       ],
       "name": "Visit Us — What to Expect",
       "settings": {
-        "background_image": "shopify://shop_images/visit_us_hero_bg_1785208819804.jpg",
+        "background_image": "shopify://shop_images/Photo-Apr-27-10-38-28-AM.jpg",
         "background_color": "#111211",
         "eyebrow": "What to Expect",
         "heading": "A Memorable Experience",

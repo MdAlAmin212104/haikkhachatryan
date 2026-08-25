@@ -1,0 +1,185 @@
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-how-it-works-{{ ai_gen_id }} {
+    display: block;
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+    box-sizing: border-box;
+    padding: {{ block.settings.padding_vertical }}px {{ block.settings.padding_horizontal }}px;
+    background: {{ block.settings.background_color }};
+    color: {{ block.settings.text_color }};
+    border-radius: 10px;
+  }
+
+  .ai-how-it-works-{{ ai_gen_id }}__inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .ai-how-it-works-{{ ai_gen_id }}__header {
+    margin: 0 auto {{ block.settings.header_spacing }}px;
+    text-align: {{ block.settings.alignment }};
+  }
+
+  .ai-how-it-works-{{ ai_gen_id }}__eyebrow {
+    margin: 0 0 16px;
+    color: {{ block.settings.accent_color }};
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    line-height: 1.4;
+    text-transform: uppercase;
+  }
+
+  .ai-how-it-works-{{ ai_gen_id }}__title {
+    margin: 0;
+    font-size: {{ block.settings.heading_size }}px;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.08;
+    color: {{ block.settings.text_color }};
+  }
+
+  .ai-how-it-works-{{ ai_gen_id }}__steps {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0;
+  }
+
+  .ai-how-it-works-{{ ai_gen_id }}__step {
+    position: relative;
+    padding: 0 48px;
+  }
+
+  .ai-how-it-works-{{ ai_gen_id }}__step:first-child {
+    padding-left: 0;
+  }
+
+  .ai-how-it-works-{{ ai_gen_id }}__step:last-child {
+    padding-right: 0;
+  }
+
+  .ai-how-it-works-{{ ai_gen_id }}__step:not(:last-child)::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 1px;
+    height: 100%;
+    background: {{ block.settings.divider_color }};
+    content: '';
+  }
+
+  .ai-how-it-works-{{ ai_gen_id }}__number {
+    display: block;
+    margin-bottom: 28px;
+    color: {{ block.settings.accent_color }};
+    font-size: 18px;
+    line-height: 1;
+  }
+
+  .ai-how-it-works-{{ ai_gen_id }}__step-title {
+    margin: 0 0 16px;
+    font-size: {{ block.settings.step_title_size }}px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: {{ block.settings.accent_color }};
+  }
+
+  .ai-how-it-works-{{ ai_gen_id }}__text {
+    margin: 0;
+    font-size: {{ block.settings.body_size }}px;
+    line-height: 1.65;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-how-it-works-{{ ai_gen_id }} {
+      padding: {{ block.settings.mobile_padding_vertical }}px 0px;
+    }
+
+    .ai-how-it-works-{{ ai_gen_id }}__header {
+      margin-bottom: 48px;
+    }
+
+    .ai-how-it-works-{{ ai_gen_id }}__title {
+      font-size: 38px;
+    }
+
+    .ai-how-it-works-{{ ai_gen_id }}__steps {
+      grid-template-columns: 1fr;
+      gap: 40px;
+    }
+
+    .ai-how-it-works-{{ ai_gen_id }}__step,
+    .ai-how-it-works-{{ ai_gen_id }}__step:first-child,
+    .ai-how-it-works-{{ ai_gen_id }}__step:last-child {
+      padding: 0;
+    }
+
+    .ai-how-it-works-{{ ai_gen_id }}__step:not(:last-child)::after {
+      top: auto;
+      right: auto;
+      bottom: -20px;
+      left: 0;
+      width: 100%;
+      height: 1px;
+    }
+  }
+{% endstyle %}
+
+<section class="ai-how-it-works-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-how-it-works-{{ ai_gen_id }}__inner">
+    <header class="ai-how-it-works-{{ ai_gen_id }}__header">
+      {% if block.settings.eyebrow != blank %}<p class="ai-how-it-works-{{ ai_gen_id }}__eyebrow">{{ block.settings.eyebrow }}</p>{% endif %}
+      <h2 class="ai-how-it-works-{{ ai_gen_id }}__title">{{ block.settings.title }}</h2>
+    </header>
+    <div class="ai-how-it-works-{{ ai_gen_id }}__steps">
+      {% for i in (1..3) %}
+        {% liquid
+          assign title_key = 'step_' | append: i | append: '_title'
+          assign text_key = 'step_' | append: i | append: '_text'
+        %}
+        <article class="ai-how-it-works-{{ ai_gen_id }}__step">
+          <span class="ai-how-it-works-{{ ai_gen_id }}__number">0{{ i }}</span>
+          <h3 class="ai-how-it-works-{{ ai_gen_id }}__step-title">{{ block.settings[title_key] }}</h3>
+          <p class="ai-how-it-works-{{ ai_gen_id }}__text">{{ block.settings[text_key] }}</p>
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "How it works",
+  "settings": [
+    { "type": "header", "content": "Content" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Private events" },
+    { "type": "text", "id": "title", "label": "Title", "default": "How it works" },
+    { "type": "text", "id": "step_1_title", "label": "Step 1 title", "default": "Tell us the occasion" },
+    { "type": "textarea", "id": "step_1_text", "label": "Step 1 text", "default": "Guest count, date, location, and the kind of night you want. We build the proposal around it." },
+    { "type": "text", "id": "step_2_title", "label": "Step 2 title", "default": "We design the tasting" },
+    { "type": "textarea", "id": "step_2_text", "label": "Step 2 text", "default": "Your sommelier selects the flight, sets the theme, and pairs the food. Every detail is decided before your guests arrive." },
+    { "type": "text", "id": "step_3_title", "label": "Step 3 title", "default": "We show up and run it" },
+    { "type": "textarea", "id": "step_3_text", "label": "Step 3 text", "default": "The container, the wine, the glassware, the host. You’re a guest at your own event." },
+    { "type": "header", "content": "Layout" },
+    { "type": "radio", "id": "alignment", "label": "Alignment", "options": [{ "value": "left", "label": "Left" }, { "value": "center", "label": "Center" }], "default": "center" },
+    { "type": "range", "id": "desktop_width_percent", "label": "Desktop width", "min": 50, "max": 100, "step": 5, "unit": "%", "default": 100 },
+    { "type": "range", "id": "padding_vertical", "label": "Vertical spacing", "min": 40, "max": 160, "step": 10, "unit": "px", "default": 100 },
+    { "type": "range", "id": "padding_horizontal", "label": "Horizontal spacing", "min": 16, "max": 80, "step": 8, "unit": "px", "default": 48 },
+    { "type": "range", "id": "mobile_padding_vertical", "label": "Mobile spacing", "min": 0, "max": 100, "step": 4, "unit": "px", "default": 64 },
+    { "type": "range", "id": "header_spacing", "label": "Header spacing", "min": 32, "max": 100, "step": 4, "unit": "px", "default": 72 },
+    { "type": "header", "content": "Style" },
+    { "type": "range", "id": "heading_size", "label": "Heading size", "min": 28, "max": 72, "step": 4, "unit": "px", "default": 48 },
+    { "type": "range", "id": "step_title_size", "label": "Step title size", "min": 18, "max": 36, "step": 2, "unit": "px", "default": 24 },
+    { "type": "range", "id": "body_size", "label": "Body size", "min": 14, "max": 22, "step": 1, "unit": "px", "default": 16 },
+    { "type": "color", "id": "background_color", "label": "Background", "default": "#FDF8F3" },
+    { "type": "color", "id": "text_color", "label": "Text", "default": "#000000" },
+    { "type": "color", "id": "accent_color", "label": "Accent", "default": "#6B1A2E" },
+    { "type": "color", "id": "divider_color", "label": "Dividers", "default": "#DFDFDF" }
+  ],
+  "presets": [{ "name": "How it works" }],
+  "tag": null,
+  "class": "how-it-works-block"
+}
+{% endschema %}

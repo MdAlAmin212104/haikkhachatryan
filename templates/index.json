@@ -15,6 +15,7 @@
         "text_F7iPpJ": {
           "type": "text",
           "name": "t:names.text",
+          "disabled": true,
           "settings": {
             "text": "<p>WELCOME TO OPEN CONTAINER WINE</p>",
             "width": "fit-content",
@@ -41,6 +42,7 @@
         "text_YLPk4p": {
           "type": "text",
           "name": "t:names.heading",
+          "disabled": true,
           "settings": {
             "text": "<p>The World's First </p><p>Container Wine Bar</p>",
             "width": "fit-content",
@@ -67,6 +69,7 @@
         "text_t66Hp4": {
           "type": "text",
           "name": "t:names.text",
+          "disabled": true,
           "settings": {
             "text": "<p>Premium Armenian wine. Iconic shipping containers. An experience unlike anything else.</p>",
             "width": "fit-content",
@@ -93,6 +96,7 @@
         "group_weJWp7": {
           "type": "group",
           "name": "t:names.group",
+          "disabled": true,
           "settings": {
             "content_direction": "row",
             "vertical_on_mobile": false,
@@ -831,7 +835,7 @@
                   "type": "text",
                   "name": "t:names.heading",
                   "settings": {
-                    "text": "<p><strong>SHIPPING NATIONWIDE</strong></p>",
+                    "text": "<p>SHIPPING IN SELECT STATES</p>",
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",
@@ -857,7 +861,7 @@
                   "type": "text",
                   "name": "t:names.text",
                   "settings": {
-                    "text": "<p>Fast and reliable delivery across the Florida.</p>",
+                    "text": "<p>Fast & reliable delivery to eligible states</p>",
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",
@@ -1144,7 +1148,7 @@
                   "type": "add-to-cart",
                   "static": true,
                   "settings": {
-                    "style_class": "button-secondary",
+                    "style_class": "button",
                     "custom_button_background": "{{ settings.color_palette.foreground }}",
                     "custom_button_text": "{{ settings.color_palette.background }}",
                     "custom_button_border": "{{ settings.color_palette.background }}"
@@ -1313,7 +1317,7 @@
           "type": "image",
           "name": "t:names.image",
           "settings": {
-            "image": "shopify://shop_images/Container-Image.jpg",
+            "image": "shopify://shop_images/Copy_of_Night_time_container_Vineland.png",
             "link": "",
             "image_ratio": "adapt",
             "width": "fill",
@@ -1548,28 +1552,10 @@
     "slider_tKDV9Q": {
       "type": "Slider",
       "blocks": {
-        "slide_F49F6z": {
-          "type": "slide",
-          "settings": {
-            "video": "shopify://files/videos/A5 — Haik Personal Video 1.mp4",
-            "title": "",
-            "button": "",
-            "url": ""
-          }
-        },
         "slide_6LWyPB": {
           "type": "slide",
           "settings": {
             "video": "shopify://files/videos/C7 — Daily Wine Tastings Reds Whites Exclusive.mp4",
-            "title": "",
-            "button": "",
-            "url": ""
-          }
-        },
-        "slide_i7Ggrp": {
-          "type": "slide",
-          "settings": {
-            "video": "shopify://files/videos/Open_Container_video.mp4",
             "title": "",
             "button": "",
             "url": ""
@@ -1595,9 +1581,7 @@
         }
       },
       "block_order": [
-        "slide_F49F6z",
         "slide_6LWyPB",
-        "slide_i7Ggrp",
         "slide_UgDyLJ",
         "slide_6akqX7"
       ],
@@ -1682,7 +1666,7 @@
           "type": "text",
           "name": "t:names.text",
           "settings": {
-            "text": "<p>EXPERIENCE OPEN CONYAIHER</p>",
+            "text": "<p><strong>EXPERIENCE OPEN CONTAINER.</strong></p>",
             "width": "fit-content",
             "max_width": "normal",
             "alignment": "left",
@@ -1888,8 +1872,8 @@
               "type": "button",
               "name": "t:names.button",
               "settings": {
-                "label": "Learn More",
-                "link": "shopify://collections/all",
+                "label": "VISIT US",
+                "link": "shopify://pages/visit-us",
                 "open_in_new_tab": false,
                 "style_class": "button",
                 "custom_button_background": "{{ settings.color_palette.foreground }}",
@@ -2031,8 +2015,8 @@
               "type": "button",
               "name": "t:names.button",
               "settings": {
-                "label": "Learn More",
-                "link": "shopify://collections/all",
+                "label": "PLAN YOUR EVENT",
+                "link": "shopify://pages/private-events",
                 "open_in_new_tab": false,
                 "style_class": "button",
                 "custom_button_background": "{{ settings.color_palette.foreground }}",
@@ -2098,7 +2082,7 @@
               "type": "image",
               "name": "t:names.image",
               "settings": {
-                "image": "shopify://shop_images/PhotoApr27103828AM1-1_aad34903-9a83-4103-b43a-a6678cbe16f7.png",
+                "image": "shopify://shop_images/Higgs-4k_7_btl_lineup_ab59b916-39e9-4d07-b310-bd16d8198250.png",
                 "link": "",
                 "image_ratio": "adapt",
                 "width": "fill",
@@ -2174,8 +2158,8 @@
               "type": "button",
               "name": "t:names.button",
               "settings": {
-                "label": "Learn More",
-                "link": "shopify://collections/all",
+                "label": "JOIN THE CLUB",
+                "link": "shopify://pages/wine-club",
                 "open_in_new_tab": false,
                 "style_class": "button",
                 "custom_button_background": "{{ settings.color_palette.foreground }}",
@@ -2259,13 +2243,13 @@
             "image_border_radius": 10,
             "show_hover_effect": true,
             "link_target": "_blank",
-            "image_1": "shopify://shop_images/PhotoApr27103828AM1-1_aad34903-9a83-4103-b43a-a6678cbe16f7.png",
+            "image_1": "shopify://shop_images/Copy_of_Vineland_Bar_Outside_0bca8795-0fa3-40a0-8324-9e4912ca09d5.heic",
             "link_1": "https://www.instagram.com/opencontainerwine/",
             "alt_text_1": "",
             "image_2": "shopify://shop_images/Container-Image.jpg",
             "link_2": "https://www.instagram.com/opencontainerwine/",
             "alt_text_2": "",
-            "image_3": "shopify://shop_images/PhotoApr27103828AM1-1_aad34903-9a83-4103-b43a-a6678cbe16f7.png",
+            "image_3": "shopify://shop_images/PHOTO_Brand_Event_8_968aea6a-6449-4c3b-8bce-b3cbc1caba40.jpg",
             "link_3": "https://www.instagram.com/opencontainerwine/",
             "alt_text_3": "",
             "image_4": "shopify://shop_images/Photo-Apr-22-7-46-55-PM.jpg",

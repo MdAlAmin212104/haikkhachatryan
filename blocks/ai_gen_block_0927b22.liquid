@@ -1,0 +1,260 @@
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-budget-panel-{{ ai_gen_id }} {
+    display: block;
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+    box-sizing: border-box;
+    background: {{ block.settings.panel_color }};
+    color: {{ block.settings.text_color }};
+    padding: {{ block.settings.vertical_padding }}px clamp(24px, 6vw, 96px);
+  }
+
+  .ai-budget-panel__inner-{{ ai_gen_id }} {
+    width: 100%;
+    max-width: 960px;
+    margin: 0 auto;
+    text-align: {{ block.settings.text_alignment }};
+  }
+
+  .ai-budget-panel__eyebrow-{{ ai_gen_id }} {
+    margin: 0 0 14px;
+    color: {{ block.settings.accent_color }};
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    line-height: 1.4;
+    text-transform: uppercase;
+  }
+
+  .ai-budget-panel__title-{{ ai_gen_id }} {
+    margin: 0 0 30px;
+    color: {{ block.settings.text_color }};
+    font-size: clamp(34px, 5vw, 58px);
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    line-height: 1.08;
+  }
+
+  .ai-budget-panel__body-{{ ai_gen_id }} {
+    max-width: 720px;
+    margin: 0 auto;
+    font-size: clamp(17px, 2vw, 21px);
+    line-height: 1.65;
+  }
+
+  .ai-budget-panel__body-{{ ai_gen_id }} p {
+    margin: 0 0 24px;
+  }
+
+  .ai-budget-panel__range-{{ ai_gen_id }} {
+    display: block;
+    margin: 8px 0 24px;
+    color: {{ block.settings.highlight_color }};
+    font-size: clamp(32px, 5vw, 58px);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    line-height: 1.08;
+  }
+
+  .ai-budget-panel__recommendation-{{ ai_gen_id }} {
+    margin: 30px 0;
+    padding: 24px clamp(20px, 4vw, 42px);
+    border-top: 1px solid {{ block.settings.divider_color }};
+    border-bottom: 1px solid {{ block.settings.divider_color }};
+    color: {{ block.settings.text_color }};
+    font-size: clamp(18px, 2.4vw, 25px);
+    line-height: 1.5;
+  }
+
+  .ai-budget-panel__recommendation-{{ ai_gen_id }} strong {
+    color: {{ block.settings.highlight_color }};
+    font-size: 1.35em;
+    font-weight: 500;
+    white-space: nowrap;
+  }
+
+  .ai-budget-panel__supporting-{{ ai_gen_id }} {
+    margin-top: 30px;
+    color: {{ block.settings.muted_text_color }};
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .ai-budget-panel__supporting strong {
+    color: {{ block.settings.text_color }};
+    font-weight: 600;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-budget-panel-{{ ai_gen_id }} {
+      padding: {{ block.settings.mobile_padding }}px 20px;
+    }
+
+    .ai-budget-panel__title-{{ ai_gen_id }} {
+      margin-bottom: 24px;
+    }
+
+    .ai-budget-panel__recommendation-{{ ai_gen_id }} {
+      padding: 20px 12px;
+    }
+  }
+{% endstyle %}
+
+<budget-panel-{{ ai_gen_id }} class="ai-budget-panel-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-budget-panel__inner-{{ ai_gen_id }}">
+    {% if block.settings.eyebrow != blank %}
+      <p class="ai-budget-panel__eyebrow-{{ ai_gen_id }}">{{ block.settings.eyebrow }}</p>
+    {% endif %}
+    <h2 class="ai-budget-panel__title-{{ ai_gen_id }}">{{ block.settings.title }}</h2>
+    <div class="ai-budget-panel__body-{{ ai_gen_id }}">
+      <p>{{ block.settings.intro }}</p>
+      <strong class="ai-budget-panel__range-{{ ai_gen_id }}">{{ block.settings.budget_range }}</strong>
+      <div class="ai-budget-panel__recommendation-{{ ai_gen_id }}">
+        <strong>{{ block.settings.recommendation_amount }}</strong> {{ block.settings.recommendation_text }}
+      </div>
+      <p>{{ block.settings.pricing_note }}</p>
+      <p class="ai-budget-panel__supporting-{{ ai_gen_id }}">{{ block.settings.supporting_line }}</p>
+    </div>
+  </div>
+</budget-panel-{{ ai_gen_id }}>
+
+{% schema %}
+{
+  "name": "Budget panel",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Private events"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "What To Budget"
+    },
+    {
+      "type": "textarea",
+      "id": "intro",
+      "label": "Introduction",
+      "default": "Plan per guest for the wine, depending on the selection."
+    },
+    {
+      "type": "text",
+      "id": "budget_range",
+      "label": "Budget range",
+      "default": "$30 to $125 per guest"
+    },
+    {
+      "type": "text",
+      "id": "recommendation_amount",
+      "label": "Recommendation amount",
+      "default": "$50 per guest"
+    },
+    {
+      "type": "textarea",
+      "id": "recommendation_text",
+      "label": "Recommendation",
+      "default": "is our recommendation for a tasting that impresses without overreaching."
+    },
+    {
+      "type": "textarea",
+      "id": "pricing_note",
+      "label": "Pricing note",
+      "default": "Final pricing depends on guest count, format, location, and food pairing."
+    },
+    {
+      "type": "textarea",
+      "id": "supporting_line",
+      "label": "Supporting line",
+      "default": "Every quote is built for the specific event — request yours above."
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Desktop width",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "vertical_padding",
+      "label": "Desktop padding",
+      "min": 32,
+      "max": 120,
+      "step": 8,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding",
+      "label": "Mobile padding",
+      "min": 24,
+      "max": 80,
+      "step": 8,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Alignment",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "color",
+      "id": "panel_color",
+      "label": "Panel",
+      "default": "#6B1A2E"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text",
+      "default": "#FDF8F3"
+    },
+    {
+      "type": "color",
+      "id": "highlight_color",
+      "label": "Highlight",
+      "default": "#F5D8B8"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Eyebrow",
+      "default": "#F5D8B8"
+    },
+    {
+      "type": "color",
+      "id": "muted_text_color",
+      "label": "Supporting text",
+      "default": "#F1DCD0"
+    },
+    {
+      "type": "color",
+      "id": "divider_color",
+      "label": "Divider",
+      "default": "#B97982"
+    },
+  ],
+  "presets": [
+    {
+      "name": "Budget panel"
+    }
+  ],
+  "tag": null,
+  "class": "budget-panel-block"
+}
+{% endschema %}

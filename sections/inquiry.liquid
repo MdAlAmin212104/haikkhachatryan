@@ -1,0 +1,301 @@
+<!-- inquiry-form.liquid -->
+<style>
+  .customstyle{{ section.id }} {
+    padding: {{ section.settings.paddingsection }};
+  }
+  .customstyle{{ section.id }} .inquiry-form {
+    max-width: {{ section.settings.form_width }}px;
+    margin: 0 auto;
+  }
+  .customstyle{{ section.id }} .inquiry-form__field {
+    margin-bottom: 20px;
+  }
+  .customstyle{{ section.id }} .inquiry-form__field label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+  }
+  .customstyle{{ section.id }} .inquiry-form__field label .required-star {
+    color: #d0021b;
+  }
+  .customstyle{{ section.id }} .inquiry-form__field input,
+  .customstyle{{ section.id }} .inquiry-form__field select,
+  .customstyle{{ section.id }} .inquiry-form__field textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid #d5d5d5;
+    border-radius: 4px;
+    font-size: 15px;
+    background: #fff;
+  }
+  .customstyle{{ section.id }} .inquiry-form__field textarea {
+    min-height: 120px;
+    resize: vertical;
+  }
+  .customstyle{{ section.id }} .inquiry-form__row {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .customstyle{{ section.id }} .inquiry-form__row .inquiry-form__field {
+    flex: 1 1 220px;
+  }
+  .customstyle{{ section.id }} .inquiry-form__submit {
+    background: {{ section.settings.btn_bg }};
+    color: {{ section.settings.btn_color }};
+    border: none;
+    padding: 16px 32px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    cursor: pointer;
+    width: 100%;
+  }
+  .customstyle{{ section.id }} .inquiry-form__submit:hover {
+    opacity: 0.9;
+  }
+  .customstyle{{ section.id }} .inquiry-form__contact-note {
+    text-align: center;
+    margin-top: 16px;
+    font-size: 14px;
+    color: #666;
+  }
+  .customstyle{{ section.id }} .inquiry-form__contact-note a {
+    color: inherit;
+    text-decoration: underline;
+  }
+  .customstyle{{ section.id }} .inquiry-form__success {
+    text-align: center;
+    padding: 40px 20px;
+    background: #f4f8f4;
+    border: 1px solid #cfe3cf;
+    border-radius: 6px;
+  }
+  .customstyle{{ section.id }} .inquiry-form__error-list {
+    background: #fdeaea;
+    border: 1px solid #f0b8b8;
+    color: #a10000;
+    padding: 12px 16px;
+    border-radius: 4px;
+    margin-bottom: 20px;
+  }
+  .inquiry-form__form{
+        padding: 0 20px;
+    }
+</style>
+
+<div class="customstyle{{ section.id }} page-width-narrow" id="{{ section.settings.anchor_id | default: 'inquiry' }}">
+  <div class="{{ section.settings.setwidth }}">
+
+    <div class="inquiry-form">
+
+        {%- form 'contact', id: 'InquiryForm', class: 'inquiry-form__form' -%}
+                {%- if form.posted_successfully? -%}
+                    <div class="inquiry-form__success">
+                    <p>{{ section.settings.success_message }}</p>
+                    </div>
+                {%- endif -%}
+
+        
+
+          {%- if form.errors -%}
+            <div class="inquiry-form__error-list">
+              <ul>
+                {%- for field in form.errors -%}
+                  <li>
+                    {%- if field == 'form' -%}
+                      {{ form.errors.messages[field] }}
+                    {%- else -%}
+                      {{ form.errors.translated_fields[field] | capitalize }} {{ form.errors.messages[field] }}
+                    {%- endif -%}
+                  </li>
+                {%- endfor -%}
+              </ul>
+            </div>
+          {%- endif -%}
+
+          <div class="inquiry-form__field">
+            <label for="InquiryFullName-{{ section.id }}">{{ section.settings.label_name | default: 'Full name' }} <span class="required-star">*</span></label>
+            <input type="text" id="InquiryFullName-{{ section.id }}" name="contact[Full name]" required>
+          </div>
+
+          <div class="inquiry-form__row">
+            <div class="inquiry-form__field">
+              <label for="InquiryEmail-{{ section.id }}">{{ section.settings.label_email | default: 'Email' }} <span class="required-star">*</span></label>
+              <input type="email" id="InquiryEmail-{{ section.id }}" name="contact[email]" value="{{ form.email }}" required>
+            </div>
+            <div class="inquiry-form__field">
+              <label for="InquiryPhone-{{ section.id }}">{{ section.settings.label_phone | default: 'Phone' }} <span class="required-star">*</span></label>
+              <input type="tel" id="InquiryPhone-{{ section.id }}" name="contact[Phone]" required>
+            </div>
+          </div>
+
+          <div class="inquiry-form__row">
+            <div class="inquiry-form__field">
+              <label for="InquiryDate-{{ section.id }}">{{ section.settings.label_date | default: 'Event date' }}</label>
+              <input type="date" id="InquiryDate-{{ section.id }}" name="contact[Event date]">
+            </div>
+            <div class="inquiry-form__field">
+              <label for="InquiryGuests-{{ section.id }}">{{ section.settings.label_guests | default: 'Number of guests' }} <span class="required-star">*</span></label>
+              <input type="number" id="InquiryGuests-{{ section.id }}" name="contact[Number of guests]" min="1" required>
+            </div>
+          </div>
+
+          <div class="inquiry-form__row">
+            <div class="inquiry-form__field">
+              <label for="InquiryEventType-{{ section.id }}">{{ section.settings.label_event_type | default: 'Event type' }} <span class="required-star">*</span></label>
+              <select id="InquiryEventType-{{ section.id }}" name="contact[Event type]" required>
+                <option value="">{{ section.settings.event_type_placeholder | default: 'Select event type' }}</option>
+                {%- for block in section.blocks -%}
+                  {%- if block.type == 'dropdown_option' -%}
+                    <option value="{{ block.settings.label }}" {{ block.shopify_attributes }}>{{ block.settings.label }}</option>
+                  {%- endif -%}
+                {%- endfor -%}
+              </select>
+            </div>
+            <div class="inquiry-form__field">
+              <label for="InquiryCity-{{ section.id }}">{{ section.settings.label_city | default: 'City / location' }} <span class="required-star">*</span></label>
+              <input type="text" id="InquiryCity-{{ section.id }}" name="contact[City / location]" required>
+            </div>
+          </div>
+
+          <div class="inquiry-form__field">
+            <label for="InquiryMessage-{{ section.id }}">{{ section.settings.label_message | default: 'Tell us about your event' }}</label>
+            <textarea id="InquiryMessage-{{ section.id }}" name="contact[body]"></textarea>
+          </div>
+
+          <button type="submit" class="inquiry-form__submit">{{ section.settings.submit_label | default: 'REQUEST MY QUOTE' }}</button>
+
+          <div class="inquiry-form__contact-note">
+            {{ section.settings.contact_note }}
+          </div>
+
+        {%- endform -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Inquiry Form",
+  "class": "index-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "anchor_id",
+      "label": "Section Anchor ID",
+      "default": "inquiry",
+      "info": "Used for #inquiry links, e.g. menu button 'Get a Quote'"
+    },
+    {
+      "type": "select",
+      "id": "setwidth",
+      "label": "Full Width",
+      "default": "container",
+      "options": [
+        { "value": "container", "label": "Box" },
+        { "value": "container-fluid", "label": "Container Fluid" },
+        { "value": "full", "label": "Full" }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Heading",
+      "default": "Tell Us About Your Event"
+    },
+    {
+      "type": "textarea",
+      "id": "des",
+      "label": "Subheading / HTML",
+      "default": "We'll come back to you within one business day with a proposal and a quote."
+    },
+    {
+      "type": "select",
+      "id": "align-heading",
+      "label": "Align Heading",
+      "default": "center",
+      "options": [
+        { "value": "center", "label": "Center" },
+        { "value": "left", "label": "Left" },
+        { "value": "right", "label": "Right" }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "form_width",
+      "label": "Form Max Width",
+      "min": 400,
+      "max": 900,
+      "step": 10,
+      "unit": "px",
+      "default": 640
+    },
+    { "type": "header", "content": "Field Labels" },
+    { "type": "text", "id": "label_name", "label": "Full name label", "default": "Full name" },
+    { "type": "text", "id": "label_email", "label": "Email label", "default": "Email" },
+    { "type": "text", "id": "label_phone", "label": "Phone label", "default": "Phone" },
+    { "type": "text", "id": "label_date", "label": "Event date label", "default": "Event date" },
+    { "type": "text", "id": "label_guests", "label": "Number of guests label", "default": "Number of guests" },
+    { "type": "text", "id": "label_event_type", "label": "Event type label", "default": "Event type" },
+    { "type": "text", "id": "event_type_placeholder", "label": "Event type placeholder", "default": "Select event type" },
+    { "type": "text", "id": "label_city", "label": "City / location label", "default": "City / location" },
+    { "type": "text", "id": "label_message", "label": "Message label", "default": "Tell us about your event" },
+    { "type": "header", "content": "Submit Button" },
+    { "type": "text", "id": "submit_label", "label": "Submit Button Label", "default": "REQUEST MY QUOTE" },
+    { "type": "color", "id": "btn_bg", "label": "Button Background", "default": "#222222" },
+    { "type": "color", "id": "btn_color", "label": "Button Text Color", "default": "#ffffff" },
+    { "type": "header", "content": "Confirmation" },
+    {
+      "type": "textarea",
+      "id": "success_message",
+      "label": "Success Message",
+      "default": "Thank you. We've got your request and we'll be in touch within one business day. If your event is less than two weeks out, call us directly at +1 (689) 263-2252 so we can move quickly."
+    },
+    { "type": "header", "content": "Contact Note (below button)" },
+    {
+      "type": "richtext",
+      "id": "contact_note",
+      "label": "Contact Note",
+      "default": "<p>Prefer to talk? Call <a href=\"tel:+16892632252\">+1 (689) 263-2252</a> or email <a href=\"mailto:haik@opencontainerwine.com\">haik@opencontainerwine.com</a></p>"
+    },
+    { "type": "header", "content": "Section Padding" },
+    {
+      "type": "text",
+      "id": "paddingsection",
+      "label": "Padding Section",
+      "default": "60px 0px 60px 0px",
+      "info": "Padding: Top Right Bottom Left"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "dropdown_option",
+      "name": "Event Type Option",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Option Label",
+          "default": "Corporate event"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Inquiry Form",
+      "category": "Forms",
+      "blocks": [
+        { "type": "dropdown_option", "settings": { "label": "Corporate event" } },
+        { "type": "dropdown_option", "settings": { "label": "Birthday or milestone celebration" } },
+        { "type": "dropdown_option", "settings": { "label": "Bachelorette party" } },
+        { "type": "dropdown_option", "settings": { "label": "Wedding-related event" } },
+        { "type": "dropdown_option", "settings": { "label": "Fundraiser" } },
+        { "type": "dropdown_option", "settings": { "label": "Holiday party" } },
+        { "type": "dropdown_option", "settings": { "label": "Other" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,89 @@
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+{% style %}
+  .ai-member-benefits-{{ ai_gen_id }}{display:block;width:{{ block.settings.desktop_width_percent }}%;max-width:100%;margin:0 auto;padding:{{ block.settings.section_padding }}px 0px;background:{{ block.settings.background_color }};color:{{ block.settings.text_color }}}
+  .ai-member-benefits-{{ ai_gen_id }}__heading{margin:0 0 44px;color:{{ block.settings.heading_color }};font-size:{{ block.settings.heading_size }}px;font-weight:400;line-height:1.15;text-align:center}.ai-member-benefits-{{ ai_gen_id }}__grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1px solid {{ block.settings.divider_color }};border-left:1px solid {{ block.settings.divider_color }}}.ai-member-benefits-{{ ai_gen_id }}__item{display:flex;align-items:flex-start;gap:18px;min-height:170px;padding:30px 28px;border-right:1px solid {{ block.settings.divider_color }};border-bottom:1px solid {{ block.settings.divider_color }}}.ai-member-benefits-{{ ai_gen_id }}__icon{flex:0 0 42px;width:42px;height:42px;color:{{ block.settings.accent_color }}}.ai-member-benefits-{{ ai_gen_id }}__icon svg{display:block;width:100%;height:100%;fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:1.35}.ai-member-benefits-{{ ai_gen_id }}__title{margin:1px 0 9px;color:{{ block.settings.heading_color }};font-size:19px;font-weight:500;line-height:1.25}.ai-member-benefits-{{ ai_gen_id }}__description{margin:0;color:{{ block.settings.text_color }};font-size:15px;line-height:1.55}
+  @media screen and (max-width:989px){.ai-member-benefits-{{ ai_gen_id }}__grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media screen and (max-width:639px){.ai-member-benefits-{{ ai_gen_id }}{}.ai-member-benefits-{{ ai_gen_id }}__heading{margin-bottom:30px;font-size:{{ block.settings.mobile_heading_size }}px}.ai-member-benefits-{{ ai_gen_id }}__grid{grid-template-columns:1fr}.ai-member-benefits-{{ ai_gen_id }}__item{min-height:0;padding:24px 20px}}
+{% endstyle %}
+<member-benefits-{{ ai_gen_id }} class="ai-member-benefits-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-member-benefits-{{ ai_gen_id }}__inner">
+    <h2 class="ai-member-benefits-{{ ai_gen_id }}__heading">{{ block.settings.heading }}</h2>
+    <div class="ai-member-benefits-{{ ai_gen_id }}__grid">
+      {% assign titles = '10% Off Retail|Complimentary Tastings|Priority Access|Pre-Release Offers|Every Location|Insider Content|Exclusive Events|Birthday Rewards|Personal Concierge'
+        | split: '|'
+      -%}
+      {%- assign descriptions = '10% off retail on every bottle, every order.|Complimentary tastings for you and up to two guests.|Priority access to futures releases and small-production wines.|Pre-release offers before anything goes public.|Visit any Open Container location — your membership travels with you.|Social and web content members see first.|Exclusive event invitations.|Birthday rewards and member gifts.|Call or email and a person answers.'
+        | split: '|'
+      -%}
+      {%- for title in titles %}
+        <article class="ai-member-benefits-{{ ai_gen_id }}__item">
+          <div class="ai-member-benefits-{{ ai_gen_id }}__icon" aria-hidden="true">
+            <svg viewBox="0 0 42 42">
+              <circle cx="21" cy="21" r="14"/><path d="M7 21h28M21 7c4 4 6 9 6 14s-2 10-6 14c-4-4-6-9-6-14s2-10 6-14z"/>
+            </svg>
+          </div>
+          <div>
+            <h3 class="ai-member-benefits-{{ ai_gen_id }}__title">{{ title }}</h3>
+            <p class="ai-member-benefits-{{ ai_gen_id }}__description">{{ descriptions[forloop.index0] }}</p>
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+  </div>
+</member-benefits-{{ ai_gen_id }}>
+{% schema %}
+{
+  "name": "Member benefits",
+  "tag": null,
+  "class": "member-benefits-block",
+  "settings": [
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Member Benefits" },
+    { "type": "font_picker", "id": "heading_font", "label": "Heading font", "default": "lora_n4" },
+    {
+      "type": "range",
+      "id": "heading_size",
+      "label": "Heading size",
+      "min": 24,
+      "max": 72,
+      "step": 4,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "mobile_heading_size",
+      "label": "Mobile heading size",
+      "min": 20,
+      "max": 48,
+      "step": 4,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Desktop width",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "section_padding",
+      "label": "Section spacing",
+      "min": 20,
+      "max": 100,
+      "step": 5,
+      "unit": "px",
+      "default": 65
+    },
+    { "type": "color", "id": "background_color", "label": "Background", "default": "#FDF8F3" },
+    { "type": "color", "id": "heading_color", "label": "Heading and titles", "default": "#000000" },
+    { "type": "color", "id": "text_color", "label": "Description text", "default": "#333333" },
+    { "type": "color", "id": "accent_color", "label": "Icon accent", "default": "#6B1A2E" },
+    { "type": "color", "id": "divider_color", "label": "Dividers", "default": "#DFDFDF" }
+  ],
+  "presets": [{ "name": "Member benefits" }]
+}
+{% endschema %}

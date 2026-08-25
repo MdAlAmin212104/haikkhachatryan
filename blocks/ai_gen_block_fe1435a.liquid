@@ -1,0 +1,260 @@
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-formats-{{ ai_gen_id }} {
+    display: block;
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+    background: {{ block.settings.background_color }};
+    color: {{ block.settings.text_color }};
+    padding: {{ block.settings.section_padding }}px clamp(24px, 5vw, 88px);
+    box-sizing: border-box;
+    border-radius: 10px;
+  }
+
+  .ai-formats__inner-{{ ai_gen_id }} {
+    width: 100%;
+    max-width: 1240px;
+    margin: 0 auto;
+  }
+
+  .ai-formats__heading-{{ ai_gen_id }} {
+    margin: 0 0 48px;
+    color: {{ block.settings.heading_color }};
+    font-size: clamp(32px, 5vw, 56px);
+    font-weight: {{ block.settings.heading_font.weight }};
+    line-height: 1.08;
+    text-align: center;
+  }
+
+  .ai-formats__grid-{{ ai_gen_id }} {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0;
+  }
+
+  .ai-formats__item-{{ ai_gen_id }} {
+    padding: 8px clamp(24px, 3.5vw, 56px) 12px;
+    border-left: 1px solid {{ block.settings.divider_color }};
+  }
+
+  .ai-formats__item-{{ ai_gen_id }}:first-child {
+    border-left: 0;
+    padding-left: 0;
+  }
+
+  .ai-formats__item-{{ ai_gen_id }}:last-child {
+    padding-right: 0;
+  }
+
+  .ai-formats__number-{{ ai_gen_id }} {
+    display: block;
+    margin-bottom: 22px;
+    color: {{ block.settings.accent_color }};
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+  }
+
+  .ai-formats__title-{{ ai_gen_id }} {
+    margin: 0 0 16px;
+    color: {{ block.settings.heading_color }};
+    font-size: clamp(22px, 2.4vw, 32px);
+    font-weight: {{ block.settings.heading_font.weight }};
+    line-height: 1.15;
+  }
+
+  .ai-formats__description-{{ ai_gen_id }} {
+    margin: 0;
+    color: {{ block.settings.text_color }};
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  .ai-formats__note-{{ ai_gen_id }} {
+    max-width: 680px;
+    margin: 56px auto 0;
+    padding-top: 28px;
+    border-top: 1px solid {{ block.settings.divider_color }};
+    color: {{ block.settings.text_color }};
+    font-size: 16px;
+    line-height: 1.6;
+    text-align: center;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-formats-{{ ai_gen_id }} {
+      padding: 56px 24px;
+    }
+
+    .ai-formats__heading-{{ ai_gen_id }} {
+      margin-bottom: 36px;
+    }
+
+    .ai-formats__grid-{{ ai_gen_id }} {
+      display: block;
+    }
+
+    .ai-formats__item-{{ ai_gen_id }},
+    .ai-formats__item-{{ ai_gen_id }}:first-child,
+    .ai-formats__item-{{ ai_gen_id }}:last-child {
+      padding: 28px 0;
+      border-left: 0;
+      border-top: 1px solid {{ block.settings.divider_color }};
+    }
+
+    .ai-formats__item-{{ ai_gen_id }}:first-child {
+      padding-top: 0;
+      border-top: 0;
+    }
+
+    .ai-formats__note-{{ ai_gen_id }} {
+      margin-top: 28px;
+    }
+  }
+{% endstyle %}
+
+<section class="ai-formats-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-formats__inner-{{ ai_gen_id }}">
+    <h2 class="ai-formats__heading-{{ ai_gen_id }}">{{ block.settings.heading }}</h2>
+    <div class="ai-formats__grid-{{ ai_gen_id }}">
+      {% for i in (1..3) %}
+        {% liquid
+          assign title_key = 'format_' | append: i | append: '_title'
+          assign description_key = 'format_' | append: i | append: '_description'
+        %}
+        <article class="ai-formats__item-{{ ai_gen_id }}">
+          <span class="ai-formats__number-{{ ai_gen_id }}">0{{ i }}</span>
+          <h3 class="ai-formats__title-{{ ai_gen_id }}">{{ block.settings[title_key] }}</h3>
+          <p class="ai-formats__description-{{ ai_gen_id }}">{{ block.settings[description_key] }}</p>
+        </article>
+      {% endfor %}
+    </div>
+    <p class="ai-formats__note-{{ ai_gen_id }}">{{ block.settings.note }}</p>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Formats",
+  "tag": null,
+  "class": "formats-block",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Three Ways To Run The Night"
+    },
+    {
+      "type": "text",
+      "id": "format_1_title",
+      "label": "First title",
+      "default": "Walk-Around"
+    },
+    {
+      "type": "textarea",
+      "id": "format_1_description",
+      "label": "First description",
+      "default": "Tasting stations throughout the space. Guests move, mingle, and taste at their own pace. Best for larger groups and networking."
+    },
+    {
+      "type": "text",
+      "id": "format_2_title",
+      "label": "Second title",
+      "default": "Casual Sit-Down"
+    },
+    {
+      "type": "textarea",
+      "id": "format_2_description",
+      "label": "Second description",
+      "default": "Wine and cheese, seated, guided by your sommelier. Best for 10–25 guests who want conversation."
+    },
+    {
+      "type": "text",
+      "id": "format_3_title",
+      "label": "Third title",
+      "default": "Dinner Event"
+    },
+    {
+      "type": "textarea",
+      "id": "format_3_description",
+      "label": "Third description",
+      "default": "A focused, course-paired dinner. Best for corporate hosting and milestone celebrations."
+    },
+    {
+      "type": "textarea",
+      "id": "note",
+      "label": "Bottom note",
+      "default": "Not sure which fits? Tell us the occasion in the form above and we'll recommend one."
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Desktop width",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "section_padding",
+      "label": "Vertical spacing",
+      "min": 40,
+      "max": 120,
+      "step": 5,
+      "unit": "px",
+      "default": 80
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#6B1A2E"
+    },
+    {
+      "type": "color",
+      "id": "heading_color",
+      "label": "Headings",
+      "default": "#FDF8F3"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text",
+      "default": "#FDF8F3"
+    },
+    {
+      "type": "color",
+      "id": "accent_color",
+      "label": "Numbers",
+      "default": "#F2C7B8"
+    },
+    {
+      "type": "color",
+      "id": "divider_color",
+      "label": "Dividers",
+      "default": "#B77B83"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+  ],
+  "presets": [
+    {
+      "name": "Formats"
+    }
+  ]
+}
+{% endschema %}

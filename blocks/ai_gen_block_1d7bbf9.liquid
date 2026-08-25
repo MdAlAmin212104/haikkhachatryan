@@ -1,0 +1,305 @@
+{% doc %}
+  @prompt
+    Create a full-width Closing CTA section with a premium burgundy background, matching the existing Open Container wine brand style.
+    
+    Headline:
+    “Dates Fill Fastest From October Through December”
+    
+    Supporting text:
+    “If you have a date in mind, start the conversation now.”
+    
+    Add a prominent CTA button:
+    “REQUEST MY QUOTE”
+    
+    Button behavior:
+    
+    * The button must smoothly scroll/anchor back to the Inquiry Form at `#inquiry`.
+    * Make sure the Inquiry Form section has the ID `inquiry`.
+    
+    Below the button, display the contact information:
+    “+1 (689) 263-2252 · [haik@opencontainerwine.com](mailto:haik@opencontainerwine.com)”
+    
+    Design requirements:
+    
+    * Center-align all content.
+    * Use elegant, premium typography with strong visual hierarchy.
+    * Make the headline the main focus.
+    * Make the CTA button prominent and easy to click.
+    * Keep generous spacing and a clean, sophisticated layout.
+    * Fully responsive on desktop and mobile.
+    * Do not add unnecessary images or stock photography.
+    
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-closing-cta-{{ ai_gen_id }} {
+    display: block;
+    width: 100%;
+    background: {{ block.settings.background_color }};
+    color: {{ block.settings.text_color }};
+  }
+
+  .ai-closing-cta-{{ ai_gen_id }}__inner {
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 104px 32px 96px;
+    text-align: center;
+  }
+
+  .ai-closing-cta-{{ ai_gen_id }}__heading {
+    max-width: 760px;
+    margin: 0 auto 24px;
+    color: {{ block.settings.text_color }};
+    font-family: {{ settings.type_heading_font.family }}, {{ settings.type_heading_font.fallback_families }};
+    font-size: 52px;
+    font-weight: 400;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+  }
+
+  .ai-closing-cta-{{ ai_gen_id }}__supporting {
+    max-width: 560px;
+    margin: 0 auto 38px;
+    color: {{ block.settings.secondary_text_color }};
+    font-family: {{ settings.type_body_font.family }}, {{ settings.type_body_font.fallback_families }};
+    font-size: 18px;
+    line-height: 1.6;
+  }
+
+  .ai-closing-cta-{{ ai_gen_id }}__button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 56px;
+    padding: 16px 34px;
+    border: 1px solid {{ block.settings.button_border_color }};
+    border-radius: {{ block.settings.button_radius }}px;
+    background: {{ block.settings.button_color }};
+    color: {{ block.settings.button_text_color }};
+    font-family: {{ settings.type_body_font.family }}, {{ settings.type_body_font.fallback_families }};
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    line-height: 1.2;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease;
+  }
+
+  .ai-closing-cta-{{ ai_gen_id }}__button:hover {
+    background: {{ block.settings.button_hover_color }};
+    border-color: {{ block.settings.button_hover_color }};
+    color: {{ block.settings.button_hover_text_color }};
+  }
+
+  .ai-closing-cta-{{ ai_gen_id }}__button:focus-visible {
+    outline: 3px solid {{ block.settings.focus_color }};
+    outline-offset: 4px;
+  }
+
+  .ai-closing-cta-{{ ai_gen_id }}__contact {
+    margin: 30px auto 0;
+    color: {{ block.settings.secondary_text_color }};
+    font-family: {{ settings.type_body_font.family }}, {{ settings.type_body_font.fallback_families }};
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .ai-closing-cta-{{ ai_gen_id }}__contact a {
+    color: {{ block.settings.secondary_text_color }};
+    text-underline-offset: 3px;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-closing-cta-{{ ai_gen_id }}__inner {
+      width: 100%;
+      padding: 72px 22px 68px;
+    }
+
+    .ai-closing-cta-{{ ai_gen_id }}__heading {
+      font-size: 38px;
+    }
+
+    .ai-closing-cta-{{ ai_gen_id }}__supporting {
+      font-size: 16px;
+      margin-bottom: 30px;
+    }
+
+    .ai-closing-cta-{{ ai_gen_id }}__button {
+      width: 100%;
+      max-width: 360px;
+    }
+  }
+{% endstyle %}
+
+<closing-cta-{{ ai_gen_id }}
+  class="ai-closing-cta-{{ ai_gen_id }}"
+  {{ block.shopify_attributes }}
+>
+  <div class="ai-closing-cta-{{ ai_gen_id }}__inner">
+    <h2 class="ai-closing-cta-{{ ai_gen_id }}__heading">{{ block.settings.headline }}</h2>
+    <p class="ai-closing-cta-{{ ai_gen_id }}__supporting">{{ block.settings.supporting_text }}</p>
+    <a class="ai-closing-cta-{{ ai_gen_id }}__button" href="#inquiry">{{ block.settings.button_label }}</a>
+    <p class="ai-closing-cta-{{ ai_gen_id }}__contact">
+      <a href="tel:+16892632252">{{ block.settings.phone }}</a>
+      <span aria-hidden="true"> · </span>
+      <a href="mailto:{{ block.settings.email }}">{{ block.settings.email }}</a>
+    </p>
+  </div>
+</closing-cta-{{ ai_gen_id }}>
+
+<script>
+  (function() {
+    class ClosingCta{{ ai_gen_id }} extends HTMLElement {
+      connectedCallback() {
+        const inquiry = document.querySelector('[id*="inquiry" i], [class*="inquiry" i]');
+        if (inquiry && inquiry.id !== 'inquiry') inquiry.id = 'inquiry';
+        const button = this.querySelector('a[href="#inquiry"]');
+        if (button) {
+          button.addEventListener('click', function(event) {
+            const target = document.getElementById('inquiry');
+            if (target) {
+              event.preventDefault();
+              target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              history.replaceState(null, '', '#inquiry');
+            }
+          });
+        }
+      }
+    }
+    if (!customElements.get('closing-cta-{{ ai_gen_id }}')) customElements.define('closing-cta-{{ ai_gen_id }}', ClosingCta{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Closing CTA",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Content"
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "Dates Fill Fastest From October Through December"
+    },
+    {
+      "type": "textarea",
+      "id": "supporting_text",
+      "label": "Supporting text",
+      "default": "If you have a date in mind, start the conversation now."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "REQUEST MY QUOTE"
+    },
+    {
+      "type": "text",
+      "id": "phone",
+      "label": "Phone",
+      "default": "+1 (689) 263-2252"
+    },
+    {
+      "type": "text",
+      "id": "email",
+      "label": "Email",
+      "default": "haik@opencontainerwine.com"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Desktop width",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "header",
+      "content": "Colors"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#6B1A2E"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Headline",
+      "default": "#FDF8F3"
+    },
+    {
+      "type": "color",
+      "id": "secondary_text_color",
+      "label": "Supporting text",
+      "default": "#F3DED5"
+    },
+    {
+      "type": "color",
+      "id": "button_color",
+      "label": "Button",
+      "default": "#FDF8F3"
+    },
+    {
+      "type": "color",
+      "id": "button_text_color",
+      "label": "Button text",
+      "default": "#6B1A2E"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_color",
+      "label": "Button hover",
+      "default": "#E8C7B8"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_text_color",
+      "label": "Hover text",
+      "default": "#4A1020"
+    },
+    {
+      "type": "color",
+      "id": "button_border_color",
+      "label": "Button border",
+      "default": "#FDF8F3"
+    },
+    {
+      "type": "color",
+      "id": "focus_color",
+      "label": "Focus outline",
+      "default": "#FFD9A8"
+    },
+    {
+      "type": "range",
+      "id": "button_radius",
+      "label": "Button radius",
+      "min": 0,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "default": 14
+    }
+  ],
+  "presets": [
+    {
+      "name": "Closing CTA"
+    }
+  ],
+  "tag": null,
+  "class": "closing-cta-block"
+}
+{% endschema %}

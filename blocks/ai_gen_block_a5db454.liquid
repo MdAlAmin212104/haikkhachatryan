@@ -1,0 +1,308 @@
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-plans-{{ ai_gen_id }} {
+    display: block;
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: {{ block.settings.section_padding }}px 0px;
+    background: {{ block.settings.background_color }};
+    color: {{ block.settings.text_color }};
+  }
+
+  .ai-plans-{{ ai_gen_id }}__inner {
+    max-width: 1120px;
+    margin: 0 auto;
+  }
+
+  .ai-plans-{{ ai_gen_id }}__heading {
+    margin: 0 0 48px;
+    color: {{ block.settings.heading_color }};
+    font-size: {{ block.settings.heading_size }}px;
+    line-height: 1.12;
+    font-weight: 400;
+    text-align: center;
+  }
+
+  .ai-plans-{{ ai_gen_id }}__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .ai-plans-{{ ai_gen_id }}__card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-height: 500px;
+    padding: 42px 38px 38px;
+    background: {{ block.settings.card_background }};
+    border: 1px solid {{ block.settings.border_color }};
+    border-radius: {{ block.settings.card_radius }}px;
+    box-shadow: 0 10px 30px rgba(52, 28, 23, 0.08);
+  }
+
+  .ai-plans-{{ ai_gen_id }}__card--featured {
+    min-height: 540px;
+    padding-top: 58px;
+    border: 2px solid {{ block.settings.featured_color }};
+    box-shadow: 0 18px 44px rgba(107, 26, 46, 0.18);
+    transform: translateY(-10px);
+  }
+
+  .ai-plans-{{ ai_gen_id }}__badge {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    padding: 9px 22px;
+    transform: translate(-50%, -50%);
+    background: {{ block.settings.featured_color }};
+    color: #ffffff;
+    border-radius: 30px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    white-space: nowrap;
+  }
+
+  .ai-plans-{{ ai_gen_id }}__eyebrow {
+    margin: 0 0 14px;
+    color: {{ block.settings.featured_color }};
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  .ai-plans-{{ ai_gen_id }}__title {
+    margin: 0 0 22px;
+    color: {{ block.settings.heading_color }};
+    font-size: 30px;
+    line-height: 1.15;
+    font-weight: 400;
+  }
+
+  .ai-plans-{{ ai_gen_id }}__price {
+    margin: 0 0 8px;
+    color: {{ block.settings.heading_color }};
+    font-size: 30px;
+    line-height: 1.2;
+  }
+
+  .ai-plans-{{ ai_gen_id }}__details {
+    margin: 0;
+    color: {{ block.settings.text_color }};
+    font-size: 16px;
+    line-height: 1.65;
+  }
+
+  .ai-plans-{{ ai_gen_id }}__details p { margin: 0 0 10px; }
+  .ai-plans-{{ ai_gen_id }}__details ul { margin: 24px 0 0; padding: 0; list-style: none; }
+  .ai-plans-{{ ai_gen_id }}__details li { position: relative; margin: 0 0 16px; padding-left: 24px; }
+  .ai-plans-{{ ai_gen_id }}__details li::before { content: '✓'; position: absolute; left: 0; color: {{ block.settings.featured_color }}; font-weight: 700; }
+
+  .ai-plans-{{ ai_gen_id }}__button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: auto;
+    padding: 16px 24px;
+    background: {{ block.settings.button_color }};
+    color: {{ block.settings.button_text_color }};
+    border-radius: {{ block.settings.button_radius }}px;
+    border: none;
+    cursor: pointer;
+    font-family: {{ block.settings.body_font.family }};
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-decoration: none;
+    transition: opacity 0.2s ease, background 0.2s ease;
+  }
+
+  .ai-plans-{{ ai_gen_id }}__button:hover { background: {{ block.settings.button_hover_color }}; }
+  .ai-plans-{{ ai_gen_id }}__button:focus-visible { outline: 3px solid {{ block.settings.focus_color }}; outline-offset: 4px; }
+  .ai-plans-{{ ai_gen_id }}__button[disabled] { opacity: 0.6; cursor: not-allowed; }
+
+  .ai-plans-{{ ai_gen_id }}__error {
+    display: none;
+    margin: 10px 0 0;
+    color: #B42318;
+    font-size: 13px;
+    text-align: center;
+  }
+  .ai-plans-{{ ai_gen_id }}__error.is-visible { display: block; }
+
+  @media screen and (max-width: 749px) {
+    .ai-plans-{{ ai_gen_id }}__heading { margin-bottom: 34px; font-size: 38px; }
+    .ai-plans-{{ ai_gen_id }}__grid { grid-template-columns: 1fr; gap: 34px; }
+    .ai-plans-{{ ai_gen_id }}__card, .ai-plans-{{ ai_gen_id }}__card--featured { min-height: 0; transform: none; padding: 38px 26px 28px; }
+    .ai-plans-{{ ai_gen_id }}__card--featured { padding-top: 52px; }
+  }
+{% endstyle %}
+
+{%- liquid
+  assign plan_one_variant = block.settings.plan_one_product.selected_or_first_available_variant
+  assign plan_two_variant = block.settings.plan_two_product.selected_or_first_available_variant
+-%}
+
+<plans-membership-{{ ai_gen_id }} id="plans" class="ai-plans-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-plans-{{ ai_gen_id }}__inner">
+    <h2 class="ai-plans-{{ ai_gen_id }}__heading">{{ block.settings.section_title }}</h2>
+    <div class="ai-plans-{{ ai_gen_id }}__grid">
+
+      <article class="ai-plans-{{ ai_gen_id }}__card">
+        <p class="ai-plans-{{ ai_gen_id }}__eyebrow">{{ block.settings.plan_one_label }}</p>
+        <h3 class="ai-plans-{{ ai_gen_id }}__title">{{ block.settings.plan_one_title }}</h3>
+        <p class="ai-plans-{{ ai_gen_id }}__price">{{ block.settings.plan_one_price }}</p>
+        <div class="ai-plans-{{ ai_gen_id }}__details">{{ block.settings.plan_one_details }}</div>
+        <button
+          type="button"
+          class="ai-plans-{{ ai_gen_id }}__button"
+          data-add-to-cart
+          {% if plan_one_variant %}
+            data-variant-id="{{ plan_one_variant.id }}"
+            data-quantity="{{ block.settings.plan_one_product_qty }}"
+          {% else %}
+            disabled
+          {% endif %}
+        >
+          {{ block.settings.button_label }}
+        </button>
+        <p class="ai-plans-{{ ai_gen_id }}__error" data-error></p>
+      </article>
+
+      <article class="ai-plans-{{ ai_gen_id }}__card ai-plans-{{ ai_gen_id }}__card--featured">
+        <span class="ai-plans-{{ ai_gen_id }}__badge">{{ block.settings.featured_badge }}</span>
+        <p class="ai-plans-{{ ai_gen_id }}__eyebrow">{{ block.settings.plan_two_label }}</p>
+        <h3 class="ai-plans-{{ ai_gen_id }}__title">{{ block.settings.plan_two_title }}</h3>
+        <p class="ai-plans-{{ ai_gen_id }}__price">{{ block.settings.plan_two_price }}</p>
+        <div class="ai-plans-{{ ai_gen_id }}__details">{{ block.settings.plan_two_details }}</div>
+        <button
+          type="button"
+          class="ai-plans-{{ ai_gen_id }}__button"
+          data-add-to-cart
+          {% if plan_two_variant %}
+            data-variant-id="{{ plan_two_variant.id }}"
+            data-quantity="{{ block.settings.plan_two_product_qty }}"
+          {% else %}
+            disabled
+          {% endif %}
+        >
+          {{ block.settings.button_label }}
+        </button>
+        <p class="ai-plans-{{ ai_gen_id }}__error" data-error></p>
+      </article>
+
+    </div>
+  </div>
+</plans-membership-{{ ai_gen_id }}>
+
+<script>
+  (function () {
+    if (customElements.get('plans-membership-{{ ai_gen_id }}')) return;
+
+    class PlansMembership{{ ai_gen_id }} extends HTMLElement {
+      connectedCallback() {
+        this.querySelectorAll('[data-add-to-cart]').forEach((button) => {
+          button.addEventListener('click', (e) => this.handleClick(e));
+        });
+      }
+
+      async handleClick(e) {
+        const button = e.currentTarget;
+        const errorEl = button.closest('article').querySelector('[data-error]');
+        const variantId = button.getAttribute('data-variant-id');
+        const quantity = button.getAttribute('data-quantity') || '1';
+
+        if (errorEl) {
+          errorEl.textContent = '';
+          errorEl.classList.remove('is-visible');
+        }
+
+        if (!variantId) return;
+
+        const originalText = button.textContent;
+        button.disabled = true;
+        button.textContent = 'Adding...';
+
+        try {
+          const response = await fetch('/cart/add.js', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+            body: JSON.stringify({
+              items: [{ id: Number(variantId), quantity: Number(quantity) }],
+            }),
+          });
+
+          const data = await response.json();
+
+          if (!response.ok) {
+            throw new Error(data.description || data.message || 'Could not add item to cart.');
+          }
+
+          window.location.href = '/checkout';
+        } catch (err) {
+          button.disabled = false;
+          button.textContent = originalText;
+          if (errorEl) {
+            errorEl.textContent = err.message || 'Something went wrong. Please try again.';
+            errorEl.classList.add('is-visible');
+          }
+        }
+      }
+    }
+
+    customElements.define('plans-membership-{{ ai_gen_id }}', PlansMembership{{ ai_gen_id }});
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Membership plans",
+  "settings": [
+    { "type": "text", "id": "section_title", "label": "Title", "default": "Choose Your Membership Plan" },
+    { "type": "range", "id": "desktop_width_percent", "label": "Desktop width", "min": 50, "max": 100, "step": 5, "unit": "%", "default": 100 },
+    { "type": "range", "id": "section_padding", "label": "Section spacing", "min": 30, "max": 120, "step": 10, "unit": "px", "default": 80 },
+
+    { "type": "header", "content": "Three-bottle plan" },
+    { "type": "text", "id": "plan_one_label", "label": "Label", "default": "Quarterly membership" },
+    { "type": "text", "id": "plan_one_title", "label": "Plan name", "default": "3 bottle quarterly" },
+    { "type": "text", "id": "plan_one_price", "label": "Price", "default": "$108 – $195 per shipment" },
+    { "type": "richtext", "id": "plan_one_details", "label": "Details", "default": "<ul><li>Three bottles, four times a year.</li><li>Plus tax and shipping.</li><li>$35 one-time membership fee, charged at signup.</li></ul>" },
+    { "type": "product", "id": "plan_one_product", "label": "Product" },
+    { "type": "number", "id": "plan_one_product_qty", "label": "Quantity", "default": 1 },
+
+    { "type": "header", "content": "Six-bottle plan" },
+    { "type": "text", "id": "featured_badge", "label": "Badge", "default": "MOST POPULAR" },
+    { "type": "text", "id": "plan_two_label", "label": "Label", "default": "Quarterly membership" },
+    { "type": "text", "id": "plan_two_title", "label": "Plan name", "default": "6 bottle quarterly" },
+    { "type": "text", "id": "plan_two_price", "label": "Price", "default": "$216 – $390 per shipment" },
+    { "type": "richtext", "id": "plan_two_details", "label": "Details", "default": "<ul><li>Six bottles, four times a year.</li><li>Twice the wine, the same flat member shipping.</li><li>Plus tax and shipping.</li><li>$35 one-time membership fee, charged at signup.</li></ul>" },
+    { "type": "product", "id": "plan_two_product", "label": "Product" },
+    { "type": "number", "id": "plan_two_product_qty", "label": "Quantity", "default": 1 },
+
+    { "type": "header", "content": "Style" },
+    { "type": "text", "id": "button_label", "label": "Button label", "default": "JOIN NOW" },
+    { "type": "color", "id": "background_color", "label": "Background", "default": "#FDF8F3" },
+    { "type": "color", "id": "card_background", "label": "Card background", "default": "#FFFFFF" },
+    { "type": "color", "id": "heading_color", "label": "Headings", "default": "#321B20" },
+    { "type": "color", "id": "text_color", "label": "Text", "default": "#333333" },
+    { "type": "color", "id": "featured_color", "label": "Featured color", "default": "#6B1A2E" },
+    { "type": "color", "id": "border_color", "label": "Borders", "default": "#DFDFDF" },
+    { "type": "color", "id": "button_color", "label": "Button", "default": "#6B1A2E" },
+    { "type": "color", "id": "button_hover_color", "label": "Button hover", "default": "#4D1221" },
+    { "type": "color", "id": "button_text_color", "label": "Button text", "default": "#FFFFFF" },
+    { "type": "color", "id": "focus_color", "label": "Focus outline", "default": "#321B20" },
+    { "type": "range", "id": "card_radius", "label": "Card radius", "min": 0, "max": 32, "step": 2, "unit": "px", "default": 8 },
+    { "type": "range", "id": "button_radius", "label": "Button radius", "min": 0, "max": 30, "step": 2, "unit": "px", "default": 14 },
+    { "type": "range", "id": "heading_size", "label": "Heading size", "min": 24, "max": 72, "step": 4, "unit": "px", "default": 48 }
+  ],
+  "presets": [{ "name": "Membership plans" }],
+  "tag": null,
+  "class": "membership-plans-block"
+}
+{% endschema %}

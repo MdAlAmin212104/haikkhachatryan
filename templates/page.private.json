@@ -65,7 +65,7 @@
         "text_cgWVGr": {
           "type": "text",
           "settings": {
-            "text": "<p>PRIVATE EVENTS</p>",
+            "text": "<p>The Bar Arrives. The Night</p><p> Takes Care Of Itself.</p>",
             "width": "fit-content",
             "max_width": "narrow",
             "alignment": "left",
@@ -91,7 +91,7 @@
           "type": "text",
           "name": "t:names.text",
           "settings": {
-            "text": "<p>Host unforgettable moments with exceptional wine, great company, and a one-of-a-kind atmosphere.</p>",
+            "text": "<p>Corporate events. Milestone celebrations. Bachelorette parties. We bring the<br/>container, the wine, and a trained sommelier — you bring the guest list.</p>",
             "width": "fit-content",
             "max_width": "narrow",
             "alignment": "left",
@@ -112,11 +112,31 @@
             "padding-inline-end": 0
           },
           "blocks": {}
+        },
+        "button_6dzbmj": {
+          "type": "button",
+          "name": "t:names.button",
+          "settings": {
+            "label": "GET YOUR QUOTE",
+            "link": "#inquiry",
+            "open_in_new_tab": false,
+            "style_class": "button",
+            "custom_button_background": "{{ settings.color_palette.foreground }}",
+            "custom_button_text": "{{ settings.color_palette.background }}",
+            "custom_button_border": "{{ settings.color_palette.background }}",
+            "link_text_color": "",
+            "width": "fit-content",
+            "custom_width": 100,
+            "width_mobile": "fit-content",
+            "custom_width_mobile": 100
+          },
+          "blocks": {}
         }
       },
       "block_order": [
         "text_cgWVGr",
-        "text_kAFaF9"
+        "text_kAFaF9",
+        "button_6dzbmj"
       ],
       "name": "t:names.hero",
       "settings": {
@@ -148,6 +168,374 @@
         "gradient_direction": "to top",
         "blurred_reflection": false,
         "reflection_opacity": 75,
+        "padding-block-start": 40,
+        "padding-block-end": 40
+      }
+    },
+    "section_p4NNAD": {
+      "type": "section",
+      "blocks": {
+        "custom_liquid_pPCyNB": {
+          "type": "custom-liquid",
+          "name": "t:names.custom_liquid",
+          "settings": {
+            "custom_liquid": "<div id=\"inquiry\"></div>"
+          },
+          "blocks": {}
+        },
+        "text_kq7ecF": {
+          "type": "text",
+          "name": "t:names.heading",
+          "settings": {
+            "text": "<p>Tell Us About Your Event</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "h2",
+            "font": "var(--font-body--family)",
+            "font_size": "",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "text_kXkbPF": {
+          "type": "text",
+          "name": "t:names.text",
+          "settings": {
+            "text": "<p>We'll come back to you within one business day with a proposal and a quote.</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "text_color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "custom_liquid_pPCyNB",
+        "text_kq7ecF",
+        "text_kXkbPF"
+      ],
+      "name": "t:names.rich_text_section",
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "center",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 25,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "background_media": "none",
+        "background_color": "",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_color": "",
+        "border_radius": 0,
+        "padding-block-start": 48,
+        "padding-block-end": 0
+      }
+    },
+    "inquiry_MHKbpR": {
+      "type": "inquiry",
+      "blocks": {
+        "dropdown_option_YWFYUG": {
+          "type": "dropdown_option",
+          "settings": {
+            "label": "Corporate event"
+          }
+        },
+        "dropdown_option_FtmPa6": {
+          "type": "dropdown_option",
+          "settings": {
+            "label": "Birthday or milestone celebration"
+          }
+        },
+        "dropdown_option_FnhgUi": {
+          "type": "dropdown_option",
+          "settings": {
+            "label": "Bachelorette party"
+          }
+        },
+        "dropdown_option_zFRQnY": {
+          "type": "dropdown_option",
+          "settings": {
+            "label": "Wedding-related event"
+          }
+        },
+        "dropdown_option_BRzDBM": {
+          "type": "dropdown_option",
+          "settings": {
+            "label": "Fundraiser"
+          }
+        },
+        "dropdown_option_RyqRHL": {
+          "type": "dropdown_option",
+          "settings": {
+            "label": "Holiday party"
+          }
+        },
+        "dropdown_option_TDjcQM": {
+          "type": "dropdown_option",
+          "settings": {
+            "label": "Other"
+          }
+        }
+      },
+      "block_order": [
+        "dropdown_option_YWFYUG",
+        "dropdown_option_FtmPa6",
+        "dropdown_option_FnhgUi",
+        "dropdown_option_zFRQnY",
+        "dropdown_option_BRzDBM",
+        "dropdown_option_RyqRHL",
+        "dropdown_option_TDjcQM"
+      ],
+      "name": "Inquiry Form",
+      "settings": {
+        "anchor_id": "inquiry",
+        "setwidth": "container",
+        "title": "Tell Us About Your Event",
+        "des": "We'll come back to you within one business day with a proposal and a quote.",
+        "align-heading": "center",
+        "form_width": 640,
+        "label_name": "Full name",
+        "label_email": "Email",
+        "label_phone": "Phone",
+        "label_date": "Event date",
+        "label_guests": "Number of guests",
+        "label_event_type": "Event type",
+        "event_type_placeholder": "Select event type",
+        "label_city": "City / location",
+        "label_message": "Tell us about your event",
+        "submit_label": "REQUEST MY QUOTE",
+        "btn_bg": "#222222",
+        "btn_color": "#ffffff",
+        "success_message": "Thank you. We've got your request and we'll be in touch within one business day. If your event is less than two weeks out, call us directly at +1 (689) 263-2252 so we can move quickly.",
+        "contact_note": "<p>Prefer to talk? Call <a href=\"tel:+16892632252\">+1 (689) 263-2252</a> or email <a href=\"mailto:haik@opencontainerwine.com\">haik@opencontainerwine.com</a></p>",
+        "paddingsection": "60px 0px 60px 0px"
+      }
+    },
+    "1787127097e3d12499": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_2db530a_AJRW3b": {
+          "type": "ai_gen_block_2db530a",
+          "settings": {
+            "text": "Our family has hosted thousands of wine tasting events across the United States and internationally.",
+            "desktop_width_percent": 100,
+            "content_width": 1000,
+            "text_size": 18,
+            "mobile_text_size": 16,
+            "vertical_padding": 32,
+            "mobile_padding": 24,
+            "background_color": "#6b1a2e",
+            "text_color": "#fdf8f3"
+          },
+          "blocks": {}
+        },
+        "ai_gen_block_734c1f4_7rGmX9": {
+          "type": "ai_gen_block_734c1f4",
+          "settings": {
+            "eyebrow": "Private events",
+            "title": "How it works",
+            "step_1_title": "Tell us the occasion",
+            "step_1_text": "Guest count, date, location, and the kind of night you want. We build the proposal around it.",
+            "step_2_title": "We design the tasting",
+            "step_2_text": "Your sommelier selects the flight, sets the theme, and pairs the food. Every detail is decided before your guests arrive.",
+            "step_3_title": "We show up and run it",
+            "step_3_text": "The container, the wine, the glassware, the host. You’re a guest at your own event.",
+            "alignment": "center",
+            "desktop_width_percent": 100,
+            "padding_vertical": 40,
+            "padding_horizontal": 48,
+            "mobile_padding_vertical": 64,
+            "header_spacing": 72,
+            "heading_size": 48,
+            "step_title_size": 24,
+            "body_size": 16,
+            "background_color": "#fdf8f3",
+            "text_color": "#000000",
+            "accent_color": "#6b1a2e",
+            "divider_color": "#dfdfdf"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_2db530a_AJRW3b",
+        "ai_gen_block_734c1f4_7rGmX9"
+      ],
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 12,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "background_media": "none",
+        "background_color": "#6b1a2e",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_color": "",
+        "border_radius": 0,
+        "padding-block-start": 20,
+        "padding-block-end": 40
+      }
+    },
+    "178712887388ea6adc": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_5d30830_pNKBiD": {
+          "type": "ai_gen_block_5d30830",
+          "settings": {
+            "heading": "What We Offer",
+            "desktop_width_percent": 100,
+            "section_padding": 20,
+            "card_gap": 24,
+            "heading_size": 48,
+            "title_size": 26,
+            "body_size": 16,
+            "background_color": "#fdf8f3",
+            "heading_color": "#000000",
+            "panel_color": "#6b1a2e",
+            "panel_text_color": "#ffffff",
+            "card_radius": 10,
+            "card_1_image": "shopify://shop_images/Higgs-4k_7_btl_lineup_ab59b916-39e9-4d07-b310-bd16d8198250.png",
+            "card_1_title": "Selecting The Wines",
+            "card_1_description": "A proper tasting runs five wines: two whites, two reds, and a sweet. We pour them side by side so your guests taste the contrast, not just the wine. Every bottle is our own — exclusive private label from our family vineyard in Armenia.",
+            "card_2_image": "shopify://shop_images/PHOTO_Brand_Event_2_d6bf655a-aa7d-409f-9d49-c04bb83f5059.jpg",
+            "card_2_title": "Choosing A Theme",
+            "card_2_description": "A theme announced in advance builds anticipation before anyone walks in. Around the world in five glasses. Old world against new. A vertical of a single varietal. Reds only. Tell us the crowd and we'll tell you what will land.",
+            "card_3_image": "shopify://shop_images/Copy_of_OC_California_Blue_Bar_2be7e50e-6e19-47f2-995b-0179d79e9c3c.jpg",
+            "card_3_title": "Food Pairing",
+            "card_3_description": "Sip & Sweets — wine and dessert, for the sweet tooth in the room. Soul Mates — cheese and wine, matched pair by pair. Full Dinner Pairing — a course-by-course build for a seated event."
+          },
+          "blocks": {}
+        },
+        "ai_gen_block_fe1435a_cxFygW": {
+          "type": "ai_gen_block_fe1435a",
+          "settings": {
+            "heading": "Three Ways To Run The Night",
+            "format_1_title": "Walk-Around",
+            "format_1_description": "Tasting stations throughout the space. Guests move, mingle, and taste at their own pace. Best for larger groups and networking.",
+            "format_2_title": "Casual Sit-Down",
+            "format_2_description": "Wine and cheese, seated, guided by your sommelier. Best for 10–25 guests who want conversation.",
+            "format_3_title": "Dinner Event",
+            "format_3_description": "A focused, course-paired dinner. Best for corporate hosting and milestone celebrations.",
+            "note": "Not sure which fits? Tell us the occasion in the form above and we'll recommend one.",
+            "desktop_width_percent": 100,
+            "section_padding": 80,
+            "background_color": "#6b1a2e",
+            "heading_color": "#fdf8f3",
+            "text_color": "#fdf8f3",
+            "accent_color": "#f2c7b8",
+            "divider_color": "#b77b83"
+          },
+          "blocks": {}
+        },
+        "ai_gen_block_0927b22_m3zCfE": {
+          "type": "ai_gen_block_0927b22",
+          "settings": {
+            "eyebrow": "Private events",
+            "title": "What To Budget",
+            "intro": "Plan per guest for the wine, depending on the selection.",
+            "budget_range": "$30 to $125 per guest",
+            "recommendation_amount": "$50 per guest",
+            "recommendation_text": "is our recommendation for a tasting that impresses without overreaching.",
+            "pricing_note": "Final pricing depends on guest count, format, location, and food pairing.",
+            "supporting_line": "Every quote is built for the specific event — request yours above.",
+            "desktop_width_percent": 100,
+            "vertical_padding": 32,
+            "mobile_padding": 24,
+            "text_alignment": "center",
+            "panel_color": "{{ settings.color_palette.background }}",
+            "text_color": "#6b1a2e",
+            "highlight_color": "#d54a3c",
+            "accent_color": "#6b1a2e",
+            "muted_text_color": "#6b1a2e",
+            "divider_color": "#d54a3c"
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_5d30830_pNKBiD",
+        "ai_gen_block_fe1435a_cxFygW",
+        "ai_gen_block_0927b22_m3zCfE"
+      ],
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 12,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "background_media": "none",
+        "background_color": "",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_color": "",
+        "border_radius": 0,
         "padding-block-start": 40,
         "padding-block-end": 40
       }
@@ -895,6 +1283,7 @@
         "group_JF7pMN",
         "group_NU3pTi"
       ],
+      "disabled": true,
       "name": "t:names.custom_section",
       "settings": {
         "content_direction": "row",
@@ -985,6 +1374,7 @@
         "text_VLQPKH",
         "text_enNjgU"
       ],
+      "disabled": true,
       "name": "t:names.rich_text_section",
       "settings": {
         "content_direction": "column",
@@ -1765,6 +2155,7 @@
         "group_rqbK87",
         "group_P3GAFa"
       ],
+      "disabled": true,
       "name": "t:names.custom_section",
       "settings": {
         "content_direction": "row",
@@ -1800,6 +2191,7 @@
       "blocks": {
         "group_wCFBFH": {
           "type": "group",
+          "disabled": true,
           "settings": {
             "content_direction": "column",
             "vertical_on_mobile": true,
@@ -1922,6 +2314,7 @@
         "group_wCFBFH",
         "image_zUXnWJ"
       ],
+      "disabled": true,
       "name": "t:names.image_with_text",
       "settings": {
         "content_direction": "row",
@@ -1958,6 +2351,7 @@
         "group_JqHjxG": {
           "type": "group",
           "name": "t:names.group",
+          "disabled": true,
           "settings": {
             "content_direction": "column",
             "vertical_on_mobile": true,
@@ -2097,7 +2491,7 @@
               "type": "image",
               "name": "t:names.image",
               "settings": {
-                "image": "shopify://shop_images/Wine_Tasting_1.jpg",
+                "image": "shopify://shop_images/Photo-Apr-27-10-38-28-AM.jpg",
                 "link": "",
                 "image_ratio": "square",
                 "width": "fill",
@@ -2121,7 +2515,7 @@
               "type": "image",
               "name": "t:names.image",
               "settings": {
-                "image": "shopify://shop_images/visit_us_hero_bg_1785208819804.jpg",
+                "image": "shopify://shop_images/Copy_of_Vineland_Bar_Outside_0bca8795-0fa3-40a0-8324-9e4912ca09d5.heic",
                 "link": "",
                 "image_ratio": "square",
                 "width": "fill",
@@ -2169,7 +2563,7 @@
               "type": "image",
               "name": "t:names.image",
               "settings": {
-                "image": "shopify://shop_images/25-private-event.jpg",
+                "image": "shopify://shop_images/DSC06262.jpg",
                 "link": "",
                 "image_ratio": "square",
                 "width": "fill",
@@ -2193,7 +2587,7 @@
               "type": "image",
               "name": "t:names.image",
               "settings": {
-                "image": "shopify://shop_images/private_events_gallery_dinner_1785212498474.jpg",
+                "image": "shopify://shop_images/Copy_of_Night_time_container_Vineland.png",
                 "link": "",
                 "image_ratio": "square",
                 "width": "fill",
@@ -2221,11 +2615,182 @@
             "image_zLatma",
             "image_7ERkTG"
           ]
+        },
+        "group_c3w9zz": {
+          "type": "group",
+          "name": "t:names.group",
+          "disabled": true,
+          "settings": {
+            "content_direction": "row",
+            "vertical_on_mobile": false,
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "center",
+            "align_baseline": false,
+            "horizontal_alignment_flex_direction_column": "flex-start",
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 12,
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "background_media": "none",
+            "background_color": "",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "toggle_overlay": false,
+            "overlay_color": "#00000026",
+            "overlay_style": "solid",
+            "gradient_direction": "to top",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_color": "",
+            "border_radius": 0,
+            "link": "",
+            "open_in_new_tab": false,
+            "placeholder": "",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "image_jKNdbN": {
+              "type": "image",
+              "name": "t:names.image",
+              "settings": {
+                "image": "shopify://shop_images/Photo-Apr-27-10-38-28-AM.jpg",
+                "link": "",
+                "image_ratio": "square",
+                "width": "fill",
+                "custom_width": 100,
+                "width_mobile": "fill",
+                "custom_width_mobile": 100,
+                "height": "fit",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_color": "",
+                "border_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "image_TyeVwi": {
+              "type": "image",
+              "name": "t:names.image",
+              "settings": {
+                "image": "shopify://shop_images/Copy_of_Vineland_Bar_Outside_0bca8795-0fa3-40a0-8324-9e4912ca09d5.heic",
+                "link": "",
+                "image_ratio": "square",
+                "width": "fill",
+                "custom_width": 100,
+                "width_mobile": "fill",
+                "custom_width_mobile": 100,
+                "height": "fit",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_color": "",
+                "border_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "image_PVEywA": {
+              "type": "image",
+              "name": "t:names.image",
+              "settings": {
+                "image": "shopify://shop_images/PHOTO_Brand_Event_2.jpg",
+                "link": "",
+                "image_ratio": "square",
+                "width": "fill",
+                "custom_width": 100,
+                "width_mobile": "fill",
+                "custom_width_mobile": 100,
+                "height": "fit",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_color": "",
+                "border_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "image_mQDUed": {
+              "type": "image",
+              "name": "t:names.image",
+              "settings": {
+                "image": "shopify://shop_images/DSC06262.jpg",
+                "link": "",
+                "image_ratio": "square",
+                "width": "fill",
+                "custom_width": 100,
+                "width_mobile": "fill",
+                "custom_width_mobile": 100,
+                "height": "fit",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_color": "",
+                "border_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "image_8hriFY": {
+              "type": "image",
+              "name": "t:names.image",
+              "settings": {
+                "image": "shopify://shop_images/Copy_of_Night_time_container_Vineland.png",
+                "link": "",
+                "image_ratio": "square",
+                "width": "fill",
+                "custom_width": 100,
+                "width_mobile": "fill",
+                "custom_width_mobile": 100,
+                "height": "fit",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_color": "",
+                "border_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "image_jKNdbN",
+            "image_TyeVwi",
+            "image_PVEywA",
+            "image_mQDUed",
+            "image_8hriFY"
+          ]
         }
       },
       "block_order": [
         "group_JqHjxG",
-        "group_JW3Urw"
+        "group_JW3Urw",
+        "group_c3w9zz"
       ],
       "name": "t:names.custom_section",
       "settings": {
@@ -2238,7 +2803,65 @@
         "vertical_alignment_flex_direction_column": "center",
         "gap": 12,
         "section_width": "page-width",
-        "section_height": "small",
+        "section_height": "",
+        "section_height_custom": 50,
+        "background_media": "none",
+        "background_color": "",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_color": "",
+        "border_radius": 0,
+        "padding-block-start": 0,
+        "padding-block-end": 20
+      }
+    },
+    "1787132298397e3c40": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_1d7bbf9_taXycV": {
+          "type": "ai_gen_block_1d7bbf9",
+          "settings": {
+            "headline": "Dates Fill Fastest From October Through December",
+            "supporting_text": "If you have a date in mind, start the conversation now.",
+            "button_label": "REQUEST MY QUOTE",
+            "phone": "+1 (689) 263-2252",
+            "email": "haik@opencontainerwine.com",
+            "desktop_width_percent": 100,
+            "background_color": "{{ settings.color_palette.background }}",
+            "text_color": "#6B1A2E",
+            "secondary_text_color": "#D54A3C",
+            "button_color": "#6B1A2E",
+            "button_text_color": "#FDF8F3",
+            "button_hover_color": "#E8C7B8",
+            "button_hover_text_color": "#4A1020",
+            "button_border_color": "#FDF8F3",
+            "focus_color": "#FFD9A8",
+            "button_radius": 10
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_1d7bbf9_taXycV"
+      ],
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 12,
+        "section_width": "page-width",
+        "section_height": "",
         "section_height_custom": 50,
         "background_media": "none",
         "background_color": "",
@@ -2261,10 +2884,15 @@
   "order": [
     "main",
     "hero_4Vdwbf",
+    "section_p4NNAD",
+    "inquiry_MHKbpR",
+    "1787127097e3d12499",
+    "178712887388ea6adc",
     "section_XiMwdy",
     "section_MtedbR",
     "section_RjVMFP",
     "section_yRJzXh",
-    "section_BNiJtF"
+    "section_BNiJtF",
+    "1787132298397e3c40"
   ]
 }

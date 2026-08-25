@@ -1,0 +1,138 @@
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-social-proof-strip-{{ ai_gen_id }} {
+    display: block;
+    width: {{ block.settings.desktop_width_percent }}%;
+    max-width: 100%;
+    margin: 0 auto;
+    background-color: {{ block.settings.background_color }};
+    color: {{ block.settings.text_color }};
+    text-align: center;
+  }
+
+  .ai-social-proof-strip__inner-{{ ai_gen_id }} {
+    width: 100%;
+    max-width: {{ block.settings.content_width }}px;
+    margin: 0 auto;
+    padding: {{ block.settings.vertical_padding }}px 24px;
+  }
+
+  .ai-social-proof-strip__text-{{ ai_gen_id }} {
+    margin: 0;
+    color: {{ block.settings.text_color }};
+    font-size: {{ block.settings.text_size }}px;
+    font-weight: 400;
+    line-height: 1.45;
+    letter-spacing: 0.01em;
+  }
+
+  @media screen and (max-width: 749px) {
+    .ai-social-proof-strip__inner-{{ ai_gen_id }} {
+      padding: {{ block.settings.mobile_padding }}px 20px;
+    }
+
+    .ai-social-proof-strip__text-{{ ai_gen_id }} {
+      font-size: {{ block.settings.mobile_text_size }}px;
+    }
+  }
+{% endstyle %}
+
+<div class="ai-social-proof-strip-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  <div class="ai-social-proof-strip__inner-{{ ai_gen_id }}">
+    <p class="ai-social-proof-strip__text-{{ ai_gen_id }}">{{ block.settings.text | escape }}</p>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Social proof strip",
+  "settings": [
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Text",
+      "default": "Our family has hosted thousands of wine tasting events across the United States and internationally."
+    },
+    {
+      "type": "range",
+      "id": "desktop_width_percent",
+      "label": "Desktop width",
+      "min": 50,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "default": 100
+    },
+    {
+      "type": "range",
+      "id": "content_width",
+      "label": "Content width",
+      "min": 400,
+      "max": 1400,
+      "step": 50,
+      "unit": "px",
+      "default": 1000
+    },
+    {
+      "type": "range",
+      "id": "text_size",
+      "label": "Text size",
+      "min": 12,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "mobile_text_size",
+      "label": "Mobile text size",
+      "min": 12,
+      "max": 26,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "vertical_padding",
+      "label": "Vertical padding",
+      "min": 12,
+      "max": 80,
+      "step": 4,
+      "unit": "px",
+      "default": 32
+    },
+    {
+      "type": "range",
+      "id": "mobile_padding",
+      "label": "Mobile padding",
+      "min": 12,
+      "max": 60,
+      "step": 4,
+      "unit": "px",
+      "default": 24
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background",
+      "default": "#6B1A2E"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text",
+      "default": "#FDF8F3"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Social proof strip"
+    }
+  ],
+  "tag": null,
+  "class": "social-proof-strip-block"
+}
+{% endschema %}

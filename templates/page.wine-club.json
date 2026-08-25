@@ -65,7 +65,7 @@
         "text_pKMfUN": {
           "type": "text",
           "settings": {
-            "text": "<p>JOIN THE </p><p>OPEN CONTAINER </p><p>WINE CLUB</p>",
+            "text": "<p>A Tasting At Your Table, </p><p>Four Times A Year</p>",
             "width": "fit-content",
             "max_width": "narrow",
             "alignment": "left",
@@ -91,7 +91,7 @@
           "type": "text",
           "name": "t:names.text",
           "settings": {
-            "text": "<p>Exclusive wines. Member-only perks. Delivered to your door.</p>",
+            "text": "<p>Every shipment arrives with a tasting video from our sommelier — so you're not just<br/>opening a box of wine; you're being walked through it.</p>",
             "width": "fit-content",
             "max_width": "narrow",
             "alignment": "left",
@@ -157,8 +157,8 @@
               "type": "button",
               "name": "t:names.button",
               "settings": {
-                "label": "JOIN NOW",
-                "link": "https://www.opencontainerwine.com/index.cfm?method=memberlogin.showLogin&referrerQueryString=method%3DmemberClubs%2EclubList",
+                "label": "JOIN THE CLU",
+                "link": "#plans",
                 "open_in_new_tab": false,
                 "style_class": "button",
                 "custom_button_background": "{{ settings.color_palette.foreground }}",
@@ -223,7 +223,7 @@
           "type": "text",
           "name": "t:names.heading",
           "settings": {
-            "text": "<p>WELCOME TO THE OPEN CONTAINER WINE CLUB</p>",
+            "text": "<p>Welcome To The Family</p>",
             "width": "100%",
             "max_width": "normal",
             "alignment": "center",
@@ -249,7 +249,7 @@
           "type": "text",
           "name": "t:names.text",
           "settings": {
-            "text": "<p>Grandma Rosa would have been so happy and welcomed you with Open arms into our family. We are thrilled to have you as family. As a member, you are now able to experience the off the grid, against the status quo, outside the box experience and exceptional wines, lively winery events and many special offerings. Our Wine Club shipments are processed in February, May, August, and November. Your club is fully customizable and you can choose from any available wines through your online profile. If you prefer to call or email, we are available to make sure the wine in your shipment is exactly what you want.</p><p>Before the shipment is scheduled to be processed, you will receive an email outlining the wines that will be included, the cost, and shipment date. That’s the time to add bottles or to customize your shipment! You can add as many bottles as you like while taking advantage of our flat rate shipping as part of your Wine Club Membership.</p><p>As a member, you and up to two guests are welcome to a choice of multiple complimentary wine tasting flight options and experiences when you visit our Open Containers. Reservations are recommended.<br/>We look forward to seeing you soon and please let us know if you have any questions.</p>",
+            "text": "<p>Grandma Rosa would have welcomed you with open arms — and we're thrilled to have you.</p><p>As a member you get the off-the-grid,  against-the-status-quo, outside-the-bo experience: exceptional wines, lively events, and offerings we don't make available to anyone else. </p><p>Shipments process in March 1, June 1, September 1, and December 1. Your club is fully customizable. Choose from any available wine through your online profile — or call or email us and we'll make sure the shipment is exactly what you want.</p>",
             "width": "fit-content",
             "max_width": "none",
             "alignment": "left",
@@ -305,11 +305,237 @@
         "padding-block-start": 48,
         "padding-block-end": 48
       }
+    },
+    "section_9mF7rQ": {
+      "type": "section",
+      "blocks": {
+        "ai_gen_block_734c1f4_nDMkKq": {
+          "type": "ai_gen_block_734c1f4",
+          "name": "How it works",
+          "settings": {
+            "eyebrow": "",
+            "title": "How it works",
+            "step_1_title": "Choose Your Plan",
+            "step_1_text": "Three bottles or six, every quarter. Pay the one-time $35 membership fee at sign-up.",
+            "step_2_title": "Preview Before It Ships",
+            "step_2_text": "Before every shipment, we email you the wines, the cost, and the ship date. Add bottles, swap selections, or skip — all at your flat member shipping rate",
+            "step_3_title": "It Arrives With A Tasting",
+            "step_3_text": "Your box ships with a tasting video from our sommelier. Pour along at home.",
+            "alignment": "center",
+            "desktop_width_percent": 100,
+            "padding_vertical": 40,
+            "padding_horizontal": 16,
+            "mobile_padding_vertical": 0,
+            "header_spacing": 32,
+            "heading_size": 48,
+            "step_title_size": 24,
+            "body_size": 16,
+            "background_color": "#fdf8f3",
+            "text_color": "#000000",
+            "accent_color": "#6b1a2e",
+            "divider_color": "#dfdfdf"
+          },
+          "blocks": {}
+        },
+        "ai_gen_block_8c38d80_7Q9tLM": {
+          "type": "ai_gen_block_8c38d80",
+          "settings": {
+            "heading": "Member Benefits",
+            "heading_font": "lora_n4",
+            "heading_size": 48,
+            "mobile_heading_size": 32,
+            "desktop_width_percent": 100,
+            "section_padding": 40,
+            "background_color": "#fdf8f3",
+            "heading_color": "#000000",
+            "text_color": "#333333",
+            "accent_color": "#6b1a2e",
+            "divider_color": "#dfdfdf"
+          },
+          "blocks": {}
+        },
+        "ai_gen_block_a5db454_zjjHTn": {
+          "type": "ai_gen_block_a5db454",
+          "settings": {
+            "section_title": "Choose Your Membership Plan",
+            "desktop_width_percent": 100,
+            "section_padding": 30,
+            "plan_one_label": "Quarterly membership",
+            "plan_one_title": "3 bottle quarterly",
+            "plan_one_price": "$108 – $195 per shipment",
+            "plan_one_details": "<ul><li>Three bottles, four times a year.</li><li>Plus tax and shipping.</li><li>$35 one-time membership fee, charged at signup.</li></ul>",
+            "plan_one_product": "3-bottle-quarterly-108-195-per-shipment",
+            "plan_one_product_qty": 1,
+            "featured_badge": "MOST POPULAR",
+            "plan_two_label": "Quarterly membership",
+            "plan_two_title": "6 bottle quarterly",
+            "plan_two_price": "$216 – $390 per shipment",
+            "plan_two_details": "<ul><li>Six bottles, four times a year.</li><li>Twice the wine, the same flat member shipping.</li><li>Plus tax and shipping.</li><li>$35 one-time membership fee, charged at signup.</li></ul>",
+            "plan_two_product": "6-bottle-quarterly-216-390-per-shipment",
+            "plan_two_product_qty": 1,
+            "button_label": "JOIN NOW",
+            "background_color": "#fdf8f3",
+            "card_background": "#ffffff",
+            "heading_color": "#321b20",
+            "text_color": "#333333",
+            "featured_color": "#6b1a2e",
+            "border_color": "#dfdfdf",
+            "button_color": "#6b1a2e",
+            "button_hover_color": "#4d1221",
+            "button_text_color": "#ffffff",
+            "focus_color": "#321b20",
+            "card_radius": 10,
+            "button_radius": 10,
+            "heading_size": 48
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_734c1f4_nDMkKq",
+        "ai_gen_block_8c38d80_7Q9tLM",
+        "ai_gen_block_a5db454_zjjHTn"
+      ],
+      "name": "t:names.custom_section",
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 12,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "background_media": "none",
+        "background_color": "",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_color": "",
+        "border_radius": 0,
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
+    "178713474884b54056": {
+      "type": "_blocks",
+      "blocks": {
+        "ai_gen_block_41c66de_HViRJB": {
+          "type": "ai_gen_block_41c66de",
+          "settings": {
+            "shipping_statement": "We ship to select states only.",
+            "shipping_link_label": "See where we ship",
+            "shipping_link": "",
+            "signature_statement": "All shipments require an adult signature from someone 21 or older.",
+            "desktop_width_percent": 100,
+            "top_spacing": 20,
+            "bottom_spacing": 20
+          },
+          "blocks": {}
+        },
+        "ai_gen_block_2372899_UhnpeV": {
+          "type": "ai_gen_block_2372899",
+          "settings": {
+            "heading": "Three Ways To Get Your Wine",
+            "ship_title": "Ship It",
+            "ship_copy": "Delivered to your door in states where we are permitted to ship. An adult 21 or older must sign.",
+            "pick_title": "Pick It Up",
+            "pick_copy": "Collect at any Open Container location, free. We hold your shipment for 45 days.",
+            "delivery_title": "Orlando Delivery",
+            "delivery_copy": "Inside the City of Orlando we bring it to you. Someone 21 or older must be there to receive it.",
+            "supporting_text": "Choose your method at checkout. You can change it any time before a shipment processes.",
+            "desktop_width_percent": 100,
+            "heading_size": 48,
+            "mobile_heading_size": 32,
+            "background_color": "#fdf8f3",
+            "card_color": "#ffffff",
+            "heading_color": "#000000",
+            "text_color": "#333333",
+            "accent_color": "#6b1a2e",
+            "border_color": "#dfdfdf"
+          },
+          "blocks": {}
+        },
+        "ai_gen_block_142d9bc_WdBWyQ": {
+          "type": "ai_gen_block_142d9bc",
+          "settings": {
+            "eyebrow": "Tasting room perk",
+            "heading": "Your Membership Comes With You",
+            "description": "Visit any Open Container location and bring up to two guests for a complimentary tasting flight. Reservations recommended.",
+            "button_label": "FIND A LOCATION",
+            "button_link": "shopify://pages/visit-us",
+            "desktop_width_percent": 100,
+            "vertical_padding": 40,
+            "mobile_vertical_padding": 32,
+            "heading_font": "lora_n4",
+            "body_font": "poppins_n4",
+            "accent_font": "poppins_n4",
+            "heading_size": 56,
+            "mobile_heading_size": 36,
+            "description_size": 18,
+            "background_color": "#fdf8f3",
+            "text_color": "#000000",
+            "accent_color": "#6b1a2e",
+            "button_color": "#6b1a2e",
+            "button_text_color": "#fdf8f3",
+            "button_hover_color": "#40101c",
+            "button_hover_text_color": "#ffffff",
+            "focus_color": "#000000",
+            "button_border_width": 0,
+            "button_radius": 14
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "ai_gen_block_41c66de_HViRJB",
+        "ai_gen_block_2372899_UhnpeV",
+        "ai_gen_block_142d9bc_WdBWyQ"
+      ],
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 12,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "background_media": "none",
+        "background_color": "",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_color": "",
+        "border_radius": 0,
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
     }
   },
   "order": [
     "main",
     "hero_FyjMLM",
-    "section_3y66G8"
+    "section_3y66G8",
+    "section_9mF7rQ",
+    "178713474884b54056"
   ]
 }

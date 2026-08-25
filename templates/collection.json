@@ -131,7 +131,7 @@
           "static": true,
           "settings": {
             "product_card_gap": 4,
-            "background_color": "#FAFAFA",
+            "background_color": "#fafafa",
             "border": "none",
             "border_width": 1,
             "border_opacity": 100,
@@ -252,7 +252,7 @@
                   "type": "add-to-cart",
                   "static": true,
                   "settings": {
-                    "style_class": "button-secondary",
+                    "style_class": "button",
                     "custom_button_background": "{{ settings.color_palette.foreground }}",
                     "custom_button_text": "{{ settings.color_palette.background }}",
                     "custom_button_border": "{{ settings.color_palette.background }}"
@@ -268,13 +268,22 @@
                 }
               },
               "block_order": []
+            },
+            "custom_liquid_ar3Dtb": {
+              "type": "custom-liquid",
+              "name": "t:names.custom_liquid",
+              "settings": {
+                "custom_liquid": "<a href=\"/pages/shipping-policy\">\n  Ships to select states only.\nSee where we ship\n</a>"
+              },
+              "blocks": {}
             }
           },
           "block_order": [
             "card-gallery",
             "product_title_4nY4eT",
             "price_EzJzMm",
-            "buy_buttons_Lyzqjh"
+            "buy_buttons_Lyzqjh",
+            "custom_liquid_ar3Dtb"
           ]
         }
       },
